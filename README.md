@@ -10,17 +10,24 @@
 ### Espacio de Trabajo
 ```
 |---------------------
-|---BBDD
+|
+|-- BBDD
 |   |--- games.php (corregir)
 |   |--- players.php (Va bien, pero hay que ver si eliminar jugadores)
 |   |--- stats.php (corregir)
 |   |--- teams.php (Va bien)
 |
-|-- READNE.md
-|
 |-- images
 |   |--- nba.jpg
 |
+|-- temp (archivos temporales/basura)
+|
+|-- V1 (version 1)
+|   | --- playerInfo.php (encargado de mostrar la informacion de los jugadores cuando se pasa mas de un argumento)
+|   | --- playerSearcher.php (encargado de mostrar una lista de jugadores cuando solo se introduce un argumento)
+|   |-- searcher.php (pagina principal con barra para buscar un jugador)
+|
+|-- README.md
 |---------------------
 ```
 
@@ -28,9 +35,10 @@
 
 ##### Anotaciones
 
-Mirar si borrar jugadores y dejar si eso solo los jugadores actuales y si queremos los historicos
-Las estadisticas sacarlas por jugador
-Los partidos sacarlos por equipo
+Plantear añadir un hall of fame
+
+En cuanto a las estadisticas y los partidos debemos crear dos codigos que actualicen añadiendo informacion.
+Para eso la API tiene un parametro que es start_date, podriamos hacer que actualice a partir de la mayor fecha ya almacenada en la pase de datos
 
 
 webalumnos.tlm.unavarra.es:10725
@@ -38,5 +46,12 @@ webalumnos.tlm.unavarra.es:10725
 sftp://webalumnos.tlm.unavarra.es
 puerto:10700
 
-wohr5IiMi3
-fex1roMi4j
+filezilla: wohr5IiMi3
+
+BBDD: fex1roMi4j
+
+
+
+
+
+

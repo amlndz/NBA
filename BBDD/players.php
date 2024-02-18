@@ -1,6 +1,5 @@
 <?php
 
-
     $servername="http://webalumnos.tlm.unavarra.es:10800";
     $username="grupo25";
     $password="fex1roMi4j";
