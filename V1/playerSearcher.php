@@ -1,5 +1,33 @@
-<?php
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Jugadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .player-name {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <?php
     $servername = "http://webalumnos.tlm.unavarra.es:10800";
     $username = "grupo25";
     $password = "fex1roMi4j";
@@ -13,69 +41,52 @@
         die("La conexión falló: " . $conn->connect_error);
     }
 
-    $playerInfo = $_POST['playerInfo'] ?? '';
+    // Verificar si se ha enviado información del jugador a través de GET
+    if (isset($_GET['playerInfo'])) {
+        // Obtener el nombre del jugador enviado desde el formulario
+        $playerInfo = $_GET['playerInfo'];
 
-    $playerName = '';
-    $playerSurname = '';
+        // Preparar la consulta SQL
+        $sql = "SELECT p.first_name, p.last_name, p.number, t.full_name as team_name 
+                FROM PLAYERS p
+                INNER JOIN TEAMS t ON p.team_id = t.id
+                WHERE LOWER(p.first_name) LIKE ? OR LOWER(p.last_name) LIKE ?";
 
-    if(!empty($playerInfo)){
-        $playerInfo = strtolower($playerInfo);
-        $parts = explode(' ', $playerInfo, 2);
-        $playerName = $parts[0];
-        $playerSurname = isset($parts[1]) ? $parts[1] : '';
+        // Preparar la declaración
+        $stmt = $conn->prepare($sql);
 
-        if(count($parts) == 2){
-            $sql = "SELECT * FROM PLAYERS WHERE LOWER(first_name) LIKE '%$nombre%' AND LOWER(last_name) LIKE '%$nombre%'";
-        }
-        else{
-            $sql = "SELECT * FROM PLAYERS WHERE LOWER(first_name) LIKE '%$nombre%' OR LOWER(first_name) LIKE '%$apellido%' OR LOWER(last_name) LIKE '%$nombre%' OR LOWER(last_name) LIKE '%$apellido%'";
-        }
+        // Vincular parámetros y ejecutar la consulta
+        $playerInfo = '%' . $playerInfo . '%';
+        $stmt->bind_param("ss", $playerInfo, $playerInfo);
+        $stmt->execute();
 
-        // Ejecutar la consulta SQL
-        $result = $conn->query($sql);
+        // Obtener el resultado de la consulta
+        $result = $stmt->get_result();
 
-        // Verificar si hay resultados
+        // Verificar si se encontraron resultados
         if ($result->num_rows > 0) {
-            // Mostrar los datos de los jugadores encontrados
-            echo "<h1>Jugadores encontrados</h1>";
+            echo "<h2>Lista de jugadores:</h2>";
+            echo "<ul>";
             while ($row = $result->fetch_assoc()) {
-                // Guardar los valores en variables
-                $id = $row['id'];
-                $nombreJugador = $row['first_name'];
-                $apellidoJugador = $row['last_name'];
-                $posicion = $row['position'];
-                $altura = $row['height'];
-                $peso = $row['weight'];
-                $equipoId = $row['team_id'];
-                $numero = $row['number'];
-                $draft = $row['draft'];
-                $rondaDraft = $row['draft_round'];
-                $pais = $row['country'];
-                $numeroDraft = $row['draft_number'];
-                
-                // Mostrar los valores de los jugadores
-                echo "ID: " . $id . "<br>";
-                echo "Nombre: " . $nombreJugador . "<br>";
-                echo "Apellido: " . $apellidoJugador . "<br>";
-                echo "Posición: " . $posicion . "<br>";
-                echo "Altura: " . $altura . "<br>";
-                echo "Peso: " . $peso . "<br>";
-                echo "Equipo ID: " . $equipoId . "<br>";
-                echo "Número: " . $numero . "<br>";
-                echo "Draft: " . $draft . "<br>";
-                echo "Ronda de Draft: " . $rondaDraft . "<br>";
-                echo "País: " . $pais . "<br>";
-                echo "Número de Draft: " . $numeroDraft . "<br>";
-                echo "<hr>";
+                // Construir el enlace con nombre y apellido como parámetros GET
+                $playerInfoUrl=$row['first_name']." ". $row['last_name'];
+                $url = "playerInfo.php?playerInfo=" . urlencode($playerInfoUrl);
+                echo "<li>Nombre: <a class='player-name' href=$url>" . $row['first_name'] . " " . $row['last_name'] . "</a> - Dorsal: " . $row['number'] . " - Equipo: " . $row['team_name'] . "</li>";
             }
-            echo "No se encontraron jugadores para el nombre proporcionado.";
+            echo "</ul>";
+        } else {
+            echo "<script>alert('Por favor, ingrese el nombre o apellido de un jugador.');window.history.back();</script>";
         }
-    }  else {
+
+        // Cerrar la declaración
+        $stmt->close();
+    } else {
         // Si no se proporciona ningún valor en el campo jugador, redirigir al usuario de vuelta a la página anterior
         echo "<script>alert('Por favor, ingrese el nombre o apellido de un jugador.');window.history.back();</script>";
     }
+
     // Cerrar la conexión
     $conn->close();
-    
-
-    
+    ?>
+</body>
+</html>

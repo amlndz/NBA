@@ -10,7 +10,8 @@
                 exit();
             } else {
                 // Solo un atributo
-                echo "solo un atributo";
+                $url = "playerSearcher.php?playerInfo=" . urlencode($playerInfo);
+                header("Location: $url");
             }
         }
      }
