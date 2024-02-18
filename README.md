@@ -31,3 +31,12 @@
 Mirar si borrar jugadores y dejar si eso solo los jugadores actuales y si queremos los historicos
 Las estadisticas sacarlas por jugador
 Los partidos sacarlos por equipo
+
+
+webalumnos.tlm.unavarra.es:10725
+
+sftp://webalumnos.tlm.unavarra.es
+puerto:10700
+
+wohr5IiMi3
+fex1roMi4j
