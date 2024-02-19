@@ -70,7 +70,7 @@
             while ($row = $result->fetch_assoc()) {
                 // Construir el enlace con nombre y apellido como parámetros GET
                 $playerInfoUrl=$row['first_name']." ". $row['last_name'];
-                $url = "playerInfo.php?playerInfo=" . urlencode($playerInfoUrl);
+                $url = "playerInfo.php?playerInfo=". urlencode($playerInfoUrl);
                 echo "<li>Nombre: <a class='player-name' href=$url>" . $row['first_name'] . " " . $row['last_name'] . "</a> - Dorsal: " . $row['number'] . " - Equipo: " . $row['team_name'] . "</li>";
             }
             echo "</ul>";

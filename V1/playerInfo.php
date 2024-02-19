@@ -16,7 +16,7 @@
     if (isset($_GET['playerInfo'])) {
         // Obtener el nombre del jugador enviado desde el formulario
         $playerInfo = $_GET['playerInfo'];
-
+        
         $playerName = '';
         $playerSurname = '';
 

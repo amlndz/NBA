@@ -21,7 +21,8 @@
             header("Location: $url");
         }
         else{
-            echo "error";
+            $url="gamesInfo.php";
+            header("Location: $url");
         }
     }
 
@@ -57,7 +58,9 @@
         <input type="submit" value="🔎" ><br><br>
         <label for="playerInfo">Buscar Equipo</label>
         <input type="text" class="input-estilizado" id="teamInfo" name="teamInfo" placeholder="Nombre del equipo">
-        <input type="submit" value="🔎">
+        <input type="submit" value="🔎"><br><br>
+        <input type="submit" value="PARTIDOS">
+
     </form>    
 </body>
 </html>
