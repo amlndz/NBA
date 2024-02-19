@@ -25,7 +25,8 @@
 |-- V1 (version 1)
 |   | --- playerInfo.php (encargado de mostrar la informacion de los jugadores cuando se pasa mas de un argumento)
 |   | --- playerSearcher.php (encargado de mostrar una lista de jugadores cuando solo se introduce un argumento)
-|   |-- searcher.php (pagina principal con barra para buscar un jugador)
+|   | --- searcher.php (pagina principal con barra para buscar un jugador)
+|   | --- teamInfo.php (encargado de mostrar datos de equipos. Si se introduce el nombre de un equipo lo muestra, pero tambien se pueden buscar equipos por ciudad, conferencia, division)
 |
 |-- README.md
 |---------------------
