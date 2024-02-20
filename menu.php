@@ -26,17 +26,7 @@
                 <!-- Mostrar lista de usuarios si el usuario está autenticado -->
                 <?php if ($usuario_autenticado): ?>
                     <!-- Botón para mostrar la lista -->
-                    <a href="#" id="btn-user-link"><img src="../assets/images/user.png" alt=""></a>
-                    <!-- Aquí va tu código para mostrar la lista de usuarios -->
-                    <ul id="user-list" style="display: none;">
-                        <li>Usuario 1</li>
-                        <li>Usuario 2</li>
-                        <!-- Puedes agregar más elementos de lista aquí -->
-                    </ul>
-                    <!-- Botón para cerrar sesión -->
-                    <form action="logout.php" method="post">
-                        <input type="submit" value="Cerrar sesión">
-                    </form>
+                    <label for="btn-user"><img src="../assets/images/user.png" alt="Login"></label>
                 <?php else: ?>
                     <!-- Si el usuario no está autenticado, enlazar al formulario de registro -->
                     <a href="login.php"><img src="../assets/images/user.png" alt=""></a>
@@ -54,11 +44,21 @@
                 <a href="#">Equipos</a>
                 <a href="#">Partidos</a>
             </nav>
-            <label for="btn-menu">✖️</label>
+            <!-- <label for="btn-menu">✖️</label> -->
+        </div>
+    </div>
+    <input type="checkbox" id="btn-user">
+    <div class = "container-user" id="user-container">
+        <div class="cont-user">
+            <nav>
+                <a href="#">Perfil</a>
+                <a href="#">Configuración</a>
+                <a href="./logout.php">Cerrar Sesion</a>
+            </nav>
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // Agregar evento de clic al botón de usuario
         document.getElementById('btn-user-link').addEventListener('click', function(event) {
             // Prevenir la acción predeterminada del enlace
@@ -73,6 +73,6 @@
                 window.location.href = 'login.php';
             <?php endif; ?>
         });
-    </script>
+    </script> -->
 </body>
 </html>
