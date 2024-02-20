@@ -17,31 +17,13 @@
         die("La conexión falló: " . $conn->connect_error);
     }
 
-    // Verificar si se ha enviado información del jugador a través de GET
-    if (isset($_GET['playerInfo'])) {
-        // Obtener el nombre del jugador enviado desde el formulario
-        $playerInfo = $_GET['playerInfo'];
-
-        // Preparar la consulta SQL
-        $sql = "SELECT p.first_name, p.last_name, p.number, t.full_name as team_name 
-                FROM PLAYERS p
-                INNER JOIN TEAMS t ON p.team_id = t.id
-                WHERE LOWER(p.first_name) LIKE ? OR LOWER(p.last_name) LIKE ?";
-
-        // Preparar la declaración
-        $stmt = $conn->prepare($sql);
-
-        // Vincular parámetros y ejecutar la consulta
-        $playerInfo = '%' . $playerInfo . '%';
-        $stmt->bind_param("ss", $playerInfo, $playerInfo);
-    }
-    else{
-        $sql = "SELECT p.id, p.first_name, p.last_name, p.number, t.full_name as team_name 
-                FROM PLAYERS p
-                INNER JOIN TEAMS t ON p.team_id = t.id";
-                // Preparar la declaración
-                $stmt = $conn->prepare($sql);
-    }
+    
+    $sql = "SELECT p.*, t.full_name as team_name 
+            FROM PLAYERS p
+            INNER JOIN TEAMS t ON p.team_id = t.id";
+            // Preparar la declaración
+            $stmt = $conn->prepare($sql);
+    
     $stmt->execute();
 
     // Obtener el resultado de la consulta
@@ -145,55 +127,61 @@
             <?php
             // Verificar si se encontraron resultados
             if ($result->num_rows > 0) {
+            ?>  
+            <div class="row">
+                <?php
                 // Iterar sobre los resultados en incrementos de dos
-                for ($i = 0; $i < $result->num_rows; $i += 2) {
+                for ($i = 0; $i < $result->num_rows/2; $i += 2) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
-                    $playerInfoUrl1 = $row['first_name'] . " " . $row['last_name'];
-                    $playerId1 = $row['id'];
+                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
+                    $playerId = $row['id'];
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
-            <div class="row">
-                <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/".$playerId1.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/default.png'">
-                        </div>
-                        <div class="col-sm-7">
-                            <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl1); ?>
-                            <h4><i class="fa fa-truck service-icon"></i><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
-                            <p class="m-0">
-                                <?php
-                                echo "<a class='player-name' href='./playerInfo.php'>" . $row['first_name'] . " " . $row['last_name'] . "</a><br/>Dorsal: " . $row['number'] . "<br/>Team: " . $row['team_name'];?>
-                            </p>
+                    <div class="col-lg-6 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/players/default.png'">
+                            </div>
+                            <div class="col-sm-7">
+                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
+                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <!-- <i class="fa service-icon"></i> -->
+                                <p class="m-0">
+                                    <?php
+                                    echo "<a class='player-name' href='./playerInfo.php'>".$row['first_name']." ".$row['last_name']."</a><br/>Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];?>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <?php
-                // Obtener el segundo jugador si existe
-                if ($row = $result->fetch_assoc()) {
-                    $playerInfoUrl2 = $row['first_name'] . " " . $row['last_name'];
-                    $playerId2 = $row['id'];
+                    <?php }
+                
+                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 2) {
+                    // Obtener el primer jugador
+                    $row = $result->fetch_assoc();
+                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
+                    $playerId = $row['id'];
+                    // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
-                <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/".$playerId2.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/default.png'">
-                        </div>
-                        <div class="col-sm-7">
-                        <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl2); ?>
-                            <h4><i class="fa fa-truck service-icon"></i><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
-                            <p class="m-0">
-                            <?php echo "<a class='player-name' href='./playerInfo.php'>" . $row['first_name'] . " " . $row['last_name'] . "</a><br/>Dorsal: " . $row['number'] . "<br/>Team: " . $row['team_name'];?>
+                    <div class="col-lg-6 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/players/default.png'">
+                            </div>
+                            <div class="col-sm-7">
+                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
+                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <!-- <i class="fa service-icon"></i> -->
+                                <p class="m-0">
+                                    <?php
+                                    echo "<a class='player-name' href='./playerInfo.php'>".$row['first_name']." ".$row['last_name']."</a><br/>Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];?>
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    <?php }; ?>
                 </div>
-            </div>
                 <?php
-                    }
-                }
             } else {
                 echo "Error";
             }

@@ -18,7 +18,6 @@
         $teamInfo = $_GET['teamInfo'];
         if (!empty($teamInfo)) {
             $teamInfo = strtolower($teamInfo);
-
             $sql = "SELECT * FROM TEAMS t WHERE LOWER(t.abbreviation) LIKE ? or LOWER(t.full_name) LIKE ? or LOWER(t.name) LIKE ?";
 
             $stmt = $conn->prepare($sql);
@@ -28,16 +27,11 @@
                 die("Error al preparar la consulta: " . $conn->error);
             }
 
-            $teamInfo = '%'.strtolower($teamInfo).'%';
+            $teamInfo = strtolower($teamInfo);
             $stmt->bind_param("sss", $teamInfo, $teamInfo, $teamInfo);
             $stmt->execute();
-        }
-
-        // Obtener el resultado de la consulta
-        $result = $stmt->get_result();
-
-        // Verificar si se encontraron resultados
-        if ($result->num_rows == 1) {
+            // Obtener el resultado de la consulta
+            $result = $stmt->get_result();
             $row = $result->fetch_assoc();
             $abbreviation = $row['abbreviation'];
             $city = $row['city'];
@@ -51,32 +45,10 @@
             echo "CONFERENCIA: ".$conference."<br>";
             echo "DIVISION: ".$division."<br>";
         }
-        else{
-            $sql = "SELECT * FROM TEAMS t WHERE LOWER(t.city) LIKE ? or LOWER(t.conference) LIKE ? or LOWER(t.division) LIKE ?";
-            $stmt = $conn->prepare($sql);
 
-            // Verificar si la consulta se preparó correctamente
-            if ($stmt === false) {
-                die("Error al preparar la consulta: " . $conn->error);
-            }
-
-            $teamInfo = strtolower($teamInfo);
-            $stmt->bind_param("sss", $teamInfo, $teamInfo, $teamInfo);
-            $stmt->execute();
-
-            // Obtener el resultado de la consulta
-            $result = $stmt->get_result();
-            echo "<h2> LISTA DE EQUIPOS </h2>";
-            echo "<ul>";
-            while ($row = $result->fetch_assoc()) {
-                $teamInfoUrl=$row['full_name'];
-                $url = "teamInfo.php?teamInfo=".urldecode($teamInfoUrl);
-                echo "<li> Equipo: <a class='team-name' href=$url>".$row['full_name']." (".$row['abbreviation'].") -- ".$row['city']."</a></li>";
-            }
-            echo "</ul>";
-        }
+        
 
     }
     else {
-            echo "<script>alert('Por favor, ingrese el nombre o apellido de un jugador.');window.history.back();</script>";
+            echo "error";
         }
