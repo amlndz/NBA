@@ -45,9 +45,10 @@ En cuanto a las estadisticas y los partidos debemos crear dos codigos que actual
 Para eso la API tiene un parametro que es start_date, podriamos hacer que actualice a partir de la mayor fecha ya almacenada en la pase de datos
 
 
-webalumnos.tlm.unavarra.es:10725
+!https://webalumnos.tlm.unavarra.es:10725/NBA
 
 sftp://webalumnos.tlm.unavarra.es
+
 puerto:10700
 
 filezilla: wohr5IiMi3
