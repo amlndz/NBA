@@ -81,15 +81,15 @@
                 <div class="carousel-item active">
                     <img class="w-100" src="img/carousel-1.webp" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 class="text-primary font-weight-medium m-0" justify="center">Conoce a tus héroes, sigue a tus equipos <br>y vive la pasión de la NBA</h2>
-                        <h3 class="text-white m-0"><br>Temporada 2023/24</h3>
+                        <h1 class="text-primary font-weight-medium m-0" justify="center">Conoce a tus héroes, sigue a tus equipos <br>y vive la pasión de la NBA</h1>
+                        <h2 class="text-white m-0"><br>Temporada 2023/24</h2>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="w-100" src="img/carousel-2.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h2 class="text-primary font-weight-medium m-0" justify="center">Conoce a tus héroes, sigue a tus equipos <br>y vive la pasión de la NBA</h2>
-                        <h3 class="text-white m-0"><br>Temporada 2023/24</h3>
+                        <h3 class="text-white m-0"><br>Temporada /24</h3>
                     </div>
                 </div>
             </div>

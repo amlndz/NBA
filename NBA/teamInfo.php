@@ -1,11 +1,16 @@
 <?php
-    $servername = "http://webalumnos.tlm.unavarra.es:10800";
-    $username = "grupo25";
-    $password = "fex1roMi4j";
-    $database = "db_grupo25";
+    // $servername = "http://webalumnos.tlm.unavarra.es:10800";
+    // $username = "grupo25";
+    // $password = "fex1roMi4j";
+    // $database = "db_grupo25";
+    // $conn = new mysqli("dbserver", $username, $password, $database);
 
-    // Creamos conexión
-    $conn = new mysqli("dbserver", $username, $password, $database);
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "nba";
+    // Crear conexión
+    $conn = new mysqli($servername, $username, $password, $database);
 
     // Verificamos conexión
     if ($conn->connect_error) {
