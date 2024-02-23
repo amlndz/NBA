@@ -17,14 +17,14 @@
                 <p>Alejandro Meléndez Uriz</p>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.linkedin.com/in/alejandro-meléndez-526795291/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram" href="https://www.instagram.com/a_melendez__/" target="_blank"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square"  href="https://www.instagram.com/a_melendez__/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 mb-5">
                 <p>Ander Monreal Ayanz</p>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.linkedin.com/in/ander-monreal-ayanz-485794291/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram" href="https://www.instagram.com/andeermonnreal/" target="_blank"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="https://www.instagram.com/andeermonnreal/" target="_blank"><i class="fab fa-instagram" ></i></a>
                 </div>
             </div>
         </div>

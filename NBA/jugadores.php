@@ -131,7 +131,7 @@
             <div class="row">
                 <?php
                 // Iterar sobre los resultados en incrementos de dos
-                for ($i = 0; $i < $result->num_rows/2; $i += 2) {
+                for ($i = 0; $i < $result->num_rows/2; $i += 1) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
                     $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
@@ -156,7 +156,7 @@
                     </div>
                     <?php }
                 
-                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 2) {
+                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 1) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
                     $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
