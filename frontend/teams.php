@@ -13,7 +13,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "nba";
+    $database = "siw";
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $database);
 
@@ -23,11 +23,10 @@
     }
 
     
-    $sql = "SELECT p.*, t.full_name as team_name 
-            FROM PLAYERS p
-            INNER JOIN TEAMS t ON p.team_id = t.id";
-            // Preparar la declaración
-            $stmt = $conn->prepare($sql);
+    $sql = "SELECT * FROM TEAMS";
+            
+    // Preparar la declaración
+    $stmt = $conn->prepare($sql);
     
     $stmt->execute();
 
@@ -41,9 +40,6 @@
     // Cerrar la conexión
     $conn->close();
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,8 +81,8 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                 <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="jugadores.php" class="nav-item nav-link active">Players</a>
-                    <a href="equipos.php" class="nav-item nav-link">Teams</a>
+                    <a href="jugadores.php" class="nav-item nav-link">Players</a>
+                    <a href="equipos.php" class="nav-item nav-link active">Teams</a>
                     <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <a href="about.php" class="nav-item nav-link">About</a> -->
                     <div class="nav-item dropdown">
@@ -111,22 +107,21 @@
     <!-- Navbar End -->
 
 
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">2023/24 Players</h1>
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">EQUIPOS NBA</h1>
             <!-- <div class="d-inline-flex mb-lg-5">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Services</p>
+                <p class="m-0 text-white">Menu</p>
             </div> -->
         </div>
     </div>
     <!-- Page Header End -->
 
 
-    <!-- Players Start -->
+    <!-- Menu Start -->
     <div class="container-fluid pt-5">
         <div class="container">
             <?php
@@ -136,50 +131,50 @@
             <div class="row">
                 <?php
                 // Iterar sobre los resultados en incrementos de dos
-                for ($i = 0; $i < $result->num_rows/2; $i += 1) {
+                for ($i = 0; $i < $result->num_rows/2; $i += 2) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
-                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
-                    $playerId = $row['id'];
+                    $teamInfoUrl = $row['abbreviation'];
+                    $teamId = $row['id'];
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
                     <div class="col-lg-6 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/players/default.png'">
+                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./logoNBA.png'">
                             </div>
                             <div class="col-sm-7">
-                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
-                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <?php $url = "teamInfo.php?teamInfo=".urlencode($teamInfoUrl); ?>
+                                <h4><?php echo" <a hrefa class='team-name' href=$url > ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
                                 <!-- <i class="fa service-icon"></i> -->
                                 <p class="m-0">
                                     <?php
-                                    echo "<a class='player-name' href='./playerInfo.php'>".$row['first_name']." ".$row['last_name']."</a><br/>Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];?>
+                                    echo "<a class='team-name' href='./teamInfo.php'>".$row['full_name']."</a><br/>abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <?php }
                 
-                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 1) {
+                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 2) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
-                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
-                    $playerId = $row['id'];
+                    $teamInfoUrl = $row['abbreviation'];
+                    $teamId = $row['id'];
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
                     <div class="col-lg-6 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./img/players/default.png'">
+                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./logoNBA.png'">
                             </div>
                             <div class="col-sm-7">
-                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
-                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <?php $url = "teamInfo.php?teamInfo=".urlencode($teamInfoUrl); ?>
+                                <h4><?php echo" <a hrefa class='team-name' href=$url > ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
                                 <!-- <i class="fa service-icon"></i> -->
                                 <p class="m-0">
                                     <?php
-                                    echo "<a class='player-name' href='./playerInfo.php'>".$row['first_name']." ".$row['last_name']."</a><br/>Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];?>
+                                    echo "<a class='team-name' href='./teamInfo.php'>".$row['full_name']."</a><br/>abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
                                 </p>
                             </div>
                         </div>
@@ -189,38 +184,11 @@
                 <?php
             } else {
                 echo "Error";
-            }
-            ?>         
-                <!-- <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-3.jpg" alt="">
-                        </div>
-                        <div class="col-sm-7">
-                            <h4><i class="fa fa-award service-icon"></i>Best Quality Coffee</h4>
-                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
-                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-4.jpg" alt="">
-                        </div>
-                        <div class="col-sm-7">
-                            <h4><i class="fa fa-table service-icon"></i>Online Table Booking</h4>
-                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
-                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            }?>
         </div>
     </div>
-    <!-- Service End -->
-
     
+
     <!-- Footer Start -->
     <?php include 'footer.php'; ?>
     <!-- Footer End -->

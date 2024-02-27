@@ -7,44 +7,7 @@
 - Ander Monreal Ayanz
 
 
-### Espacio de Trabajo
-```
-|---------------------
-|
-|-- BBDD
-|   |--- games.php (corregir)
-|   |--- players.php (Va bien, pero hay que ver si eliminar jugadores)
-|   |--- stats.php (corregir)
-|   |--- teams.php (Va bien)
-|
-|-- images
-|   |--- nba.jpg
-|
-|-- temp (archivos temporales/basura)
-|
-|-- V1 (version 1)
-|   | --- playerInfo.php (encargado de mostrar la informacion de los jugadores cuando se pasa mas de un argumento)
-|   | --- playerSearcher.php (encargado de mostrar una lista de jugadores cuando solo se introduce un argumento)
-|   | --- searcher.php (pagina principal con barra para buscar un jugador)
-|   | --- teamInfo.php (encargado de mostrar datos de equipos. Si se introduce el nombre de un equipo lo muestra, pero tambien se pueden buscar equipos por ciudad, conferencia,division)
-|
-|-- V2 (version 2) Aqui empezamos de nuevo con la web
-|   | --- Todos los archivos son para hacer un menu y para intentar tratar el login
-|
-|-- README.md
-|---------------------
-```
-
----
-
-##### Anotaciones
-
-Plantear añadir un hall of fame
-
-En cuanto a las estadisticas y los partidos debemos crear dos codigos que actualicen añadiendo informacion.
-Para eso la API tiene un parametro que es start_date, podriamos hacer que actualice a partir de la mayor fecha ya almacenada en la pase de datos
-
-
+### UTILES
 
 http://webalumnos.tlm.unavarra.es:10725/NBA
 
@@ -55,6 +18,127 @@ puerto:10700
 filezilla: wohr5IiMi3
 
 BBDD: fex1roMi4j
+
+
+### Espacio de Trabajo
+```
+|---------------------
+|
+|-- backend (cambiar usando un connect comun)
+|   |--- games.php 
+|   |--- players.php 
+|   |--- stats.php 
+|   |--- teams.php 
+|
+|-- frontend (Cambiar rutas)
+|   |--- assets (css, js, images, lib)
+|   |--- autenticarUsuario.php
+|   |--- connection.php
+|   |--- footer.php
+|   |--- login.php
+|   |--- logout.php
+|   |--- playerInfo.php
+|   |--- platers.php
+|   |--- signin.php
+|   |--- teamInfo.php
+|   |--- teams.php
+|
+|-- images
+|   |--- nba.jpg
+|
+|-- README.md
+|---------------------
+```
+
+---
+
+##### Anotaciones
+
+=================================================================================================
+========================================= COSAS A HACER =========================================
+=================================================================================================
+
+
+
+<!-- ========== PAGINA PRINCIPAL index.php ========== -->
+
+[ ] - Pagina web no registrados
+    [ ] - Mejor Jugador de la semana
+    [ ] - Lider en cada conferencia
+
+[ ] - Pagina web registrados
+    [ ] - Informacion sobre la ultima jornada de jugador y equipo favorito
+
+
+
+<!-- ========== PAGINA JUGADORES jugadores.php ========== -->
+
+[ ] - Añadir boton de cargar mas (de 20 en 20 jugadores)
+
+[ ] - Añadir Buscador
+
+[ ] - Añadir Filtro
+    [ ] - equipo
+    [ ] - posicion
+
+[ ] - ¿Ordenar?
+
+
+
+<!-- ========== PAGINA EQUIPOS equipos.php ========== -->
+
+[ ] - Añadir boton de cargar mas (de 10 en 10)
+
+[ ] - Añadir Buscador
+
+[ ] - Añadir Filtro
+    [ ] - conferencia
+    [ ] - division
+
+
+
+<!-- ========== PAGINA Log In login.php ========== -->
+
+[ ] - Añadir logica php y js
+
+
+
+<!-- ========== PAGINA Sign In sigin.php ========== -->
+
+[ ] - Añadir logica php y js
+
+
+
+<!-- ========== PAGINA Jugador player.php ========== -->
+
+[ ] - Añadir Diseño
+    [ ] - Datos jugador
+    [ ] - Equipo (link)
+    [ ] - Estadisticas temporada 23/24
+
+[ ] - Graficas Estadisticas 23/24 js
+
+
+<!-- ========== PAGINA Equipo team.php ========== -->
+
+[ ] - Añadir Diseño
+    [ ] - Datos equipo
+    [ ] - Plantilla Equipo
+    [ ] - Registro de Partidos
+    [ ] - ¿Jugadores Historicos?
+
+
+
+<!-- ========== PARTIDOS ========== -->
+
+[ ] - Plantear partidos
+
+<!-- ========== APUESTAS ========== -->
+
+[ ] - Plantear apuestas y puntos de los usuarios
+
+<!-- ========== COLECCIONABLES ========== -->
+
 
 
 
