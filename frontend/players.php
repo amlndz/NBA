@@ -1,30 +1,6 @@
 <?php
-    
-    require "autenticarUsuario.php";
-    $usuario_autenticado = autenticar();
-
-    require "connection.php";
-    $conn = connect();
-    
-    $sql = "SELECT p.id, p.first_name, p.last_name, p.number, p.position, p.draft, p.country, t.full_name as team_name 
-            FROM final_players p
-            INNER JOIN final_teams t ON p.team_id = t.id";
-            // Preparar la declaración
-            $stmt = $conn->prepare($sql);
-    
-    $stmt->execute();
-
-    // Obtener el resultado de la consulta
-    $result = $stmt->get_result();
-
-    // Cerrar la declaración
-    $stmt->close();
-
-    // Cerrar la conexión
-    $conn->close();
+    include("playersInfoBBDD.php");
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,26 +65,103 @@
 
 
 
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">2023/24 Players</h1>
-            <!-- <div class="d-inline-flex mb-lg-5">
-                <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
-                <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Services</p>
-            </div> -->
+
+<!-- Page Header Start     <div class="d-inline-flex mb-lg-5">
+ -->
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">2023/24 Players</h1>
+        <!-- Menú desplegable para búsqueda -->
+        <div class="d-inline-flex mb-lg-5">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Búsqueda Avanzada
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <form class="px-4 py-3" method="GET" action="players.php">
+                                <h5 class="dropdown-header">Filtros de Búsqueda</h5>
+                                <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Nombre" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ''; ?>">
+                                </div>
+                                <div class="form-group">
+                                <input type="text" class="form-control" name="team" placeholder="Equipo" value="<?php echo isset($_GET['team']) ? $_GET['team'] : ''; ?>">
+                                </div>
+                                <div class="form-group">
+                                <input type="text" class="form-control" name="position" placeholder="Posición" value="<?php echo isset($_GET['position']) ? $_GET['position'] : ''; ?>">
+                                </div>
+                                <div class="form-group">
+                                <input type="text" class="form-control" name="draft" placeholder="Draft" value="<?php echo isset($_GET['draft']) ? $_GET['draft'] : ''; ?>">
+                                </div>
+                                <div class="form-group">
+                                <input type="text" class="form-control" name="country" placeholder="País" value="<?php echo isset($_GET['country']) ? $_GET['country'] : ''; ?>">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                                <a href="players.php" class="btn btn-primary">Borrar</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Page Header End -->
+</div>
+<!-- Page Header End -->
 
-
+    
     <!-- Players Start -->
-    <div class="container-fluid pt-5">
+     <!-- Jugadores -->
+     <div class="container-fluid pt-5">
         <div class="container">
-            
+            <div class="row">
+                <?php
+                // Iterar sobre los resultados
+                while ($row = $result->fetch_assoc()) {
+                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
+                    $playerId = $row['id'];
+                    ?>
+                    <div class="col-lg-4 mb-4">
+                        <div class="row align-items-center">
+                            <div class="col-sm-5">
+                                <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'">    
+                            </div>
+                            <div class="col-sm-7">
+                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
+                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <p class="m-0">
+                                    <?php
+                                    echo "Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
+    
+    <div class="pagination-container">
+    <div class="pagination">
+        <?php
+        // Calcular el número total de páginas
+        $totalPages = ceil($totalRecords / $pageSize);
+
+        // Mostrar controles de navegación
+        if ($page > 1) {
+            echo "<a href='?page=".($page - 1).buildFilterQueryString()."'>&laquo; Anterior</a>";
+        }
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo "<a href='?page=".$i.buildFilterQueryString()."'".($page == $i ? " class='active'" : "").">$i</a>";
+        }
+        if ($page < $totalPages) {
+            echo "<a href='?page=".($page + 1).buildFilterQueryString()."'>Siguiente &raquo;</a>";
+        }
+        ?>
+    </div>
+</div>
+
 
     
     <!-- Footer Start -->
