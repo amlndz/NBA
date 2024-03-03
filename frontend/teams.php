@@ -1,29 +1,12 @@
 <?php
-    session_start();
-
-    // Verificar si el usuario está autenticado
-    $usuario_autenticado = isset($_SESSION['usuario_autenticado']) && $_SESSION['usuario_autenticado'] === true;
+    require "autenticarUsuario.php";
+    $usuario_autenticado = autenticar();
     
-    // $servername = "http://webalumnos.tlm.unavarra.es:10800";
-    // $username = "grupo25";
-    // $password = "fex1roMi4j";
-    // $database = "db_grupo25";
-    // $conn = new mysqli("dbserver", $username, $password, $database);
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "siw";
-    // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Verificar conexión
-    if ($conn->connect_error) {
-        die("La conexión falló: " . $conn->connect_error);
-    }
+    require "connection.php";
+    $conn = connect();
 
     
-    $sql = "SELECT * FROM TEAMS";
+    $sql = "SELECT * FROM final_teams";
             
     // Preparar la declaración
     $stmt = $conn->prepare($sql);
@@ -61,11 +44,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="./assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="./assets/css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -73,7 +56,7 @@
 <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.php" class="navbar-brand px-lg-1 m-0">
-                <img src="./logoNBA.png" id="logo-menu-image" alt="nba" width=20% height=20%><!-- Logo -->
+                <img src="./assets/img/logoNBA.png" id="logo-menu-image" alt="nba" width=20% height=20%><!-- Logo -->
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -81,19 +64,19 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                 <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="jugadores.php" class="nav-item nav-link">Players</a>
-                    <a href="equipos.php" class="nav-item nav-link active">Teams</a>
+                    <a href="players.php" class="nav-item nav-link">Players</a>
+                    <a href="teams.php" class="nav-item nav-link active">Teams</a>
                     <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <a href="about.php" class="nav-item nav-link">About</a> -->
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="user.png" alt=""></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu text-capitalize">
                                 <a href="login.php" class="dropdown-item">Log in</a>
                                 <a href="login.php" class="dropdown-item">Sign in</a>
                             </div>
                         <?php else: ?>
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="user.png" alt=""></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu text-capitalize">
                                 <a href="logout.php" class="dropdown-item">cerrar</a> 
                             </div>                            
@@ -131,17 +114,17 @@
             <div class="row">
                 <?php
                 // Iterar sobre los resultados en incrementos de dos
-                for ($i = 0; $i < $result->num_rows/2; $i += 2) {
+                for ($i = 0; $i < $result->num_rows; $i += 1) {
                     // Obtener el primer jugador
                     $row = $result->fetch_assoc();
                     $teamInfoUrl = $row['abbreviation'];
                     $teamId = $row['id'];
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
-                    <div class="col-lg-6 mb-5">
+                    <div class="col-lg-4 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./logoNBA.png'">
+                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/logoNBA.png'">
                             </div>
                             <div class="col-sm-7">
                                 <?php $url = "teamInfo.php?teamInfo=".urlencode($teamInfoUrl); ?>
@@ -156,35 +139,7 @@
                     </div>
                     <?php }
                 
-                for ($i = $result->num_rows/2; $i <  $result->num_rows; $i += 2) {
-                    // Obtener el primer jugador
-                    $row = $result->fetch_assoc();
-                    $teamInfoUrl = $row['abbreviation'];
-                    $teamId = $row['id'];
-                    // Construir el enlace con nombre y apellido como parámetros GET
-                    ?>
-                    <div class="col-lg-6 mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./logoNBA.png'">
-                            </div>
-                            <div class="col-sm-7">
-                                <?php $url = "teamInfo.php?teamInfo=".urlencode($teamInfoUrl); ?>
-                                <h4><?php echo" <a hrefa class='team-name' href=$url > ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
-                                <!-- <i class="fa service-icon"></i> -->
-                                <p class="m-0">
-                                    <?php
-                                    echo "<a class='team-name' href='./teamInfo.php'>".$row['full_name']."</a><br/>abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php }; ?>
-                </div>
-                <?php
-            } else {
-                echo "Error";
-            }?>
+                }?>
         </div>
     </div>
     
