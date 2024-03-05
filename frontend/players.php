@@ -107,7 +107,6 @@
         </div>
     </div>
 </div>
-<!-- Page Header End -->
 
     
     <!-- Players Start -->
