@@ -5,6 +5,14 @@
     <title>Lista de usuarios</title>
 </head>
 <body>
+    
+    <h1>Listado de usuarios</h1>
+    <h3>Buscador:</h3>
+    <form action="search_user.php" method="post">
+        Introduce el nombre del usuario: <input type="text" name="nombre"><br>
+        <input type="submit" value="Buscar usuario">
+    </form>
+    
     <table border="1">
         <tr>
             <th>ID</th>
@@ -16,18 +24,23 @@
             <th>Correo electrónico</th>
             <th>Jugador favorito</th>
             <th>Equipo favorito</th>
+            <th>Cambiar contraseña</th>
+            <th>Eliminar usuario</th>
         </tr>
         ##fila##
         <tr>
-            <th>##id_users##</th>
-            <th>##username##</th>
-            <th>##password##</th>
-            <th>##nombre##</th>
-            <th>##apellido1##</th>
-            <th>##apellido2##</th>
-            <th>##correo##</th>
-            <th>##jugadorfavorito##</th>
-            <th>##equipofavorito##</th>
+            <td>##userID##</td>
+            <td>##username##</td>
+            <td>##password##</td>
+            <td>##nombre##</td>
+            <td>##apellido1##</td>
+            <td>##apellido2##</td>
+            <td>##correo##</td>
+            <td>##jugadorfavorito##</td>
+            <td>##equipofavorito##</td>
+            <td>Cambiar contraseña</td>
+            <td>Eliminar usuario</td>
+            
             <!-- <td><a href="mostrarmodificar.php?idpersona=##idpersona##">Modificar</a></td>
             <td><a href="mostrarmodificar.php?idpersona=##idpersona##">Eliminar</a></td> -->
         </tr>

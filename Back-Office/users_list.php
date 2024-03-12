@@ -23,13 +23,3 @@
         
     }
 ?>
-
-##id_users##</th>
-<th>##username##</th>
-<th>##password##</th>
-<th>##nombre##</th>
-<th>##apellido1##</th>
-<th>##apellido2##</th>
-<th>##correo##</th>
-<th>##jugadorfavorito##</th>
-<th>##equipofavorito##</th>
