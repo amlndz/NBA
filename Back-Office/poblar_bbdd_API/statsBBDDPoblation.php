@@ -24,7 +24,7 @@
         }
 
         // Consulta SQL para insertar datos de estadísticas
-        $sql = "INSERT INTO STATS (id, player_id, team_id, game_id, min, fgm, fga, fg_pct, fg3m, fg3a, fg3_pct, ft_pct, ftm, fta, oreb, dreb, reb, ast, stl, blk, pf, pts) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO final_stats (id, player_id, team_id, game_id, min, fgm, fga, fg_pct, fg3m, fg3a, fg3_pct, ft_pct, ftm, fta, oreb, dreb, reb, ast, stl, blk, pf, pts) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Preparar la consulta
         $stmt = $con->prepare($sql);

@@ -2,10 +2,10 @@
     require_once("conection.php");
     include ("truncate_tables.php");
 
-    include ("./poblar_bbdd_API/teams.php");
-    include ("./poblar_bbdd_API/active_players.php");
-    include ("./poblar_bbdd_API/games.php");
-    include ("./poblar_bbdd_API/stats.php");
+    include ("./poblar_bbdd_API/teamsBBDDPoblation.php");
+    include ("./poblar_bbdd_API/playersBBDDPoblation.php");
+    include ("./poblar_bbdd_API/gamesBBDDPobaltion.php");
+    include ("./poblar_bbdd_API/statsBBDDPoblation.php");
 
 
     function reload_tables() {

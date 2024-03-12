@@ -4,10 +4,9 @@
     function reload_players_table() {
         $con = conection_for_api();
 
-        $urlAPIplayers = "https://api.balldontlie.io/v1/players/active";
+        $urlAPIplayers = "https://api.balldontlie.io/v1/players";
         $token = "ae6447b0-567a-4d62-9760-a4acdbe1eed9";
         $header = array('Authorization: '.$token);
-
         $ch = curl_init();
 
         // Variables para el cursor y el límite de resultados por página
@@ -22,10 +21,9 @@
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        
+
             // Realizar la petición
             $response = curl_exec($ch); 
-        
             // Verificar si hubo algún error
             if (curl_errno($ch)) {
                 echo 'Error al realizar la petición: ' . curl_error($ch);
@@ -35,10 +33,10 @@
             // Decodificar la respuesta JSON
             $data = json_decode($response, true);
         
-            
+            print_r($data);
         
             // Consulta SQL para insertar datos de jugadores
-            $sql = "INSERT INTO players (id, first_name, last_name, position, height, weight, team_id, number, draft, draft_round, country,	draft_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO final_players (id, first_name, last_name, position, height, weight, team_id, number, draft_year, draft_round, country,	draft_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
             // Preparar la consulta
             $stmt = $con->prepare($sql);

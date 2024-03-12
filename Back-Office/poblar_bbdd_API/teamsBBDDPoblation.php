@@ -31,7 +31,7 @@
         curl_close($ch);
 
         // Consulta SQL para insertar datos
-        $sql = "INSERT INTO TEAMS (id, abbreviation, name, full_name, city, conference, division) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO final_teams (id, abbreviation, name, full_name, city, conference, division) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Preparar la consulta
         $stmt = $con->prepare($sql);

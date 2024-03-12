@@ -8,7 +8,7 @@
         $token = "ae6447b0-567a-4d62-9760-a4acdbe1eed9";
         $header = array('Authorization: '.$token);
 
-        $sql = "INSERT INTO GAMES (id, date, season, status, period, time, postseason, home_team_score, visitor_team_score, home_team_id, visitor_team_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO final_games (id, date, season, status, period, time, postseason, home_team_score, visitor_team_score, home_team_id, visitor_team_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Preparar la consulta
         $stmt = $con->prepare($sql);
