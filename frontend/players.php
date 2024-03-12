@@ -119,11 +119,11 @@
                 while ($row = $result->fetch_assoc()) {
                     $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
                     $playerId = $row['id'];
-                    ?>
+                    $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
                     <div class="col-lg-4 mb-4">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                                <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'">    
+                                <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
                             </div>
                             <div class="col-sm-7">
                                 <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
