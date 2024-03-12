@@ -1,6 +1,6 @@
 
 <!-- Footer Start -->
-<div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+<div class="container-fluid footer text-white mt-6 pt-6 px-0 position-relative overlay-top">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
