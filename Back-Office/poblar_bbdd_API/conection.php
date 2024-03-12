@@ -1,5 +1,5 @@
 <?php
-    function conection() {
+    function conection_for_api() {
         $server = "localhost";
         $user = "root";
         $password = "fex1roMi4j"; // fex1roMi4j
