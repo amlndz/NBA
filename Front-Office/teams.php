@@ -94,36 +94,6 @@
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
             <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">EQUIPOS NBA</h1>
-            <!-- Menú desplegable para búsqueda -->
-        <div class="d-inline-flex mb-lg-5">
-            <div class="row mb-4">
-                <div class="col">
-                        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <form class="px-4 py-3" method="GET" action="players.php">
-                                <h5 class="dropdown-header">Filtros de Búsqueda</h5>
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Nombre" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ''; ?>">
-                                </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="team" placeholder="Equipo" value="<?php echo isset($_GET['team']) ? $_GET['team'] : ''; ?>">
-                                </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="position" placeholder="Posición" value="<?php echo isset($_GET['position']) ? $_GET['position'] : ''; ?>">
-                                </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="draft" placeholder="Draft" value="<?php echo isset($_GET['draft']) ? $_GET['draft'] : ''; ?>">
-                                </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="country" placeholder="País" value="<?php echo isset($_GET['country']) ? $_GET['country'] : ''; ?>">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Buscar</button>
-                                <a href="players.php" class="btn btn-primary">Borrar</a>
-                            </form>
-                        </div> -->
-                        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
     <!-- Page Header End -->
