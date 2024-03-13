@@ -8,41 +8,6 @@
 
 http://webalumnos.tlm.unavarra.es:10725/NBA
 
-
-
-
-### Espacio de Trabajo
-```
-|---------------------
-|
-|-- backend (cambiar usando un connect comun)
-|   |--- games.php 
-|   |--- players.php 
-|   |--- stats.php 
-|   |--- teams.php 
-|
-|-- frontend (Cambiar rutas)
-|   |--- assets (css, js, images, lib)
-|   |--- autenticarUsuario.php
-|   |--- connection.php
-|   |--- footer.php
-|   |--- login.php
-|   |--- logout.php
-|   |--- playerInfo.php
-|   |--- platers.php
-|   |--- signin.php
-|   |--- teamInfo.php
-|   |--- teams.php
-|
-|-- images
-|   |--- nba.jpg
-|
-|-- README.md
-|---------------------
-```
-
----
-
 ##### Anotaciones
 ```
 =================================================================================================
