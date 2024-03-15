@@ -1,37 +1,22 @@
 <?php
-    $servername = "http://webalumnos.tlm.unavarra.es:10800";
-    $username = "grupo25";
-    $password = "fex1roMi4j";
-    $database = "db_grupo25";
-
-    // Creamos conexión
-    $conn = new mysqli("dbserver", $username, $password, $database);
-
-    // Verificamos conexión
-    if ($conn->connect_error) {
-        die("La conexión falló: " . $conn->connect_error);
-    }
+    require "autenticarUsuario.php";
+    $usuario_autenticado = autenticar();
+    
+    require "connection.php";
+    $conn = connect();
 
     // Verificar si se ha enviado información del jugador a través de GET
-    if (isset($_GET['playerInfo'])) {
+    if (isset($_GET['id'])) {
         // Obtener el nombre del jugador enviado desde el formulario
-        $playerInfo = $_GET['playerInfo'];
-        
-        $playerName = '';
-        $playerSurname = '';
+        $id = $_GET['id'];
 
-        if (!empty($playerInfo)) {
-            $playerInfo = strtolower($playerInfo);
-            $parts = explode(' ', $playerInfo, 2);
-            $playerName = $parts[0];
-            $playerSurname = $parts[1];
+        if (!empty($id)) {
 
             $sql = "SELECT p.*,t.full_name AS team_name, ROUND(AVG(s.min), 1) AS avg_min, ROUND(AVG(s.fgm), 1) AS avg_fgm, ROUND(AVG(s.fga), 1) AS avg_fga, ROUND(AVG(s.fg_pct), 1) AS avg_fg_pct, ROUND(AVG(s.fg3m), 1) AS avg_fg3m, ROUND(AVG(s.fg3a), 1) AS avg_fg3a, ROUND(AVG(s.fg3_pct), 1) AS avg_fg3_pct, ROUND(AVG(s.ftm), 1) AS avg_ftm, ROUND(AVG(s.fta), 1) AS avg_fta, ROUND(AVG(s.ft_pct), 1) AS avg_ft_pct, ROUND(AVG(s.oreb), 1) AS avg_oreb, ROUND(AVG(s.dreb), 1) AS avg_dreb, ROUND(AVG(s.reb), 1) AS avg_reb, ROUND(AVG(s.ast), 1) AS avg_ast, ROUND(AVG(s.stl), 1) AS avg_stl, ROUND(AVG(s.blk), 1) AS avg_blk, ROUND(AVG(s.turnover), 1) AS avg_turnover, ROUND(AVG(s.pf), 1) AS avg_pf, ROUND(AVG(s.pts), 1) AS avg_pts
-            FROM PLAYERS p 
-            JOIN STATS s ON p.id = s.player_id
-            JOIN TEAMS t ON p.team_id = t.id
-            WHERE LOWER(p.first_name) LIKE ? AND LOWER(p.last_name) LIKE ? AND (s.min > 0)
-            GROUP BY p.id
+            FROM final_players p 
+            JOIN final_stats s ON p.id = s.player_id
+            JOIN final_teams t ON p.team_id = t.id
+            WHERE p.id LIKE ?
             LIMIT 1";
             $stmt = $conn->prepare($sql);
 
@@ -41,9 +26,8 @@
             }
 
             // Vincular parámetros y ejecutar la consulta
-            $playerName = '%' . strtolower($playerName) . '%';
-            $playerSurname = '%' . strtolower($playerSurname) . '%';
-            $stmt->bind_param("ss", $playerName, $playerSurname);
+            
+            $stmt->bind_param("i", $id);
             $stmt->execute();
 
             // Obtener el resultado de la consulta

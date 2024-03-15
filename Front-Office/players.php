@@ -117,16 +117,16 @@
                 <?php
                 // Iterar sobre los resultados
                 while ($row = $result->fetch_assoc()) {
-                    $playerInfoUrl = $row['first_name'] . " " . $row['last_name'];
-                    $playerId = $row['id'];
-                    $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
+                    $id = $row['id'];
+                    $playerInfoUrl = $id;
+                    $playerId = $id;
+                    $url = "playerInfo.php?id=".urlencode($playerInfoUrl); ?>
                     <div class="col-lg-4 mb-4">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
                                 <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
                             </div>
                             <div class="col-sm-7">
-                                <?php $url = "playerInfo.php?playerInfo=".urlencode($playerInfoUrl); ?>
                                 <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
                                 <p class="m-0">
                                     <?php

@@ -114,15 +114,15 @@
                     $row = $result->fetch_assoc();
                     $teamInfoUrl = $row['abbreviation'];
                     $teamId = $row['id'];
+                    $url = "teamInfo.php?id=".urlencode($teamId); 
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
                     <div class="col-lg-4 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                            <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/logoNBA.png'">
+                            <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/logoNBA.png'"></a>
                             </div>
                             <div class="col-sm-7">
-                                <?php $url = "teamInfo.php?teamInfo=".urlencode($teamInfoUrl); ?>
                                 <h4><?php echo" <a hrefa class='team-name' href=$url > ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
                                 <!-- <i class="fa service-icon"></i> -->
                                 <p class="m-0">
