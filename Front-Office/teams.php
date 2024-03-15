@@ -118,6 +118,23 @@
                     $url = "teamInfo.php?id=".urlencode($teamId); 
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
+                    <?php if (!$usuario_autenticado): ?> 
+                    <div class="col-lg-4 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-sm-5">
+                                <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/logoNBA.png'"></a>
+                            </div>
+                            <div class="col-sm-7">
+                                <h4><?php echo" <a hrefa class='team-name' href=login.php> ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
+                                <!-- <i class="fa service-icon"></i> -->
+                                <p class="m-0">
+                                    <?php
+                                    echo "abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else: ?>
                     <div class="col-lg-4 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
@@ -128,14 +145,15 @@
                                 <!-- <i class="fa service-icon"></i> -->
                                 <p class="m-0">
                                     <?php
-                                    echo "<a class='team-name' href='./teamInfo.php'>".$row['full_name']."</a><br/>abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
+                                    echo "abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <?php }
-                
+                    <?php endif;
+                    }
                 }?>
+            </div>
         </div>
     </div>
     
