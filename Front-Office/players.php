@@ -44,6 +44,7 @@
                     <a href="players.php" class="nav-item nav-link active">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
                     <div class="nav-item dropdown">
+                        
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle user-img" data-toggle="dropdown"><img src="./assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -125,8 +126,7 @@
                     <div class="col-lg-4 mb-4">
                         <div class="row align-items-center">
                             <?php if (!$usuario_autenticado): ?> 
-                            <div class="col-sm-5">
-                                    <?php $_SESSION['prev_page'] = $url?>       
+                            <div class="col-sm-5">       
                                     <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
                                     </div>
                             <div class="col-sm-7">

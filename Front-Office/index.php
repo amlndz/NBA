@@ -1,6 +1,8 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
+    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+
 ?>
 
 <!DOCTYPE html>

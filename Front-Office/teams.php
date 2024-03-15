@@ -19,6 +19,7 @@
     // Cerrar la declaración
     $stmt->close();
 
+    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 
     // Cerrar la conexión
     $conn->close();
