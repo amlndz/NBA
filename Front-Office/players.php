@@ -1,5 +1,6 @@
 <?php
     include("playersInfoBBDD.php");
+    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 ?>
 
 <!DOCTYPE html>
@@ -123,9 +124,23 @@
                     $url = "playerInfo.php?id=".urlencode($playerInfoUrl); ?>
                     <div class="col-lg-4 mb-4">
                         <div class="row align-items-center">
+                            <?php if (!$usuario_autenticado): ?> 
+                            <div class="col-sm-5">
+                                    <?php $_SESSION['prev_page'] = $url?>       
+                                    <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
+                                    </div>
+                            <div class="col-sm-7">
+                                <h4><?php echo" <a hrefa class='player-name' href=login.php > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                <p class="m-0">
+                                    <?php
+                                    echo "Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];
+                                    ?>
+                                </p>
+                            </div>
+                            <?php else: ?>
                             <div class="col-sm-5">
                                 <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
-                            </div>
+                                </div>
                             <div class="col-sm-7">
                                 <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
                                 <p class="m-0">
@@ -134,6 +149,7 @@
                                     ?>
                                 </p>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php } ?>
