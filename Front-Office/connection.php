@@ -1,9 +1,9 @@
 <?php
     function connect() {
-        $server = "localhost";   // $server = "dbserver";
-        $user = "root";          // $username = "grupo25";
-        $password = "";          // $password = "fex1roMi4j";
-        $db = "siw";             // $db = "grupo_25";
+        $server = "db5015536478.hosting-data.io";   // $server = "dbserver";
+        $user = "dbu1594629";          // $username = "grupo25";
+        $password = "gb01xJkqA5dXvWQ";          // $password = "fex1roMi4j";
+        $db = " dbs12691421";             // $db = "grupo_25";
 
 
         $conn = mysqli_connect($server, $user, $password, $db);
