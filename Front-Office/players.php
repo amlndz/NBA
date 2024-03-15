@@ -119,15 +119,13 @@
                 <?php
                 // Iterar sobre los resultados
                 while ($row = $result->fetch_assoc()) {
-                    $id = $row['id'];
-                    $playerInfoUrl = $id;
-                    $playerId = $id;
-                    $url = "playerInfo.php?id=".urlencode($playerInfoUrl); ?>
+                    $playerId = $row['id'];
+                    $url = "playerInfo.php?id=".urlencode($playerId); ?>
                     <div class="col-lg-4 mb-4">
                         <div class="row align-items-center">
                             <?php if (!$usuario_autenticado): ?> 
                             <div class="col-sm-5">       
-                                    <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
+                                    <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'"></a>
                                     </div>
                             <div class="col-sm-7">
                                 <h4><?php echo" <a hrefa class='player-name' href=login.php > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
@@ -139,7 +137,7 @@
                             </div>
                             <?php else: ?>
                             <div class="col-sm-5">
-                                <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.png'"></a>
+                                <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'"></a>
                                 </div>
                             <div class="col-sm-7">
                                 <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
