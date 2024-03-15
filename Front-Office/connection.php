@@ -1,7 +1,11 @@
 <?php
-    include "credentials.php";
     function connect() {
-        list($host_name, $database, $user_name, $password) = getCredentials();        
+
+        $credentials = include('credentials.php');
+        $host_name = $credentials['host_name'];
+        $database = $credentials['database'];
+        $user_name = $credentials['user_name'];
+        $password = $credentials['password'];;        
 
 
         //$conn = mysqli_connect($server, $user, $password, $db);
