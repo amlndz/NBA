@@ -1,7 +1,10 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
-    
+    if(!$usuario_autenticado){
+        header("Location: login.php");
+        exit;
+    }
     require "connection.php";
     $conn = connect();
     // Verificar si se ha enviado información del jugador a través de GET
@@ -39,5 +42,6 @@
 
     }
     else {
-            echo "error";
+        header("Location: teams.php");
+        exit;
         }

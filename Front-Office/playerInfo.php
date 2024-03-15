@@ -1,7 +1,10 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
-    
+    if(!$usuario_autenticado){
+        header("Location: login.php");
+        exit;
+    }
     require "connection.php";
     $conn = connect();
 
@@ -114,5 +117,6 @@
             $stmt->close();
         }
     } else {
-        echo "¿A dónde vas pillín?";
+        header("Location: players.php");
+        exit;
     }
