@@ -1,8 +1,8 @@
 <?php
     function conection() {
-        $server = "localhost";
+        $server = "dbserver";
         $user = "root";
-        $password = ""; // fex1roMi4j
+        $password = "fex1roMi4j"; // fex1roMi4j
         $db = "siw";
 
         $con = mysqli_connect($server, $user, $password, $db);
