@@ -1,4 +1,4 @@
 .vscode
 Front-Office/credentials.php
-Back-Office/apiCredentials.php
+Back-Office/poblar_bbdd/apiCredentials.php
 
