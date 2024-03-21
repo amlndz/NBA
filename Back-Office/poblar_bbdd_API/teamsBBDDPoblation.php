@@ -1,11 +1,11 @@
 <?php
     require_once("conection.php");
-
+    include 'apiCredentials.php';
     function reload_teams_table() {  
-        $con = conection_for_api();
+        $con = connect();
 
         $urlAPIteams = "https://api.balldontlie.io/v1/teams";
-        $token = "ae6447b0-567a-4d62-9760-a4acdbe1eed9";
+        $token = getToken();
         $header = array('Authorization: '.$token);
 
         $ch = curl_init();
