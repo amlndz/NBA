@@ -1,18 +1,15 @@
 <?php
-    require_once("conection.php");
-    include 'apiCredentials.php';
+    include("connection.php");
     function reload_players_table() {
+        require 'credentials.php';
         $con = connect();
-
         $urlAPIplayers = "https://api.balldontlie.io/v1/players";
-        $token = getToken();
         $header = array('Authorization: '.$token);
         $ch = curl_init();
 
         // Variables para el cursor y el límite de resultados por página
         $cursor = 0;
         $per_page = 25;
-        $i = 0;
         do {
             $url = "$urlAPIplayers?per_page=$per_page&cursor=$cursor";
             
@@ -71,7 +68,6 @@
 
         // Cerrar la conexión y liberar recursos
         $stmt->close();
-
+        $con->close();
         echo "<br>[+] Los datos de los JUGADORES se insertaron correctamente.<br>";
     }
-?>

@@ -1,11 +1,9 @@
 <?php
-    require_once("conection.php");
-    include 'apiCredentials.php';
+    require_once("connection.php");
    function reload_stats_table() {
+        require 'credentials.php';
         $con = connect();
-
         $urlAPIstats = "https://api.balldontlie.io/v1/stats";
-        $token = getToken();
         $headers = array('Authorization:'. $token);
 
         // Consulta SQL para obtener los IDs de los jugadores
@@ -105,7 +103,7 @@
 
         // Cerrar la conexión y liberar recursos
         $stmt->close();
-
+        $con->close();
         echo "<br>[+] Los datos de las ESTADISITICAS se insertaron correctamente.<br>";
 
     }

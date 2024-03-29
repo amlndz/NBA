@@ -1,38 +1,36 @@
 <?php
-    require_once("../../Front-Office/connection.php");
-    include 'apiCredentials.php';
-   function reload_averages_table() {
-        $con = connect();
-        echo" -- conexion establecida";
 
-        $urlAPIaverages = "https://api.balldontlie.io/v1/season_averages";
-        $token = getToken();
-        echo $token;
-        $headers = array('Authorization:'. $token);
-        // Consulta SQL para obtener los IDs de los jugadores
-        $sql_players = "SELECT id FROM final_players";
-        $result_players = $con->query($sql_players);
-        // Verificar si la consulta se ejecutó correctamente
-        if (!$result_players) {
-            die("Error al ejecutar la consulta: " . $con->error);
-        }
-        // Inicializar array para almacenar los IDs de los jugadores
-        $player_ids = array();
+    include 'connection.php';
+    require 'credentials.php';
+    $con = connect();;
+    echo "conectado";
 
-        // Obtener los IDs de los jugadores y agregarlos al array
-        while ($row = $result_players->fetch_assoc()) {
-            $player_ids[] = $row['id'];
-        }
-        echo " -- ids obtenidos";
-        // Consulta SQL para insertar datos de estadísticas
-        $sql = "INSERT INTO final_averages (player_id, season, pts, ast, turnover, pf, fga, fgm, fta, ftm, fg3a, fg3m, reb, oreb, dreb, stl, blk, fg_pct, fg3_pct, ft_pct, min, games_played)           
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $urlAPIaverages = "https://api.balldontlie.io/v1/season_averages";
+    $headers = array('Authorization: '. $token);
+
+    $sql_players = "SELECT id FROM final_players";
+    $result_players = $con->query($sql_players);
+    // Verificar si la consulta se ejecutó correctamente
+    echo "consulta ejecutada";
+    if (!$result_players) {
+        die("Error al ejecutar la consulta: " . $con->error);
+    }
+    echo "consulta ejecutada correctamente";
+    // Inicializar array para almacenar los IDs de los jugadores
+    $player_ids = array();
+
+    // Obtener los IDs de los jugadores y agregarlos al array
+    while ($row = $result_players->fetch_assoc()) {
+        $player_ids[] = $row['id'];
+    }
+    // Consulta SQL para insertar datos de estadísticas
+    $sql = "INSERT INTO final_averages (player_id, season, pts, ast, turnover, pf, fga, fgm, fta, ftm, fg3a, fg3m, reb, oreb, dreb, stl, blk, fg_pct, fg3_pct, ft_pct, min, games_played) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
-        // Preparar la consulta
-        $stmt = $con->prepare($sql);
+    // Preparar la consulta
+    $stmt = $con->prepare($sql);
 
-        // Verificar si la consulta se preparó correctamente
+    // Verificar si la consulta se preparó correctamente
         if ($stmt === false) {
             die("Error al preparar la consulta: " . $con->error);
         }
@@ -104,10 +102,7 @@
 
         // Cerrar la conexión y liberar recursos
         $stmt->close();
-
+        $con->close();
         echo "<br>[+] Los datos de las ESTADISITICAS se insertaron correctamente.<br>";
 
-    }
-    echo"dentro";
-    reload_averages_table();
-?>
+

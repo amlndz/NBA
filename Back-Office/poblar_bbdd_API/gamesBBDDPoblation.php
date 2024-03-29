@@ -1,10 +1,9 @@
 <?php
-    require_once("conection.php");
-    include 'apiCredentials.php';
+    require_once("connection.php");
     function reload_games_table() {
         $con = connect();
         $urlAPIgames = "https://api.balldontlie.io/v1/games";
-        $token = getToken();
+        require 'credentials.php';
         $header = array('Authorization: '.$token);
 
         $sql = "INSERT INTO final_games (id, date, season, status, period, time, postseason, home_team_score, visitor_team_score, home_team_id, visitor_team_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -77,7 +76,7 @@
 
         // Cerrar la conexión y liberar recursos
         $stmt->close();
-
+        $con->close();
         echo "<br>[+] Los datos de los PARTIDOS se insertaron correctamente.<br>";
     }
 
