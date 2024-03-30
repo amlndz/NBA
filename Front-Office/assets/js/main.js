@@ -1,6 +1,23 @@
+$(document).ready(function() {
+    $('#search-form input[name="name"]').on('input', function() {
+        $.ajax({
+            url: 'playersInfoBBDD.php', // La URL de tu archivo PHP
+            type: 'GET',
+            data: $('#search-form').serialize(), // Los datos del formulario
+            success: function(data) {
+                // Divide la respuesta en jugadores y paginación
+                var result = $(data);
+                var players = result.filter('#players-container').html();
+                var pagination = result.filter('#pagination-container').html();
 
+                // Actualiza los contenedores con los nuevos resultados
+                $('#players-container').html(players);
+                $('#pagination-container').html(pagination);
+            }
+        });
+    });
+});
 (function ($) {
-    var currentSelection = null;
 
    
     "use strict";

@@ -38,6 +38,9 @@
             <a href="index.php" class="navbar-brand px-lg-1 m-0">
                 <img src="assets/img/logoNBA.png" id="logo-menu-image" alt="nba" width=20% height=20%><!-- Logo -->
             </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                     <a href="index.php" class="nav-item nav-link">Inicio</a>
@@ -70,7 +73,13 @@
  -->
 <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
     <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">2023/24 Players</h1>
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">JUGADORES 2023/24</h1>
+        <form id="search-form" class="px-4 py-3" method="GET" action="players.php">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control-2 mr-2" name="name" placeholder="Buscar jugador" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ''; ?>">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
         <!-- Menú desplegable para búsqueda -->
         <div class="d-inline-flex mb-lg-5">
             <div class="row mb-4">
@@ -111,53 +120,53 @@
     
     <!-- Players Start -->
      <!-- Jugadores -->
-     <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="row">
-                <?php
-                // Iterar sobre los resultados
-                while ($row = $result->fetch_assoc()) {
-                    $playerId = $row['id'];
-                    $url = "playerInfo.php?id=".urlencode($playerId); ?>
-                    <div class="col-lg-4 mb-4">
-                        <div class="row align-items-center">
-                            <div class="col-sm-5">
-                                <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'"></a>
+        <div id="players-container" class="container-fluid pt-5">
+            <div class="container">
+                <div class="row">
+                    <?php
+                    // Iterar sobre los resultados
+                    while ($row = $result->fetch_assoc()) {
+                        $playerId = $row['id'];
+                        $url = "playerInfo.php?id=".urlencode($playerId); ?>
+                        <div class="col-lg-4 mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-sm-5">
+                                    <a <?php echo "href=$url"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'"></a>
+                                    </div>
+                                <div class="col-sm-7">
+                                    <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
+                                    <p class="m-0">
+                                        <?php
+                                        echo "Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];
+                                        ?>
+                                    </p>
                                 </div>
-                            <div class="col-sm-7">
-                                <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
-                                <p class="m-0">
-                                    <?php
-                                    echo "Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];
-                                    ?>
-                                </p>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="pagination-container">
-    <div class="pagination">
-        <?php
-        // Calcular el número total de páginas
-        $totalPages = ceil($totalRecords / $pageSize);
+        <div class="pagination-container" id="pagination-container">
+            <div class="pagination">
+                <?php
+                // Calcular el número total de páginas
+                $totalPages = ceil($totalRecords / $pageSize);
 
-        // Mostrar controles de navegación
-        if ($page > 1) {
-            echo "<a href='?page=".($page - 1).buildFilterQueryString()."'>&laquo; Anterior</a>";
-        }
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo "<a href='?page=".$i.buildFilterQueryString()."'".($page == $i ? " class='active'" : "").">$i</a>";
-        }
-        if ($page < $totalPages) {
-            echo "<a href='?page=".($page + 1).buildFilterQueryString()."'>Siguiente &raquo;</a>";
-        }
-        ?>
-    </div>
-</div>
+                // Mostrar controles de navegación
+                if ($page > 1) {
+                    echo "<a href='?page=".($page - 1).buildFilterQueryString()."'>&laquo; Anterior</a>";
+                }
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    echo "<a href='?page=".$i.buildFilterQueryString()."'".($page == $i ? " class='active'" : "").">$i</a>";
+                }
+                if ($page < $totalPages) {
+                    echo "<a href='?page=".($page + 1).buildFilterQueryString()."'>Siguiente &raquo;</a>";
+                }
+                ?>
+            </div>
+        </div>
+    
 
 
     

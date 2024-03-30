@@ -40,10 +40,13 @@
             <a href="index.php" class="navbar-brand px-lg-1 m-0">
                 <img src="assets/img/logoNBA.png" class="transparente" id="logo-menu-image" alt="nba" width=20% height=20%><!-- Logo -->
             </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                     <a href="index.php" class="nav-item nav-link active">Inicio</a>
-                    <a href="players.php" class="nav-item nav-link">Judadores</a>
+                    <a href="players.php" class="nav-item nav-link">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
