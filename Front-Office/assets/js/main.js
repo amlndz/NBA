@@ -1,4 +1,8 @@
+
 (function ($) {
+    var currentSelection = null;
+
+   
     "use strict";
     
     // Dropdown on click
@@ -61,4 +65,5 @@
             }
         });
     });
+    
 })(jQuery);

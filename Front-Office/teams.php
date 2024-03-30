@@ -6,11 +6,19 @@
     $conn = connect();
 
     
+    $conference = isset($_GET['conference']) ? $_GET['conference'] : null;
+
     $sql = "SELECT * FROM final_teams";
-            
-    // Preparar la declaración
+    if ($conference) {
+        $sql .= " WHERE conference = ?";
+    }
+
     $stmt = $conn->prepare($sql);
-    
+
+    if ($conference) {
+        $stmt->bind_param("s", $conference);
+    }
+
     $stmt->execute();
 
     // Obtener el resultado de la consulta
@@ -93,8 +101,18 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">EQUIPOS NBA</h1>
-        </div>
+            <h1 class="display-4 mb-5 mt-0 mt-lg-5 text-white text-uppercase">EQUIPOS NBA</h1>
+            <div class="d-inline-flex mb-lg-5">
+                <div class="row mb-5">
+                    <div class="col">
+                        <button class="btn <?php echo ($_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn <?php echo ($_GET['conference'] == 'east') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'east') ? 'teams.php' : '?conference=east' ?>'">East</button>
+                    </div>
+                </div>
+            </div>  
+        </div>  
     </div>
     <!-- Page Header End -->
 
@@ -117,23 +135,7 @@
                     $url = "teamInfo.php?id=".urlencode($teamId); 
                     // Construir el enlace con nombre y apellido como parámetros GET
                     ?>
-                    <?php if (!$usuario_autenticado): ?> 
-                    <div class="col-lg-4 mb-5">
-                        <div class="row align-items-center">
-                            <div class="col-sm-5">
-                                <a <?php echo "href=login.php"?>><img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$teamId.".svg' alt='img'";?> onerror="this.onerror=null;this.src='./assets/img/logoNBA.png'"></a>
-                            </div>
-                            <div class="col-sm-7">
-                                <h4><?php echo" <a hrefa class='team-name' href=login.php> ".$row['full_name']." (".$row['abbreviation'].")</a>";?></h4>
-                                <!-- <i class="fa service-icon"></i> -->
-                                <p class="m-0">
-                                    <?php
-                                    echo "abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php else: ?>
+                    
                     <div class="col-lg-4 mb-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
@@ -149,8 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php endif;
-                    }
+                <?php }
                 }?>
             </div>
         </div>
