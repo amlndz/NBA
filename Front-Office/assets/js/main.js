@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('#search-form input[name="name"]').on('input', function() {
+    $('#search-players-form input[name="name"]').on('input', function() {
         $.ajax({
             url: 'playersInfoBBDD.php', // La URL de tu archivo PHP
             type: 'GET',
-            data: $('#search-form').serialize(), // Los datos del formulario
+            data: $('#search-players-form').serialize(), // Los datos del formulario
             success: function(data) {
                 // Divide la respuesta en jugadores y paginación
                 var result = $(data);
@@ -12,7 +12,23 @@ $(document).ready(function() {
 
                 // Actualiza los contenedores con los nuevos resultados
                 $('#players-container').html(players);
-                $('#pagination-container').html(pagination);
+                $('#pagination-container').html(pagination);;
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('#search-teams-form input[name="team"]').on('input', function() {
+        $.ajax({
+            url: 'teamsInfoBBDD.php', // La URL de tu archivo PHP para los equipos
+            type: 'GET',
+            data: $('#search-teams-form').serialize(), // Los datos del formulario
+            success: function(data) {
+                // Actualiza el contenedor con los nuevos resultados
+                var result = $(data);
+                var teams = result.filter('#teams-container').html();
+                $('#teams-container').html(teams);
             }
         });
     });

@@ -74,7 +74,7 @@
 <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
     <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
         <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">JUGADORES 2023/24</h1>
-        <form id="search-form" class="px-4 py-3" method="GET" action="players.php">
+        <form id="search-players-form" class="px-4 py-3" method="GET" action="players.php">
             <div class="form-group d-flex">
                 <input type="text" class="form-control-2 mr-2" name="name" placeholder="Buscar jugador" value="<?php echo isset($_GET['name']) ? $_GET['name'] : ''; ?>">
                 <button type="submit" class="btn btn-primary">Buscar</button>

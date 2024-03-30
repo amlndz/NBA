@@ -1,36 +1,5 @@
 <?php
-    require "autenticarUsuario.php";
-    $usuario_autenticado = autenticar();
-    
-    include "connection.php";
-    $conn = connect();
-
-    
-    $conference = isset($_GET['conference']) ? $_GET['conference'] : null;
-
-    $sql = "SELECT * FROM final_teams";
-    if ($conference) {
-        $sql .= " WHERE conference = ?";
-    }
-
-    $stmt = $conn->prepare($sql);
-
-    if ($conference) {
-        $stmt->bind_param("s", $conference);
-    }
-
-    $stmt->execute();
-
-    // Obtener el resultado de la consulta
-    $result = $stmt->get_result();
-
-    // Cerrar la declaración
-    $stmt->close();
-
-    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
-
-    // Cerrar la conexión
-    $conn->close();
+    include "teamsInfoBBDD.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,6 +71,13 @@
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
         <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">EQUIPOS NBA</h1>
+        <form id="search-teams-form" class="px-4 py-3" method="GET" action="teams.php">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control-2 mr-2" name="team" placeholder="Buscar Equipo" value="<?php echo isset($_GET['team']) ? $_GET['team'] : ''; ?>">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
+        
         <!--Menu botones filtrado por conferencia -->
             <div class="d-inline-flex mb-lg-5">
                 <div class="row mb-5">
@@ -119,7 +95,7 @@
 
 
     <!-- Menu Start -->
-    <div class="container-fluid pt-5">
+    <div id="teams-container" class="container-fluid pt-5">
         <div class="container">
             <?php
             // Verificar si se encontraron resultados

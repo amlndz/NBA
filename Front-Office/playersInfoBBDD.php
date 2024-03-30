@@ -1,6 +1,5 @@
 <?php
 require "autenticarUsuario.php";
-$usuario_autenticado = autenticar();
 
 include "connection.php";
 $conn = connect();
