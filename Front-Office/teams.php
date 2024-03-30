@@ -81,11 +81,11 @@
         <!--Menu botones filtrado por conferencia -->
             <div class="d-inline-flex mb-lg-5">
                 <div class="row mb-5">
-                    <div class="col">
-                        <button class="btn <?php echo ($_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
+                    <div class="col col-cnfrnc">
+                        <button class="cnfrnc-btn btn <?php echo ($_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
                     </div>
-                    <div class="col">
-                        <button class="btn <?php echo ($_GET['conference'] == 'east') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'east') ? 'teams.php' : '?conference=east' ?>'">East</button>
+                    <div class="col col-cnfrnc">
+                        <button class="cnfrnc-btn  btn <?php echo ($_GET['conference'] == 'east') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'east') ? 'teams.php' : '?conference=east' ?>'">East</button>
                     </div>
                 </div>
             </div>  

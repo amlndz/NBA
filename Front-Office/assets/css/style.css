@@ -9701,3 +9701,6 @@ h6,
     transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
 }
 
+.cnfrnc-btn{
+  padding: 0.3rem 3rem;
+}
