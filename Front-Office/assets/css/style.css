@@ -9704,3 +9704,7 @@ h6,
 .cnfrnc-btn{
   padding: 0.3rem 3rem;
 }
+
+.col .col-cnfrnc {
+  padding-left: 0px;
+}
