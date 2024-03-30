@@ -2,7 +2,7 @@
 require "autenticarUsuario.php";
 $usuario_autenticado = autenticar();
 
-require "connection.php";
+include "connection.php";
 $conn = connect();
 
 

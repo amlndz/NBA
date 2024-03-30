@@ -1,6 +1,6 @@
 <?php
-    include 'connection.php';
-    require 'credentials.php';
+    include "connection.php";
+    require "credentials.php";
     error_reporting(E_ALL);
 
     // Establecer conexión a la base de datos
@@ -22,7 +22,6 @@
     while ($row = $result_players->fetch_assoc()) {
         $player_ids[] = $row['id'];
     }
-    print_r($player_ids);
 
     $con->close();
     $con = connect();

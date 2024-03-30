@@ -1,7 +1,7 @@
 <?php
-    include("connection.php");
     function reload_players_table() {
-        require 'credentials.php';
+        include "connection.php";
+        require "credentials.php"; 
         $con = connect();
         $urlAPIplayers = "https://api.balldontlie.io/v1/players";
         $header = array('Authorization: '.$token);

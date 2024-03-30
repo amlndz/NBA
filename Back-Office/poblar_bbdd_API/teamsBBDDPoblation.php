@@ -1,6 +1,6 @@
 <?php
-        include 'connection.php';
-        require 'credentials.php';
+        include "connection.php";
+        require "credentials.php"; 
         $con = connect();
         $urlAPIteams = "https://api.balldontlie.io/v1/teams";
         $header = array('Authorization: '.$token);

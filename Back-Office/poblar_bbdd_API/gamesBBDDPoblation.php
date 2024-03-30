@@ -1,9 +1,10 @@
 <?php
-    require_once("connection.php");
+       
     function reload_games_table() {
+        include "connection.php";
+        require "credentials.php"; 
         $con = connect();
         $urlAPIgames = "https://api.balldontlie.io/v1/games";
-        require 'credentials.php';
         $header = array('Authorization: '.$token);
 
         $sql = "INSERT INTO final_games (id, date, season, status, period, time, postseason, home_team_score, visitor_team_score, home_team_id, visitor_team_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

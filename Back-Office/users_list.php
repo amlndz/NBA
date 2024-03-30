@@ -1,7 +1,7 @@
 <?php
     include "conection.php";
 
-    $con = conection();
+    $con = connect();
 
     $stmt = $con->prepare("select * from users");
     $stmt->execute();
@@ -27,5 +27,4 @@
         $body .= $aux;
     }
     echo $split_contents[0] . $body . $split_contents[1];
-?>
 

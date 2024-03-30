@@ -1,7 +1,7 @@
 <?php
-    require_once("connection.php");
    function reload_stats_table() {
-        require 'credentials.php';
+        include "connection.php";
+        require "credentials.php"; 
         $con = connect();
         $urlAPIstats = "https://api.balldontlie.io/v1/stats";
         $headers = array('Authorization:'. $token);

@@ -1,11 +1,13 @@
 <?php
+
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
     if(!$usuario_autenticado){
+        $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         header("Location: login.php");
         exit;
     }
-    require "connection.php";
+    include "connection.php";
     $conn = connect();
 
     // Verificar si se ha enviado información del jugador a través de GET

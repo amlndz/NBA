@@ -2,7 +2,7 @@
     require_once("conection.php");
 
     function truncate_tables() {
-        $con = conection();
+        $con = connect();
         $result = $con->query("set foreign_key_checks = 0");
         $result = $con->query("truncate table final_games");
         $result = $con->query("truncate table final_players");

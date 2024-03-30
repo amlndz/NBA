@@ -3292,7 +3292,7 @@ input[type="button"].btn-block {
 }
 
 .dropleft .dropdown-toggle-split::before {
-  margin-right: 0;
+  margin-right: 10;
 }
 
 .btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {

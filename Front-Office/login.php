@@ -3,27 +3,29 @@
     session_start();
 
     // Verificar si se ha enviado el formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar las credenciales
-    if ($_POST["username"] === "user" && $_POST["password"] === "1234") {
-        // Si las credenciales son válidas, establecer la variable de sesión
-        $_SESSION['usuario_autenticado'] = true;
-
-        // Redirigir al usuario a la página anterior
-        if (isset($_SESSION['prev_page'])) {
-            $prevPage = $_SESSION['prev_page'];
-            unset($_SESSION['prev_page']); // Limpiar la variable de sesión
-            header("Location: $prevPage");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verificar las credenciales
+        if ($_POST["username"] === "user" && $_POST["password"] === "1234") {
+            // Si las credenciales son válidas, establecer la variable de sesión
+            $_SESSION['usuario_autenticado'] = true;
+    
+            // Redirigir al usuario a la página anterior
+            if (isset($_SESSION['prev_page'])) {
+                $prevPage = $_SESSION['prev_page'];
+                unset($_SESSION['prev_page']); // Limpiar la variable de sesión
+                header("Location: $prevPage");
+                exit; // Asegúrate de que el script se detenga después de la redirección
+            } else {
+                // Si no hay una página anterior guardada, redirigir a una página predeterminada
+                header("Location: index.php");
+                exit; // Asegúrate de que el script se detenga después de la redirección
+            }
         } else {
-            // Si no hay una página anterior guardada, redirigir a una página predeterminada
-            header("Location: index.php");
+            // Si las credenciales no son válidas, mostrar un mensaje de error
+            $error = "Usuario o contraseña incorrectos";
         }
-        exit; // Asegúrate de que el script se detenga después de la redirección
-    } else {
-        // Si las credenciales no son válidas, mostrar un mensaje de error
-        $error = "Usuario o contraseña incorrectos";
     }
-}
+    
 ?>
 
 <!DOCTYPE html>
@@ -62,12 +64,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                     <a href="index.php" class="nav-item nav-link">Home</a>
-                        <a href="players.php" class="nav-item nav-link">Players</a>
-                        <a href="teams.php" class="nav-item nav-link">Teams</a>
-                        <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./assets/img/user.png" alt=""></a>
-
-                        </div> 
+                    <a href="players.php" class="nav-item nav-link">Players</a>
+                    <a href="teams.php" class="nav-item nav-link">Teams</a>
+                    <div class="nav-item dropdown">
+                        <?php if (!$usuario_autenticado): ?>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="login.php" class="dropdown-item">Log in</a>
+                                <a href="signin.php" class="dropdown-item">Sign in</a>
+                            </div>
+                        <?php else: ?>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt=""></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="logout.php" class="dropdown-item">Cerrar Sesion</a> 
+                            </div>                            
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </nav>
