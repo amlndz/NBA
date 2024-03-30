@@ -16,9 +16,16 @@ $params = [];
 
 if (isset($_GET['name']) || isset($_GET['team']) || isset($_GET['position']) || isset($_GET['draft']) || isset($_GET['country'])) {
     if (!empty($_GET['name'])) {
-        $conditions[] = "(p.first_name LIKE ? OR p.last_name LIKE ?)";
-        $params[] = "%" . $_GET['name'] . "%";
-        $params[] = "%" . $_GET['name'] . "%";
+        $nameParts = explode(' ', $_GET['name'], 2);
+        if (count($nameParts) == 2) {
+            $conditions[] = "(p.first_name LIKE ? AND p.last_name LIKE ?)";
+            $params[] = "%" . $nameParts[0] . "%";
+            $params[] = "%" . $nameParts[1] . "%";
+        } else {
+            $conditions[] = "(p.first_name LIKE ? OR p.last_name LIKE ?)";
+            $params[] = "%" . $_GET['name'] . "%";
+            $params[] = "%" . $_GET['name'] . "%";
+        }
     }
     if (!empty($_GET['team'])) {
         $conditions[] = "t.full_name LIKE ?";
