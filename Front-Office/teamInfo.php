@@ -110,7 +110,7 @@
                         <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a href="logout.php" class="dropdown-item">Cerrar Sesion</a> 
+                                <a href="logout.php" class="dropdown-item">Log Out</a> 
                             </div>                            
                         <?php endif; ?>
                     </div>
@@ -160,7 +160,6 @@
                 $url = "playerInfo.php?id=".urlencode($playerId); ?>
                 <div class=" owl-item testimonial-item">
                     <a href="<?php echo $url ?>">
-
                         <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='imagen jugador'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'">
                     </a>
                     <div class="player-info">

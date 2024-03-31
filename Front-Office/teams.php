@@ -1,5 +1,6 @@
 <?php
     include "teamsInfoBBDD.php";
+    $usuario_autenticado = autenticar();
     $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 
 ?>
@@ -58,7 +59,7 @@
                         <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a href="logout.php" class="dropdown-item">Cerrar Sesion</a> 
+                                <a href="logout.php" class="dropdown-item">Log Out</a> 
                             </div>                            
                         <?php endif; ?>
                     </div>
