@@ -1,6 +1,6 @@
 <?php
-    session_start();
-
+    require "autenticarUsuario.php";
+    $usuario_autenticado = autenticar();
     // Verificar si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar las credenciales
@@ -55,16 +55,25 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                        <a href="players.php" class="nav-item nav-link">Players</a>
-                        <a href="teams.php" class="nav-item nav-link">Teams</a>
-                        <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
-                        <a href="about.php" class="nav-item nav-link">About</a> -->
-                        <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./assets/img/user.png" alt=""></a>
-                                
-                        </div> 
+                    <a href="index.php" class="nav-item nav-link">Inicio</a>
+                    <a href="players.php" class="nav-item nav-link">Jugadores</a>
+                    <a href="teams.php" class="nav-item nav-link">Equipos</a>
+                    <div class="nav-item dropdown">
+                        <?php if (!$usuario_autenticado): ?>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="login.php" class="dropdown-item">Log in</a>
+                                <a href="signin.php" class="dropdown-item">Sign in</a>
+                            </div>
+                        <?php else: ?>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="logout.php" class="dropdown-item">Log Out</a>
+                            </div>                            
+                        <?php endif; ?>
+                    </div>
                 </div>
+            </div>
             </div>
         </nav>
     </div>

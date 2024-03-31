@@ -123,7 +123,7 @@
                                 <!-- <i class="fa service-icon"></i> -->
                                 <p class="m-0">
                                     <?php
-                                    echo "abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division'];?>
+                                    echo "Abreviatura: ".$row['abbreviation']."<br/>Ciudad: ". $row['city']."<br/>Conferencia: ".$row['conference']."<br/>División: ".$row['division'];?>
                                 </p>
                             </div>
                         </div>

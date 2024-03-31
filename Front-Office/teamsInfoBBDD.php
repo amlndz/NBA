@@ -69,7 +69,7 @@
                         <div class='col-sm-7'>
                             <h4><a hrefa class='team-name' href='$url'>".$row['full_name']." (".$row['abbreviation'].")</a></h4>
                             <p class='m-0'>
-                                abbreviation: ".$row['abbreviation']."<br/>city: ". $row['city']."<br/>Conference: ".$row['conference']."<br/>Division: ".$row['division']."
+                                Abreviatura: ".$row['abbreviation']."<br/>Ciudad: ". $row['city']."<br/>Conferencia: ".$row['conference']."<br/>División: ".$row['division']."
                             </p>
                         </div>
                     </div>

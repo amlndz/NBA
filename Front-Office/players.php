@@ -137,7 +137,7 @@
                                     <h4><?php echo" <a hrefa class='player-name' href=$url > ".$row['first_name']." ".$row['last_name']."</a>";?></h4>
                                     <p class="m-0">
                                         <?php
-                                        echo "Dorsal: ".$row['number']."<br/>Team: ". $row['team_name']."<br/>Position: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Country: ".$row['country'];
+                                        echo "Dorsal: ".$row['number']."<br/>Equipo: ". $row['team_name']."<br/>Posición: ".$row['position']."<br/>Draft: ".($row['draft'] ? $row['draft'] : "N/A")."<br/>Nacionalidad: ".$row['country'];
                                         ?>
                                     </p>
                                 </div>
