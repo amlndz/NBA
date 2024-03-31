@@ -9708,3 +9708,43 @@ h6,
 .col .col-cnfrnc {
   padding-left: 0px;
 }
+
+.testimonial-item {
+  text-align: center; 
+}
+.testimonial-item .player-info {
+  margin-top: 20px; 
+}
+.container-fluid {
+  width: 100%; 
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%; 
+  max-width: 800px;
+}
+.styled-table th, 
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid black;
+  width: 16.66%; 
+  text-align: center; 
+}
+.styled-table th {
+  background-color: #33211D;
+  color: white;
+}
+.styled-table td {
+  background-color: #e9e9e9;
+}
+
+.owl-carousel .owl-item {
+  width: auto !important; 
+  padding: 0 !important; 
+}

@@ -199,7 +199,7 @@
 
 		merge: false,
 		mergeFit: true,
-		autoWidth: false,
+		autoWidth: true,
 
 		startPosition: 0,
 		rtl: false,
@@ -600,7 +600,7 @@
 		switch (dimension) {
 			case Owl.Width.Inner:
 			case Owl.Width.Outer:
-				return this._width;
+				return "12rem";
 			default:
 				return this._width - this.settings.stagePadding * 2 + this.settings.margin;
 		}
