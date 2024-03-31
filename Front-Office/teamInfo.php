@@ -2,6 +2,7 @@
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
     if(!$usuario_autenticado){
+        $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         header("Location: login.php");
         exit;
     }

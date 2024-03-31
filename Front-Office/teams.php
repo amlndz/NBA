@@ -1,5 +1,7 @@
 <?php
     include "teamsInfoBBDD.php";
+    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
