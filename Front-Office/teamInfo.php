@@ -138,7 +138,6 @@
                 <th>Ciudad</th>
                 <th>Conferencia</th>
                 <th>División</th>
-                <th>Nombre</th>
             </tr>
             <tr>
                 <td><?php echo $full_name; ?></td>
@@ -146,7 +145,6 @@
                 <td><?php echo $city; ?></td>
                 <td><?php echo $conference; ?></td>
                 <td><?php echo $division; ?></td>
-                <td><?php echo $name; ?></td>
             </tr>
         </table>
     </div>
