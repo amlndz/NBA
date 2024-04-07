@@ -77,7 +77,7 @@ $(document).ready(function() {
         // Testimonials carousel
         $(".testimonial-carousel").owlCarousel({
             autoplay: true,
-            smartSpeed: 1000,
+            smartSpeed: 1500,
             margin: 20,
             dots: true,
             loop: true,

@@ -77,39 +77,39 @@
                 $avg_pts = $row['avg_pts'];
 
 
-                // Mostrar los valores de los jugadores
-                echo "ID: " . $id . "<br>";
-                echo "Nombre: " . $nombreJugador . "<br>";
-                echo "Apellido: " . $apellidoJugador . "<br>";
-                echo "Posición: " . $posicion . "<br>";
-                echo "Altura: " . $altura . "<br>";
-                echo "Peso: " . $peso . "<br>";
-                echo "Equipo: " . $equipoNombre . "<br>";
-                echo "Número: " . $numero . "<br>";
-                echo "Draft: " . $draft . "<br>";
-                echo "Ronda de Draft: " . $rondaDraft . "<br>";
-                echo "País: " . $pais . "<br>";
-                echo "Número de Draft: " . $numeroDraft . "<br>";
-                echo "Estadísticas Promedio: <br>";
-                echo "Minutos: " . $avg_min . "<br>";
-                echo "FGM: " . $avg_fgm . "<br>";
-                echo "FGA: " . $avg_fga . "<br>";
-                echo "FG%: " . $avg_fg_pct . "<br>";
-                echo "FG3M: " . $avg_fg3m . "<br>";
-                echo "FG3A: " . $avg_fg3a . "<br>";
-                echo "FG3%: " . $avg_fg3_pct . "<br>";
-                echo "FTM: " . $avg_ftm . "<br>";
-                echo "FTA: " . $avg_fta . "<br>";
-                echo "FT%: " . $avg_ft_pct . "<br>";
-                echo "OREB: " . $avg_oreb . "<br>";
-                echo "DREB: " . $avg_dreb . "<br>";
-                echo "REB: " . $avg_reb . "<br>";
-                echo "AST: " . $avg_ast . "<br>";
-                echo "STL: " . $avg_stl . "<br>";
-                echo "BLK: " . $avg_blk . "<br>";
-                echo "Turnover: " . $avg_turnover . "<br>";
-                echo "PF: " . $avg_pf . "<br>";
-                echo "PTS: " . $avg_pts . "<br>";
+                // // Mostrar los valores de los jugadores
+                // echo "ID: " . $id . "<br>";
+                // echo "Nombre: " . $nombreJugador . "<br>";
+                // echo "Apellido: " . $apellidoJugador . "<br>";
+                // echo "Posición: " . $posicion . "<br>";
+                // echo "Altura: " . $altura . "<br>";
+                // echo "Peso: " . $peso . "<br>";
+                // echo "Equipo: " . $equipoNombre . "<br>";
+                // echo "Número: " . $numero . "<br>";
+                // echo "Draft: " . $draft . "<br>";
+                // echo "Ronda de Draft: " . $rondaDraft . "<br>";
+                // echo "País: " . $pais . "<br>";
+                // echo "Número de Draft: " . $numeroDraft . "<br>";
+                // echo "Estadísticas Promedio: <br>";
+                // echo "Minutos: " . $avg_min . "<br>";
+                // echo "FGM: " . $avg_fgm . "<br>";
+                // echo "FGA: " . $avg_fga . "<br>";
+                // echo "FG%: " . $avg_fg_pct . "<br>";
+                // echo "FG3M: " . $avg_fg3m . "<br>";
+                // echo "FG3A: " . $avg_fg3a . "<br>";
+                // echo "FG3%: " . $avg_fg3_pct . "<br>";
+                // echo "FTM: " . $avg_ftm . "<br>";
+                // echo "FTA: " . $avg_fta . "<br>";
+                // echo "FT%: " . $avg_ft_pct . "<br>";
+                // echo "OREB: " . $avg_oreb . "<br>";
+                // echo "DREB: " . $avg_dreb . "<br>";
+                // echo "REB: " . $avg_reb . "<br>";
+                // echo "AST: " . $avg_ast . "<br>";
+                // echo "STL: " . $avg_stl . "<br>";
+                // echo "BLK: " . $avg_blk . "<br>";
+                // echo "Turnover: " . $avg_turnover . "<br>";
+                // echo "PF: " . $avg_pf . "<br>";
+                // echo "PTS: " . $avg_pts . "<br>";
 
             } else {
                 echo "<script>alert('Por favor, ingrese el nombre o apellido de un jugador.');window.history.back();</script>";
