@@ -203,7 +203,11 @@
             </tr>
         </table>
     </div>
-
+    <div class="container teams-stats-graphs">
+        <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
+            <img src=<?php echo "./assets/img/court/".$id.".jpeg" ?> alt="" width="600px" height="300px">
+        </div>
+    </div>
     <!-- Graficas con estadisticas de los equipos -->
     <div class="container teams-stats-graphs">
         <div class="section-title">
