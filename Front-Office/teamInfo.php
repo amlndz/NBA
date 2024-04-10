@@ -192,7 +192,7 @@
         </div>
         <div class="container">
             <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
-                <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".png" ?> alt="" width="300px" height="300px">
+                <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".avif" ?> alt="" width="300px" height="300px">
                 <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
             </div>
         </div>
