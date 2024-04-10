@@ -178,57 +178,44 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase"><?php echo $full_name." (".$abbreviation.")"?></h1>
-            <img src="./assets/img/teams/<?php echo $id; ?>.svg" alt="imagen logo equipo" width=170rem>        
+            <img src="./assets/img/teams/<?php echo $id; ?>.svg" alt="imagen logo equipo" width=220rem>        
         </div>
     </div>
     <!-- Page Header End -->
     
     <!-- Content Start -->
-    <div class="container-fluid py-5 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
-        <table class="styled-table">
-            <tr>
-                <th>Nombre completo</th>
-                <th>Abreviatura</th>
-                <th>Ciudad</th>
-                <th>Conferencia</th>
-                <th>División</th>
-            </tr>
-            <tr>
-                <td><?php echo $full_name; ?></td>
-                <td><?php echo $abbreviation; ?></td>
-                <td><?php echo $city; ?></td>
-                <td><?php echo $conference; ?></td>
-                <td><?php echo $division; ?></td>
-            </tr>
-        </table>
-    </div>
-    <div class="container teams-stats-graphs teams-stats-graphs">
+
+    <!-- Team Content -->
+    <div class="container teams-stats-graphs-2">
         <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
-            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;">Plantilla</h1>
+            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo $full_name." (".$abbreviation.")"?></h1>
         </div>
-        <div class="owl-carousel testimonial-carousel teams-stats-graphs">
-            <?php foreach ($players as $player):
-                $playerId = $player['id'];
-                $url = "playerInfo.php?id=".urlencode($playerId); ?>
-                <div class=" owl-item testimonial-item">
-                    <a href="<?php echo $url ?>">
-                        <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='imagen jugador'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'">
-                    </a>
-                    <div class="player-info">
-                        <a href="<?php echo $url ?>">
-                            <h4><?php echo $player['first_name'] . ' ' . $player['last_name']; ?></h4>
-                        </a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+        <div class="container">
+            <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
+                <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".png" ?> alt="" width="300px" height="300px">
+                <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
+            </div>
+        </div>
+        <div class="container-fluid py-5 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+            <table class="styled-table">
+                <tr>
+                    <th>Nombre completo</th>
+                    <th>Abreviatura</th>
+                    <th>Ciudad</th>
+                    <th>Conferencia</th>
+                    <th>División</th>
+                </tr>
+                <tr>
+                    <td><?php echo $full_name; ?></td>
+                    <td><?php echo $abbreviation; ?></td>
+                    <td><?php echo $city; ?></td>
+                    <td><?php echo $conference; ?></td>
+                    <td><?php echo $division; ?></td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="container teams-stats-graphs">
-        <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
-            <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
-        </div>
-    </div>
+    
     <!-- Graficas con estadisticas de los equipos -->
     <div class="container teams-stats-graphs">
         <div class="section-title">
@@ -302,11 +289,28 @@
         }
     </script>
 
-
-
-
-
-    
+    <!-- Plantilla -->
+    <div class="container teams-stats-graphs teams-stats-graphs">
+        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;">Plantilla</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel teams-stats-graphs">
+            <?php foreach ($players as $player):
+                $playerId = $player['id'];
+                $url = "playerInfo.php?id=".urlencode($playerId); ?>
+                <div class=" owl-item testimonial-item">
+                    <a href="<?php echo $url ?>">
+                        <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='imagen jugador'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'">
+                    </a>
+                    <div class="player-info">
+                        <a href="<?php echo $url ?>">
+                            <h4><?php echo $player['first_name'] . ' ' . $player['last_name']; ?></h4>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
     <!-- Content End -->
 
 
