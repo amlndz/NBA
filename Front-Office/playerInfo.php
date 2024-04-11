@@ -169,9 +169,8 @@
     <!-- Page Header End -->
 
     <!-- player Content -->
-    <!-- player Content -->
-    <!-- player Content -->
-    <div class="container player-spaces-diff player-spaces-diff-2">
+
+    <div class="container player-spaces-diff-2">
         <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
             <div class="row">
                 <div class="col-md-4"> <!-- Columna para la imagen -->
