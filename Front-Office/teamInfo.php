@@ -215,7 +215,7 @@
                 </tr>
             </table>
         </div>
-        <div class="container-fluid py-5 d-flex justify-content-center text-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+        <div class="container-fluid py-5 d-flex justify-content-center text-center teams-stats-graphs-2 team-history"> <!-- Añade flexbox para centrar -->
             <?php echo $team_history; ?>
         </div>
         
@@ -261,7 +261,7 @@
 
             var options = {
                 'title':'Victorias/Derrotas', 
-                'width':550, 
+                'width':450, 
                 'height':400, 
                 'backgroundColor': 'transparent', 
                 'colors': ['#DA9F5B', '#33211D'],
@@ -281,7 +281,7 @@
             ['Derrotas', <?php echo $derrotas_local; ?>, <?php echo $derrotas_visitante; ?>]
             ]);
 
-            var options = {'title':'Relacion Victoria/Derrota Local/Visitante', 'width':550, 'height':400, 'backgroundColor': 'transparent', 'colors': ['#DA9F5B', '#33211D']};
+            var options = {'title':'Relacion Victoria/Derrota Local/Visitante', 'width':450, 'height':400, 'backgroundColor': 'transparent', 'colors': ['#DA9F5B', '#33211D']};
 
             var chart = new google.visualization.ColumnChart(document.getElementById('barchart'));
             chart.draw(data, options);
@@ -296,7 +296,7 @@
             } ?>
             ]);
 
-            var options = {'title':'Puntos/Partido', 'width':550, 'height':400, 'backgroundColor': 'transparent', 'colors': ['#DA9F5B']};
+            var options = {'title':'Puntos/Partido', 'width':450, 'height':400, 'backgroundColor': 'transparent', 'colors': ['#DA9F5B']};
 
             var chart = new google.visualization.LineChart(document.getElementById('linechart'));
             chart.draw(data, options);

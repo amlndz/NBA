@@ -9766,4 +9766,10 @@ h6,
 
 .graphs-teams{
   padding: 0px;
+  margin: 0px;
+}
+
+
+.team-history{
+  margin: 5rem;
 }
