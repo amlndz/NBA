@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TEAMS`
+-- Estructura de tabla para la tabla `final_teams`
 --
 
-CREATE TABLE `TEAMS` (
+CREATE TABLE `final_teams` (
   `id` int NOT NULL,
   `abbreviation` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `TEAMS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `TEAMS`
+-- Volcado de datos para la tabla `final_teams`
 --
 
-INSERT INTO `TEAMS` (`id`, `abbreviation`, `city`, `conference`, `division`, `full_name`, `name`) VALUES
+INSERT INTO `final_teams` (`id`, `abbreviation`, `city`, `conference`, `division`, `full_name`, `name`) VALUES
 (1, 'ATL', 'Atlanta', 'East', 'Southeast', 'Atlanta Hawks', 'Hawks'),
 (2, 'BOS', 'Boston', 'East', 'Atlantic', 'Boston Celtics', 'Celtics'),
 (3, 'BKN', 'Brooklyn', 'East', 'Atlantic', 'Brooklyn Nets', 'Nets'),
@@ -93,9 +93,9 @@ INSERT INTO `TEAMS` (`id`, `abbreviation`, `city`, `conference`, `division`, `fu
 --
 
 --
--- Indices de la tabla `TEAMS`
+-- Indices de la tabla `final_teams`
 --
-ALTER TABLE `TEAMS`
+ALTER TABLE `final_teams`
   ADD PRIMARY KEY (`id`);
 COMMIT;
 

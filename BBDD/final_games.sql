@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `GAMES`
+-- Estructura de tabla para la tabla `final_games`
 --
 
-CREATE TABLE `GAMES` (
+CREATE TABLE `final_games` (
   `id` int NOT NULL,
   `date` datetime DEFAULT NULL,
   `season` int DEFAULT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE `GAMES` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `GAMES`
+-- Volcado de datos para la tabla `final_games`
 --
 
-INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
+INSERT INTO `final_games` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
 (1037593, '2023-10-24 00:00:00', 2023, 'Final', 4, 'Final', 0, 119, 107, 8, 14),
 (1037594, '2023-10-24 00:00:00', 2023, 'Final', 4, 'Final', 0, 104, 108, 10, 24),
 (1037595, '2023-10-25 00:00:00', 2023, 'Final', 4, 'Final', 0, 116, 110, 4, 1),
@@ -675,7 +675,7 @@ INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postse
 (1038279, '2024-02-01 00:00:00', 2023, 'Final', 4, 'Final', 0, 101, 108, 15, 6),
 (1038280, '2024-02-02 00:00:00', 2023, 'Final', 4, 'Final', 0, 125, 136, 9, 13),
 (1038281, '2024-02-02 00:00:00', 2023, 'Final', 4, 'Final', 0, 102, 110, 30, 16);
-INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
+INSERT INTO `final_games` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
 (1038282, '2024-02-02 00:00:00', 2023, 'Final', 4, 'Final', 0, 129, 120, 1, 24),
 (1038283, '2024-02-02 00:00:00', 2023, 'Final', 4, 'Final', 0, 122, 133, 12, 26),
 (1038284, '2024-02-02 00:00:00', 2023, 'Final', 4, 'Final', 0, 135, 106, 11, 28),
@@ -1262,7 +1262,7 @@ INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postse
 (7049321, '2023-12-06 00:00:00', 2023, 'Final', 4, 'Final', 0, 147, 97, 7, 29),
 (7049322, '2023-12-06 00:00:00', 2023, 'Final', 4, 'Final', 0, 110, 106, 10, 25),
 (7049323, '2023-12-06 00:00:00', 2023, 'Final', 4, 'Final', 0, 111, 102, 13, 8);
-INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
+INSERT INTO `final_games` (`id`, `date`, `season`, `status`, `period`, `time`, `postseason`, `home_team_score`, `visitor_team_score`, `home_team_id`, `visitor_team_id`) VALUES
 (7050282, '2023-12-08 00:00:00', 2023, 'Final', 4, 'Final', 0, 119, 116, 4, 28),
 (7050283, '2023-12-08 00:00:00', 2023, 'Final', 4, 'Final', 0, 123, 91, 22, 9),
 (7050284, '2023-12-08 00:00:00', 2023, 'Final', 4, 'Final', 0, 125, 114, 23, 1),
@@ -1285,9 +1285,9 @@ INSERT INTO `GAMES` (`id`, `date`, `season`, `status`, `period`, `time`, `postse
 --
 
 --
--- Indices de la tabla `GAMES`
+-- Indices de la tabla `final_games`
 --
-ALTER TABLE `GAMES`
+ALTER TABLE `final_games`
   ADD PRIMARY KEY (`id`),
   ADD KEY `home_team_id` (`home_team_id`),
   ADD KEY `visitor_team_id` (`visitor_team_id`);
@@ -1297,11 +1297,11 @@ ALTER TABLE `GAMES`
 --
 
 --
--- Filtros para la tabla `GAMES`
+-- Filtros para la tabla `final_games`
 --
-ALTER TABLE `GAMES`
-  ADD CONSTRAINT `GAMES_ibfk_1` FOREIGN KEY (`home_team_id`) REFERENCES `TEAMS` (`id`),
-  ADD CONSTRAINT `GAMES_ibfk_2` FOREIGN KEY (`visitor_team_id`) REFERENCES `TEAMS` (`id`);
+ALTER TABLE `final_games`
+  ADD CONSTRAINT `final_games_ibfk_1` FOREIGN KEY (`home_team_id`) REFERENCES `TEAMS` (`id`),
+  ADD CONSTRAINT `final_games_ibfk_2` FOREIGN KEY (`visitor_team_id`) REFERENCES `TEAMS` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

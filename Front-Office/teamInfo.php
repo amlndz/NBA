@@ -48,6 +48,13 @@
         $result_players = $stmt_players->get_result();
         $players = $result_players->fetch_all(MYSQLI_ASSOC);
 
+        $sql_team_history = "SELECT history FROM final_history WHERE team_id = ?";
+        $stmt_team_history = $conn->prepare($sql_team_history);
+        $stmt_team_history->bind_param("i", $id);
+        $stmt_team_history->execute();
+        $result_team_history = $stmt_team_history->get_result();
+        $row_team_history = $result_team_history->fetch_assoc();
+        $team_history = $row_team_history['history'];
 
         $sql_victorias_local = "SELECT COUNT(*) as victorias_local FROM final_games WHERE home_team_id = ? AND home_team_score > visitor_team_score";
         $stmt_victorias_local = $conn->prepare($sql_victorias_local);
@@ -186,17 +193,11 @@
     <!-- Content Start -->
 
     <!-- Team Content -->
-    <div class="container teams-stats-graphs-2">
-        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+    <div class="container teams-stats-graphs">
+        <div class="container-fluid py-8 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
             <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo $full_name." (".$abbreviation.")"?></h1>
         </div>
-        <div class="container">
-            <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
-                <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".avif" ?> alt="" width="300px" height="300px">
-                <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
-            </div>
-        </div>
-        <div class="container-fluid py-5 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+        <div class="container-fluid py-5 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
             <table class="styled-table">
                 <tr>
                     <th>Nombre completo</th>
@@ -214,6 +215,18 @@
                 </tr>
             </table>
         </div>
+        <div class="container-fluid py-5 d-flex justify-content-center text-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+            <?php echo $team_history; ?>
+        </div>
+        
+        <div class="container teams-stats-graphs-2">
+            <div class="container-fluid py-8 d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
+                <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".avif" ?> alt="" width="300px" height="300px">
+                <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
+            </div>
+        </div>
+        
+        
     </div>
     
     <!-- Graficas con estadisticas de los equipos -->

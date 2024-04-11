@@ -1,3 +1,5 @@
+INSERT INTO final_history (team_id, history) VALUES(1, '')
+
 ==================================================================
 1 - ATLANTAS HAWKS
 ==================================================================
@@ -51,7 +53,7 @@ Los Dallas Mavericks son una franquicia con una historia rica y emocionante en l
 8 - DENVER NUGGETS
 ==================================================================
 
-Los Denver Nuggets son una franquicia que ha experimentado altibajos en la NBA, pero que ha mostrado un notable resurgimiento en los últimos años. Fundados en 1967, los Nuggets inicialmente lucharon por encontrar éxito en la liga. Sin embargo, en las últimas temporadas, han emergido como contendientes serios en la Conferencia Oeste. En 2020, alcanzaron las Finales de la Conferencia Oeste, liderados por estrellas como Nikola Jokić y Jamal Murray, demostrando su capacidad para competir con los mejores equipos de la liga. Aunque enfrentaron desafíos en temporadas recientes, incluidas lesiones importantes, los Nuggets continúan construyendo un equipo sólido y están decididos a seguir mejorando y competir por un campeonato de la NBA en el futuro. Con una base de aficionados apasionada y un núcleo joven y talentoso, el futuro parece brillante para los Denver Nuggets.edg
+Los Denver Nuggets son una franquicia que ha experimentado altibajos en la NBA, pero que ha mostrado un notable resurgimiento en los últimos años. Fundados en 1967, los Nuggets inicialmente lucharon por encontrar éxito en la liga. Sin embargo, en las últimas temporadas, han emergido como contendientes serios en la Conferencia Oeste. En 2020, alcanzaron las Finales de la Conferencia Oeste, liderados por estrellas como Nikola Jokić y Jamal Murray, demostrando su capacidad para competir con los mejores equipos de la liga. Aunque enfrentaron desafíos en temporadas recientes, incluidas lesiones importantes, los Nuggets continúan construyendo un equipo sólido y están decididos a seguir mejorando y competir por un campeonato de la NBA en el futuro. Con una base de aficionados apasionada y un núcleo joven y talentoso, el futuro parece brillante para los Denver Nuggets.
 
 
 ==================================================================

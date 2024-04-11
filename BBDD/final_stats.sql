@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `STATS`
+-- Estructura de tabla para la tabla `final_stats`
 --
 
-CREATE TABLE `STATS` (
+CREATE TABLE `final_stats` (
   `id` int NOT NULL,
   `player_id` int DEFAULT NULL,
   `game_id` int DEFAULT NULL,
@@ -54,10 +54,10 @@ CREATE TABLE `STATS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `STATS`
+-- Volcado de datos para la tabla `final_stats`
 --
 
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13932867, 375, 1037593, 8, 30, 5, 13, 0.3846, 2, 9, 0.2222, 0, 0, 0.0000, 2, 10, 12, 2, 2, 0, NULL, 1, 12),
 (13932868, 177, 1037593, 8, 35, 7, 11, 0.6364, 1, 2, 0.5000, 0, 0, 0.0000, 2, 5, 7, 5, 2, 1, NULL, 0, 15),
 (13932869, 246, 1037593, 8, 36, 12, 22, 0.5455, 3, 5, 0.6000, 2, 4, 0.5000, 3, 10, 13, 11, 1, 1, NULL, 2, 29),
@@ -525,7 +525,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13940385, 17896031, 1037606, 13, 22, 6, 11, 0.5455, 3, 8, 0.3750, 2, 2, 1.0000, 0, 0, 0, 3, 0, 0, NULL, 4, 17),
 (13940386, 3547294, 1037606, 13, 13, 0, 4, 0.0000, 0, 2, 0.0000, 0, 0, 0.0000, 1, 0, 1, 1, 1, 0, NULL, 2, 0),
 (13940387, 56677856, 1037606, 13, 4, 1, 2, 0.5000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 1, 2);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13940388, 371, 1037606, 13, 17, 2, 4, 0.5000, 0, 0, 0.0000, 2, 4, 0.5000, 3, 5, 8, 2, 0, 0, NULL, 0, 6),
 (13940389, 380, 1037606, 13, 23, 2, 6, 0.3333, 2, 5, 0.4000, 2, 2, 1.0000, 0, 3, 3, 1, 0, 0, NULL, 0, 8),
 (13940390, 17896022, 1037606, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -993,7 +993,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13948000, 17896073, 1037618, 22, 27, 4, 5, 0.8000, 0, 1, 0.0000, 3, 3, 1.0000, 0, 5, 5, 2, 4, 2, NULL, 3, 11),
 (13948001, 165, 1037618, 22, 25, 4, 8, 0.5000, 0, 2, 0.0000, 0, 0, 0.0000, 1, 1, 2, 6, 0, 0, NULL, 0, 8),
 (13948002, 3547251, 1037618, 22, 28, 6, 15, 0.4000, 3, 7, 0.4286, 3, 6, 0.5000, 1, 3, 4, 2, 0, 1, NULL, 3, 18);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13948003, 666442, 1037618, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13948004, 56677827, 1037618, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13948005, 196, 1037618, 22, 19, 1, 5, 0.2000, 1, 3, 0.3333, 0, 0, 0.0000, 0, 1, 1, 1, 0, 0, NULL, 0, 3),
@@ -1461,7 +1461,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13957146, 38017693, 1037631, 27, 7, 0, 1, 0.0000, 0, 1, 0.0000, 1, 2, 0.5000, 0, 0, 0, 1, 0, 1, NULL, 0, 1),
 (13957147, 56677865, 1037631, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13957148, 56677817, 1037631, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13957149, 56677870, 1037631, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13959036, 38017686, 1037634, 12, 28, 4, 11, 0.3636, 1, 4, 0.2500, 6, 6, 1.0000, 1, 3, 4, 0, 0, 0, NULL, 5, 15),
 (13959037, 3547243, 1037634, 12, 24, 2, 5, 0.4000, 0, 2, 0.0000, 2, 2, 1.0000, 2, 6, 8, 0, 1, 0, NULL, 1, 6),
@@ -1929,7 +1929,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13966221, 56677856, 1037646, 13, 3, 1, 1, 1.0000, 1, 1, 1.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 1, 3),
 (13966222, 371, 1037646, 13, 22, 5, 7, 0.7143, 0, 0, 0.0000, 0, 2, 0.0000, 2, 5, 7, 2, 0, 1, NULL, 4, 10),
 (13966223, 380, 1037646, 13, 29, 5, 8, 0.6250, 2, 5, 0.4000, 5, 7, 0.7143, 0, 3, 3, 3, 0, 0, NULL, 4, 17);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13966224, 33, 1037646, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13966225, 17896022, 1037646, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13966226, 108, 1037646, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -2397,7 +2397,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13972831, 493, 1037659, 13, 29, 3, 8, 0.3750, 0, 0, 0.0000, 1, 2, 0.5000, 2, 7, 9, 0, 0, 0, NULL, 5, 7),
 (13972832, 17896031, 1037659, 13, 34, 2, 7, 0.2857, 0, 3, 0.0000, 0, 0, 0.0000, 0, 1, 1, 5, 1, 0, NULL, 3, 4),
 (13972833, 472, 1037659, 13, 44, 9, 21, 0.4286, 3, 6, 0.5000, 3, 5, 0.6000, 4, 7, 11, 8, 4, 0, NULL, 5, 24);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13972834, 56677849, 1037659, 13, 5, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13972835, 666511, 1037659, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13972836, 38017725, 1037659, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -2865,7 +2865,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13983688, 301, 1037674, 1, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13983689, 56677875, 1037674, 1, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13983690, 38017686, 1037672, 12, 24, 3, 11, 0.2727, 0, 2, 0.0000, 2, 2, 1.0000, 4, 1, 5, 5, 1, 0, NULL, 1, 8);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13983691, 3547243, 1037672, 12, 26, 5, 7, 0.7143, 1, 2, 0.5000, 0, 0, 0.0000, 1, 3, 4, 0, 0, 0, NULL, 2, 11),
 (13983692, 452, 1037672, 12, 26, 5, 9, 0.5556, 3, 5, 0.6000, 1, 2, 0.5000, 0, 6, 6, 2, 1, 0, NULL, 4, 14),
 (13983693, 69, 1037672, 12, 32, 3, 8, 0.3750, 1, 4, 0.2500, 0, 0, 0.0000, 0, 1, 1, 6, 2, 0, NULL, 3, 7),
@@ -3333,7 +3333,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13991227, 56677861, 1037685, 12, 12, 3, 7, 0.4286, 1, 4, 0.2500, 0, 0, 0.0000, 0, 2, 2, 0, 0, 0, NULL, 1, 7),
 (13991228, 3547264, 1037685, 12, 12, 4, 4, 1.0000, 1, 1, 1.0000, 0, 0, 0.0000, 1, 6, 7, 2, 0, 0, NULL, 3, 9),
 (13991229, 439, 1037685, 12, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13991230, 56677832, 1037685, 12, 9, 0, 1, 0.0000, 0, 0, 0.0000, 2, 2, 1.0000, 0, 1, 1, 2, 0, 0, NULL, 0, 2),
 (13991231, 38017701, 1037685, 12, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13991232, 56677778, 1037685, 12, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -3801,7 +3801,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (13999388, 472, 1037699, 13, 31, 6, 18, 0.3333, 1, 5, 0.2000, 0, 0, 0.0000, 3, 4, 7, 8, 0, 0, NULL, 1, 13),
 (13999389, 56677849, 1037699, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13999390, 666511, 1037699, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (13999391, 38017725, 1037699, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (13999392, 17896031, 1037699, 13, 6, 2, 6, 0.3333, 0, 2, 0.0000, 0, 0, 0.0000, 1, 1, 2, 0, 0, 0, NULL, 0, 4),
 (13999393, 666743, 1037699, 13, 19, 0, 2, 0.0000, 0, 2, 0.0000, 0, 0, 0.0000, 0, 4, 4, 1, 0, 0, NULL, 1, 0),
@@ -4269,7 +4269,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14009493, 403, 3277398, 4, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14009494, 56677826, 3277397, 9, 32, 6, 10, 0.6000, 0, 1, 0.0000, 0, 1, 0.0000, 3, 9, 12, 4, 1, 3, NULL, 4, 12),
 (14009495, 3547267, 3277397, 9, 32, 4, 10, 0.4000, 2, 5, 0.4000, 0, 0, 0.0000, 1, 5, 6, 2, 0, 1, NULL, 5, 10);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14009496, 38017694, 3277397, 9, 23, 2, 5, 0.4000, 0, 0, 0.0000, 0, 0, 0.0000, 1, 3, 4, 3, 0, 1, NULL, 1, 4),
 (14009497, 17896075, 3277397, 9, 36, 8, 18, 0.4444, 1, 5, 0.2000, 4, 4, 1.0000, 1, 3, 4, 7, 0, 0, NULL, 5, 21),
 (14009498, 3547241, 3277397, 9, 39, 8, 17, 0.4706, 2, 6, 0.3333, 5, 7, 0.7143, 1, 5, 6, 6, 2, 0, NULL, 1, 23),
@@ -4738,7 +4738,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14018745, 17896048, 1037726, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14018746, 56677841, 1037726, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14018747, 56677722, 1037726, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14018748, 3547242, 1037726, 30, 38, 6, 18, 0.3333, 1, 8, 0.1250, 1, 2, 0.5000, 2, 7, 9, 3, 3, 0, NULL, 2, 14),
 (14018749, 265, 1037726, 30, 31, 4, 16, 0.2500, 0, 5, 0.0000, 7, 10, 0.7000, 0, 4, 4, 3, 1, 2, NULL, 2, 15),
 (14018750, 666577, 1037726, 30, 16, 2, 3, 0.6667, 0, 0, 0.0000, 1, 2, 0.5000, 2, 3, 5, 0, 2, 0, NULL, 1, 5),
@@ -5206,7 +5206,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14026226, 666940, 1037739, 6, 13, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 1, 0, 0, NULL, 1, 0),
 (14026227, 56677847, 1037739, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14026228, 666676, 1037739, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14026229, 38017662, 1037739, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14026230, 3547247, 1037739, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14026231, 404, 1037739, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -5674,7 +5674,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14033874, 87, 1037754, 5, 16, 1, 7, 0.1429, 1, 5, 0.2000, 0, 0, 0.0000, 0, 0, 0, 1, 2, 0, NULL, 2, 3),
 (14033875, 89, 1037754, 5, 24, 5, 7, 0.7143, 2, 4, 0.5000, 4, 4, 1.0000, 1, 4, 5, 3, 0, 1, NULL, 5, 16),
 (14033876, 17895983, 1037754, 5, 19, 2, 4, 0.5000, 1, 3, 0.3333, 0, 0, 0.0000, 1, 1, 2, 2, 0, 0, NULL, 1, 5);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14033877, 137, 1037754, 5, 12, 3, 5, 0.6000, 0, 0, 0.0000, 3, 4, 0.7500, 5, 9, 14, 1, 1, 0, NULL, 3, 9),
 (14033878, 56677857, 1037754, 5, 4, 0, 2, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 1, 0),
 (14033879, 17896116, 1037754, 5, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -6142,7 +6142,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14040330, 246, 3277452, 8, 36, 10, 20, 0.5000, 1, 8, 0.1250, 5, 5, 1.0000, 2, 14, 16, 18, 0, 1, NULL, 2, 26),
 (14040331, 81, 3277452, 8, 35, 3, 7, 0.4286, 2, 4, 0.5000, 0, 0, 0.0000, 0, 1, 1, 8, 1, 2, NULL, 0, 8),
 (14040332, 236, 3277452, 8, 33, 6, 12, 0.5000, 2, 7, 0.2857, 0, 0, 0.0000, 1, 1, 2, 3, 0, 0, NULL, 2, 14);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14040333, 38017709, 3277452, 8, 30, 11, 19, 0.5789, 3, 5, 0.6000, 0, 1, 0.0000, 2, 7, 9, 3, 0, 0, NULL, 1, 25),
 (14040334, 38017727, 3277452, 8, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14040335, 215, 3277452, 8, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -6610,7 +6610,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14050885, 38017607, 1037778, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14050886, 17553983, 1037778, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14051422, 666940, 1037779, 6, 24, 2, 4, 0.5000, 2, 4, 0.5000, 0, 0, 0.0000, 1, 9, 10, 2, 2, 0, NULL, 1, 6);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14051423, 17896076, 1037779, 6, 32, 8, 11, 0.7273, 0, 0, 0.0000, 0, 0, 0.0000, 3, 7, 10, 5, 0, 2, NULL, 3, 16),
 (14051424, 9, 1037779, 6, 29, 6, 10, 0.6000, 0, 0, 0.0000, 3, 6, 0.5000, 2, 3, 5, 5, 1, 0, NULL, 3, 15),
 (14051425, 666908, 1037779, 6, 32, 3, 7, 0.4286, 2, 6, 0.3333, 3, 4, 0.7500, 1, 5, 6, 5, 0, 1, NULL, 3, 11),
@@ -7078,7 +7078,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14059609, 56677858, 1037793, 10, 18, 1, 2, 0.5000, 1, 2, 0.5000, 0, 0, 0.0000, 0, 5, 5, 3, 0, 0, NULL, 2, 3),
 (14059611, 407, 1037793, 10, 26, 5, 10, 0.5000, 3, 7, 0.4286, 5, 6, 0.8333, 0, 5, 5, 2, 1, 1, NULL, 2, 18),
 (14059612, 17896070, 1037793, 10, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14059613, 2189, 1037793, 10, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14059614, 45658838, 1037793, 10, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14059615, 398, 1037793, 10, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -7546,7 +7546,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14065221, 56677830, 1037805, 15, 4, 0, 3, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 1, 2, 3, 0, 0, 0, NULL, 0, 0),
 (14065222, 666703, 1037805, 15, 29, 0, 7, 0.0000, 0, 4, 0.0000, 0, 0, 0.0000, 5, 6, 11, 2, 0, 2, NULL, 3, 0),
 (14065223, 38017732, 1037805, 15, 4, 1, 4, 0.2500, 0, 1, 0.0000, 1, 1, 1.0000, 1, 0, 1, 1, 0, 0, NULL, 0, 3);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14065224, 38017729, 1037805, 15, 22, 2, 7, 0.2857, 0, 1, 0.0000, 0, 0, 0.0000, 0, 6, 6, 1, 0, 0, NULL, 0, 4),
 (14065225, 401, 1037805, 15, 16, 1, 3, 0.3333, 1, 2, 0.5000, 4, 4, 1.0000, 0, 1, 1, 2, 0, 0, NULL, 0, 7),
 (14065226, 38017731, 1037805, 15, 4, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 1, 1, 0, 0, 1, NULL, 0, 0),
@@ -8014,7 +8014,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14075126, 15, 3277504, 17, 37, 11, 19, 0.5789, 0, 0, 0.0000, 9, 12, 0.7500, 3, 6, 9, 3, 3, 1, NULL, 2, 31),
 (14075127, 283, 3277504, 17, 32, 14, 17, 0.8235, 4, 7, 0.5714, 7, 7, 1.0000, 0, 5, 5, 1, 2, 3, NULL, 2, 39),
 (14075128, 38, 3277504, 17, 27, 4, 8, 0.5000, 1, 4, 0.2500, 0, 0, 0.0000, 4, 7, 11, 1, 0, 1, NULL, 3, 9);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14075129, 278, 3277504, 17, 37, 11, 18, 0.6111, 2, 5, 0.4000, 7, 8, 0.8750, 1, 6, 7, 10, 0, 0, NULL, 1, 31),
 (14075130, 2148, 3277504, 17, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14075131, 38017676, 3277504, 17, 13, 0, 4, 0.0000, 0, 2, 0.0000, 3, 4, 0.7500, 0, 3, 3, 2, 0, 0, NULL, 2, 3),
@@ -8482,7 +8482,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14083941, 56677839, 1037832, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14083942, 17553983, 1037832, 22, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14083943, 204, 1037832, 4, 33, 4, 11, 0.3636, 2, 4, 0.5000, 0, 2, 0.0000, 0, 5, 5, 2, 0, 1, NULL, 1, 10);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14083944, 62, 1037832, 4, 37, 9, 17, 0.5294, 1, 4, 0.2500, 4, 6, 0.6667, 3, 7, 10, 2, 1, 1, NULL, 2, 23),
 (14083945, 38017698, 1037832, 4, 22, 5, 6, 0.8333, 0, 0, 0.0000, 2, 2, 1.0000, 1, 5, 6, 1, 1, 1, NULL, 4, 12),
 (14083946, 403, 1037832, 4, 37, 9, 15, 0.6000, 2, 4, 0.5000, 2, 4, 0.5000, 0, 1, 1, 9, 1, 1, NULL, 4, 22),
@@ -8951,7 +8951,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14091744, 3547239, 3277531, 4, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14091745, 666748, 3277531, 4, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14091746, 347, 3277531, 4, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14091747, 3547282, 3277531, 4, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14092100, 666400, 3277532, 18, 26, 1, 7, 0.1429, 1, 5, 0.2000, 0, 0, 0.0000, 1, 1, 2, 1, 0, 0, NULL, 2, 3),
 (14092101, 447, 3277532, 18, 32, 2, 8, 0.2500, 1, 3, 0.3333, 8, 8, 1.0000, 0, 10, 10, 3, 0, 0, NULL, 4, 13),
@@ -9419,7 +9419,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14101011, 9051997, 1037858, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14101012, 56677843, 1037858, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14101014, 417, 1037858, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14101015, 56677841, 1037858, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14101016, 56677722, 1037858, 3, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14101017, 204, 1037858, 4, 32, 8, 14, 0.5714, 2, 4, 0.5000, 4, 4, 1.0000, 2, 4, 6, 6, 0, 0, NULL, 1, 22),
@@ -9887,7 +9887,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14110684, 38017715, 1037873, 18, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14110685, 38017700, 1037873, 18, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14110686, 17895968, 1037873, 18, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14110687, 667378, 1037873, 18, 24, 9, 14, 0.6429, 3, 6, 0.5000, 2, 2, 1.0000, 2, 3, 5, 2, 1, 0, NULL, 0, 23),
 (14110688, 56677851, 1037873, 18, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14110689, 3547238, 1037873, 18, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -10355,7 +10355,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14119694, 56677835, 7045524, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14119695, 56677836, 7045524, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14119696, 17553995, 7045524, 14, 27, 7, 16, 0.4375, 3, 8, 0.3750, 3, 3, 1.0000, 2, 4, 6, 2, 0, 0, NULL, 1, 20);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14119697, 457, 7045524, 14, 15, 0, 2, 0.0000, 0, 2, 0.0000, 1, 2, 0.5000, 4, 2, 6, 2, 1, 0, NULL, 2, 1),
 (14119698, 486, 7045524, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14119699, 56677738, 7045524, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -10823,7 +10823,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14128187, 17896024, 7996352, 19, 26, 4, 10, 0.4000, 0, 3, 0.0000, 2, 2, 1.0000, 4, 3, 7, 1, 2, 1, NULL, 4, 10),
 (14128188, 303, 7996352, 19, 25, 4, 14, 0.2857, 1, 4, 0.2500, 0, 0, 0.0000, 1, 3, 4, 2, 2, 0, NULL, 2, 9),
 (14128189, 17896097, 7996352, 19, 20, 3, 7, 0.4286, 2, 3, 0.6667, 0, 0, 0.0000, 0, 2, 2, 4, 2, 0, NULL, 1, 8);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14128190, 38017677, 7996352, 19, 17, 1, 5, 0.2000, 0, 2, 0.0000, 2, 2, 1.0000, 2, 6, 8, 0, 0, 1, NULL, 1, 4),
 (14128191, 56677837, 7996352, 19, 12, 2, 8, 0.2500, 0, 3, 0.0000, 0, 0, 0.0000, 0, 2, 2, 0, 0, 0, NULL, 1, 4),
 (14128192, 3547260, 7996352, 19, 7, 1, 3, 0.3333, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 2),
@@ -11291,7 +11291,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14137117, 117, 8258317, 14, 41, 16, 24, 0.6667, 0, 0, 0.0000, 9, 13, 0.6923, 5, 15, 20, 5, 0, 4, NULL, 2, 41),
 (14137118, 383, 8258317, 14, 19, 2, 3, 0.6667, 1, 2, 0.5000, 1, 1, 1.0000, 0, 3, 3, 2, 0, 0, NULL, 4, 6),
 (14137119, 405, 8258317, 14, 32, 6, 15, 0.4000, 0, 3, 0.0000, 1, 2, 0.5000, 1, 3, 4, 7, 1, 1, NULL, 1, 13);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14137120, 38017697, 8258317, 14, 19, 0, 1, 0.0000, 0, 1, 0.0000, 2, 2, 1.0000, 0, 2, 2, 1, 1, 0, NULL, 1, 2),
 (14137121, 666609, 8258317, 14, 9, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 2, 0, 2, 0, 0, 0, NULL, 3, 0),
 (14137122, 666626, 8258317, 14, 7, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 1, 3, 4, 1, 0, 0, NULL, 1, 0),
@@ -11758,7 +11758,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14144396, 371, 1037896, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14144397, 17896051, 1037896, 13, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14144398, 666923, 1037896, 25, 31, 4, 6, 0.6667, 3, 5, 0.6000, 0, 0, 0.0000, 0, 1, 1, 0, 1, 0, NULL, 3, 11);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14144399, 56677850, 1037896, 25, 37, 3, 6, 0.5000, 1, 3, 0.3333, 0, 2, 0.0000, 0, 4, 4, 4, 1, 1, NULL, 5, 7),
 (14144400, 56783340, 1037896, 25, 26, 4, 11, 0.3636, 2, 6, 0.3333, 0, 0, 0.0000, 2, 1, 3, 4, 1, 0, NULL, 3, 10),
 (14144401, 38017690, 1037896, 25, 40, 8, 17, 0.4706, 4, 9, 0.4444, 7, 9, 0.7778, 1, 2, 3, 6, 1, 0, NULL, 2, 27),
@@ -12227,7 +12227,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14151400, 38017739, 1037910, 29, 31, 4, 12, 0.3333, 3, 10, 0.3000, 4, 4, 1.0000, 3, 3, 6, 2, 2, 0, NULL, 4, 15),
 (14151401, 358, 1037910, 29, 30, 3, 9, 0.3333, 1, 2, 0.5000, 2, 2, 1.0000, 1, 9, 10, 8, 0, 0, NULL, 3, 9),
 (14151402, 413, 1037910, 29, 30, 10, 18, 0.5556, 3, 8, 0.3750, 3, 3, 1.0000, 1, 3, 4, 7, 0, 0, NULL, 4, 26);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14151403, 56677834, 1037910, 29, 4, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 1, 0),
 (14151404, 38017620, 1037910, 29, 30, 2, 12, 0.1667, 1, 5, 0.2000, 0, 0, 0.0000, 3, 1, 4, 2, 0, 0, NULL, 2, 5),
 (14151405, 139, 1037910, 29, 18, 4, 4, 1.0000, 2, 2, 1.0000, 0, 0, 0.0000, 0, 2, 2, 7, 1, 0, NULL, 3, 10),
@@ -12695,7 +12695,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14159633, 56677738, 1037923, 14, 6, 3, 3, 1.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 1, 1, 1, 0, 0, NULL, 0, 6),
 (14159634, 117, 1037923, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14159635, 666609, 1037923, 14, 34, 8, 15, 0.5333, 0, 5, 0.0000, 4, 5, 0.8000, 0, 5, 5, 4, 0, 1, NULL, 1, 20);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14159636, 56677868, 1037923, 14, 8, 2, 3, 0.6667, 1, 2, 0.5000, 0, 0, 0.0000, 0, 0, 0, 3, 0, 0, NULL, 0, 5),
 (14159637, 666860, 1037923, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14159638, 405, 1037923, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -13164,7 +13164,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14170621, 17896059, 1037937, 27, 8, 1, 4, 0.2500, 0, 3, 0.0000, 0, 0, 0.0000, 0, 0, 0, 2, 0, 0, NULL, 0, 2),
 (14170622, 305, 1037937, 27, 15, 2, 7, 0.2857, 1, 5, 0.2000, 2, 2, 1.0000, 1, 1, 2, 1, 0, 0, NULL, 1, 7),
 (14170623, 359, 1037937, 27, 17, 5, 7, 0.7143, 1, 2, 0.5000, 3, 4, 0.7500, 0, 3, 3, 0, 0, 0, NULL, 2, 14);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14170624, 38017730, 1037937, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14170625, 17895854, 1037937, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14170626, 56677865, 1037937, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -13632,7 +13632,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14177842, 337, 1037950, 30, 23, 2, 3, 0.6667, 1, 1, 1.0000, 6, 6, 1.0000, 1, 5, 6, 2, 1, 1, NULL, 3, 11),
 (14177843, 17896106, 1037950, 30, 5, 1, 3, 0.3333, 0, 1, 0.0000, 0, 0, 0.0000, 0, 2, 2, 0, 0, 0, NULL, 1, 2),
 (14177844, 38017704, 1037950, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14177846, 38017687, 1037950, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14177847, 167, 1037950, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14177848, 38017712, 1037950, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -14100,7 +14100,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14185005, 3547258, 1037964, 7, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14185006, 228, 1037964, 7, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14185007, 257, 1037964, 7, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14185008, 56677840, 1037964, 7, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14185009, 666511, 1037964, 13, 39, 3, 6, 0.5000, 2, 5, 0.4000, 4, 4, 1.0000, 0, 5, 5, 3, 1, 0, NULL, 5, 12),
 (14185010, 274, 1037964, 13, 38, 12, 22, 0.5455, 1, 6, 0.1667, 5, 5, 1.0000, 3, 7, 10, 5, 1, 1, NULL, 0, 30),
@@ -14568,7 +14568,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14194312, 56677855, 1037976, 1, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14195958, 443, 1037978, 10, 27, 8, 17, 0.4706, 4, 10, 0.4000, 0, 0, 0.0000, 0, 3, 3, 2, 0, 0, NULL, 0, 20),
 (14195959, 17553979, 1037978, 10, 27, 9, 11, 0.8182, 1, 2, 0.5000, 3, 3, 1.0000, 2, 2, 4, 3, 1, 0, NULL, 2, 22);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14195960, 282, 1037978, 10, 11, 2, 3, 0.6667, 0, 0, 0.0000, 1, 1, 1.0000, 2, 3, 5, 0, 0, 0, NULL, 2, 5),
 (14195961, 56677858, 1037978, 10, 29, 3, 9, 0.3333, 2, 5, 0.4000, 2, 2, 1.0000, 3, 4, 7, 5, 1, 0, NULL, 2, 10),
 (14195962, 115, 1037978, 10, 27, 9, 18, 0.5000, 8, 13, 0.6154, 4, 5, 0.8000, 0, 4, 4, 7, 0, 1, NULL, 0, 30),
@@ -15036,7 +15036,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14201667, 666476, 1037991, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14201668, 56677747, 1037991, 25, 23, 4, 9, 0.4444, 2, 4, 0.5000, 2, 4, 0.5000, 0, 1, 1, 2, 3, 0, NULL, 4, 12),
 (14201669, 3547289, 1037991, 25, 5, 0, 2, 0.0000, 0, 0, 0.0000, 1, 2, 0.5000, 0, 0, 0, 1, 0, 0, NULL, 0, 1);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14201670, 56677791, 1037991, 25, 5, 1, 1, 1.0000, 0, 0, 0.0000, 0, 0, 0.0000, 1, 1, 2, 0, 1, 0, NULL, 2, 2),
 (14201671, 56783340, 1037991, 25, 9, 0, 2, 0.0000, 0, 2, 0.0000, 0, 0, 0.0000, 0, 1, 1, 0, 0, 0, NULL, 3, 0),
 (14201672, 56677829, 1037991, 25, 4, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 2, 0, 0, NULL, 0, 0),
@@ -15503,7 +15503,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14212909, 56783340, 1038005, 25, 32, 9, 15, 0.6000, 3, 6, 0.5000, 4, 4, 1.0000, 5, 4, 9, 0, 1, 1, NULL, 3, 25),
 (14212910, 666923, 1038005, 25, 26, 2, 5, 0.4000, 2, 4, 0.5000, 0, 0, 0.0000, 1, 3, 4, 4, 2, 2, NULL, 3, 6),
 (14212911, 17896120, 1038005, 25, 2, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 1, 1, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14212912, 38017711, 1038005, 25, 22, 6, 8, 0.7500, 1, 2, 0.5000, 4, 5, 0.8000, 2, 4, 6, 1, 0, 0, NULL, 1, 17),
 (14212913, 22, 1038005, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14212914, 47957121, 1038005, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -15971,7 +15971,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14221261, 38017693, 1038019, 27, 1, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14221262, 38017730, 1038019, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14221263, 17895854, 1038019, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14221264, 56677865, 1038019, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14221265, 56677817, 1038019, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14221267, 180, 1038019, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -16439,7 +16439,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14230903, 3547267, 1038032, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14230904, 44477024, 1038032, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14230905, 17896055, 1038032, 28, 36, 8, 20, 0.4000, 1, 5, 0.2000, 5, 5, 1.0000, 2, 7, 9, 2, 2, 1, NULL, 4, 22);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14230906, 416, 1038032, 28, 40, 14, 24, 0.5833, 2, 2, 1.0000, 5, 8, 0.6250, 1, 4, 5, 4, 0, 0, NULL, 5, 35),
 (14230907, 373, 1038032, 28, 35, 2, 4, 0.5000, 0, 0, 0.0000, 0, 0, 0.0000, 2, 12, 14, 5, 1, 3, NULL, 4, 4),
 (14230908, 3089, 1038032, 28, 39, 8, 16, 0.5000, 6, 9, 0.6667, 2, 2, 1.0000, 0, 1, 1, 4, 4, 1, NULL, 3, 24),
@@ -16907,7 +16907,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14238965, 56677852, 1038046, 17, 5, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 1, 1, 0, 0, 0, NULL, 1, 0),
 (14238966, 56677854, 1038046, 17, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14238967, 284, 1038046, 17, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14238968, 368, 1038046, 17, 12, 1, 4, 0.2500, 0, 2, 0.0000, 3, 3, 1.0000, 1, 0, 1, 2, 1, 0, NULL, 1, 5),
 (14238969, 377, 1038046, 17, 18, 4, 12, 0.3333, 0, 4, 0.0000, 0, 0, 0.0000, 1, 4, 5, 0, 0, 1, NULL, 4, 8),
 (14238970, 666960, 1038046, 17, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -17375,7 +17375,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14247288, 480, 1038059, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14247289, 38017716, 1038059, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14247290, 56677853, 1038059, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14247291, 3547271, 1038059, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14247613, 3547259, 1038063, 18, 33, 5, 10, 0.5000, 1, 3, 0.3333, 0, 0, 0.0000, 0, 0, 0, 2, 2, 1, NULL, 3, 11),
 (14247614, 447, 1038063, 18, 36, 8, 19, 0.4211, 0, 4, 0.0000, 6, 7, 0.8571, 2, 4, 6, 2, 0, 0, NULL, 2, 22),
@@ -17843,7 +17843,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14256514, 175, 1038073, 21, 36, 11, 19, 0.5789, 2, 5, 0.4000, 10, 15, 0.6667, 1, 8, 9, 6, 0, 0, NULL, 5, 34),
 (14256515, 44, 1038073, 21, 1, 0, 1, 0.0000, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14256516, 3547272, 1038073, 21, 20, 1, 5, 0.2000, 1, 3, 0.3333, 0, 0, 0.0000, 0, 1, 1, 1, 0, 1, NULL, 1, 3);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14256517, 17896036, 1038073, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14256518, 4197029, 1038073, 21, 12, 3, 4, 0.7500, 0, 1, 0.0000, 0, 0, 0.0000, 0, 0, 0, 3, 1, 1, NULL, 0, 6),
 (14256519, 3547271, 1038073, 21, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -18311,7 +18311,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14265201, 3547294, 1038087, 23, 17, 4, 7, 0.5714, 0, 1, 0.0000, 1, 2, 0.5000, 1, 1, 2, 1, 1, 0, NULL, 4, 9),
 (14265202, 56677788, 1038087, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14265203, 17896025, 1038087, 23, 13, 0, 3, 0.0000, 0, 3, 0.0000, 0, 0, 0.0000, 1, 1, 2, 2, 0, 0, NULL, 1, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14265204, 200, 1038087, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14265205, 260, 1038087, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14265206, 38017732, 1038087, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -18779,7 +18779,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14273580, 74, 1038101, 16, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14273581, 38017734, 1038101, 16, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14273582, 3092, 1038101, 16, 16, 1, 2, 0.5000, 1, 2, 0.5000, 0, 0, 0.0000, 0, 3, 3, 0, 0, 0, NULL, 0, 3);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14273583, 285, 1038101, 16, 23, 4, 7, 0.5714, 1, 3, 0.3333, 6, 7, 0.8571, 3, 4, 7, 4, 1, 0, NULL, 2, 15),
 (14273584, 391, 1038101, 16, 29, 4, 6, 0.6667, 2, 3, 0.6667, 2, 2, 1.0000, 0, 2, 2, 2, 0, 1, NULL, 2, 12),
 (14273585, 397, 1038101, 16, 30, 4, 12, 0.3333, 3, 10, 0.3000, 3, 3, 1.0000, 0, 3, 3, 7, 1, 0, NULL, 6, 14),
@@ -19246,7 +19246,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14280784, 108, 1038113, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14280785, 145, 1038113, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14280786, 38017732, 1038113, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14280787, 56677788, 1038113, 23, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14281358, 89, 1038115, 5, 32, 3, 10, 0.3000, 2, 9, 0.2222, 4, 6, 0.6667, 2, 4, 6, 3, 1, 1, NULL, 3, 12),
 (14281359, 125, 1038115, 5, 43, 5, 19, 0.2632, 3, 6, 0.5000, 6, 6, 1.0000, 0, 4, 4, 4, 0, 0, NULL, 2, 19),
@@ -19715,7 +19715,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14290064, 22, 1038130, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14290065, 666476, 1038130, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14290066, 38017690, 1038130, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14290067, 476, 1038130, 25, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14290068, 3092, 1038127, 16, 32, 2, 5, 0.4000, 1, 3, 0.3333, 2, 2, 1.0000, 2, 6, 8, 1, 1, 0, NULL, 2, 7),
 (14290069, 38017696, 1038127, 16, 25, 1, 8, 0.1250, 1, 4, 0.2500, 1, 2, 0.5000, 0, 3, 3, 4, 0, 0, NULL, 2, 4),
@@ -20182,7 +20182,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14300903, 38017686, 1038142, 12, 22, 3, 9, 0.3333, 1, 3, 0.3333, 5, 5, 1.0000, 1, 2, 3, 2, 0, 0, NULL, 3, 12),
 (14300904, 304, 1038142, 12, 19, 2, 9, 0.2222, 0, 2, 0.0000, 1, 2, 0.5000, 1, 1, 2, 5, 0, 0, NULL, 0, 5),
 (14300905, 3547207, 1038142, 12, 13, 1, 5, 0.2000, 1, 4, 0.2500, 0, 0, 0.0000, 0, 1, 1, 1, 1, 0, NULL, 1, 3);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14300906, 56677861, 1038142, 12, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14300907, 3547243, 1038142, 12, 25, 4, 5, 0.8000, 3, 3, 1.0000, 0, 0, 0.0000, 0, 3, 3, 0, 1, 0, NULL, 2, 11),
 (14300908, 56677778, 1038142, 12, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -20650,7 +20650,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14308852, 17896035, 1038156, 12, 8, 0, 2, 0.0000, 0, 0, 0.0000, 1, 2, 0.5000, 1, 3, 4, 1, 0, 1, NULL, 4, 1),
 (14308854, 304, 1038156, 12, 19, 3, 6, 0.5000, 0, 0, 0.0000, 2, 2, 1.0000, 1, 4, 5, 5, 1, 0, NULL, 1, 8),
 (14308855, 3547207, 1038156, 12, 17, 3, 10, 0.3000, 0, 4, 0.0000, 1, 2, 0.5000, 1, 2, 3, 2, 0, 0, NULL, 2, 7);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14308856, 56677861, 1038156, 12, 25, 1, 7, 0.1429, 0, 5, 0.0000, 2, 2, 1.0000, 2, 1, 3, 3, 0, 0, NULL, 4, 4),
 (14308857, 3547243, 1038156, 12, 13, 1, 3, 0.3333, 0, 0, 0.0000, 0, 0, 0.0000, 1, 2, 3, 2, 1, 0, NULL, 1, 2),
 (14308858, 56677778, 1038156, 12, 12, 1, 5, 0.2000, 0, 0, 0.0000, 2, 2, 1.0000, 4, 2, 6, 0, 2, 0, NULL, 0, 4),
@@ -21118,7 +21118,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14318251, 17896089, 1038171, 20, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14318252, 3547242, 1038171, 30, 26, 5, 13, 0.3846, 0, 3, 0.0000, 5, 5, 1.0000, 2, 6, 8, 1, 0, 0, NULL, 6, 15),
 (14318253, 265, 1038171, 30, 39, 7, 16, 0.4375, 1, 5, 0.2000, 0, 0, 0.0000, 0, 6, 6, 5, 2, 1, NULL, 2, 15);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14318254, 24, 1038171, 30, 39, 10, 16, 0.6250, 0, 0, 0.0000, 0, 5, 0.0000, 6, 5, 11, 2, 2, 3, NULL, 3, 20),
 (14318255, 249, 1038171, 30, 37, 1, 6, 0.1667, 0, 3, 0.0000, 0, 0, 0.0000, 0, 4, 4, 15, 3, 0, NULL, 2, 2),
 (14318256, 666848, 1038171, 30, 34, 7, 19, 0.3684, 2, 9, 0.2222, 8, 8, 1.0000, 0, 4, 4, 2, 1, 0, NULL, 1, 24),
@@ -21585,7 +21585,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14326596, 487, 1038186, 30, 20, 2, 5, 0.4000, 0, 1, 0.0000, 2, 2, 1.0000, 1, 3, 4, 4, 3, 1, NULL, 0, 6),
 (14326597, 38017687, 1038186, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14326598, 666577, 1038186, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14326599, 17896106, 1038186, 30, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14326600, 38017699, 1038186, 27, 28, 8, 11, 0.7273, 1, 2, 0.5000, 6, 6, 1.0000, 2, 2, 4, 3, 1, 2, NULL, 4, 23),
 (14326601, 38017649, 1038186, 27, 23, 4, 7, 0.5714, 3, 6, 0.5000, 0, 0, 0.0000, 2, 5, 7, 0, 0, 2, NULL, 2, 11),
@@ -22052,7 +22052,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14334867, 197, 1038198, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14334868, 337, 1038198, 9, 16, 1, 1, 1.0000, 1, 1, 1.0000, 0, 0, 0.0000, 2, 2, 4, 1, 0, 1, NULL, 2, 3),
 (14334869, 56677792, 1038198, 9, 26, 9, 17, 0.5294, 0, 4, 0.0000, 5, 5, 1.0000, 0, 1, 1, 3, 1, 0, NULL, 1, 23);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14334870, 3547267, 1038198, 9, 28, 5, 9, 0.5556, 2, 6, 0.3333, 7, 8, 0.8750, 1, 7, 8, 2, 2, 5, NULL, 2, 19),
 (14334871, 56677826, 1038198, 9, 19, 0, 1, 0.0000, 0, 0, 0.0000, 0, 2, 0.0000, 1, 4, 5, 1, 0, 0, NULL, 2, 0),
 (14334872, 3547240, 1038198, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -22520,7 +22520,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14343497, 278, 1038216, 17, 35, 8, 21, 0.3810, 2, 9, 0.2222, 10, 11, 0.9091, 0, 1, 1, 4, 2, 0, NULL, 1, 28),
 (14343498, 2148, 1038216, 17, 1, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14343499, 105, 1038216, 17, 17, 2, 4, 0.5000, 2, 3, 0.6667, 0, 0, 0.0000, 0, 1, 1, 0, 2, 0, NULL, 1, 6);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14343500, 112, 1038216, 17, 18, 1, 2, 0.5000, 1, 2, 0.5000, 0, 0, 0.0000, 1, 2, 3, 1, 0, 0, NULL, 2, 3),
 (14343501, 38017733, 1038216, 17, 1, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14343502, 56677852, 1038216, 17, 1, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -22988,7 +22988,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14352411, 17896040, 1038226, 1, 37, 10, 12, 0.8333, 2, 3, 0.6667, 3, 4, 0.7500, 0, 3, 3, 3, 1, 1, NULL, 6, 25),
 (14352412, 83, 1038226, 1, 25, 4, 7, 0.5714, 0, 0, 0.0000, 2, 3, 0.6667, 3, 5, 8, 2, 0, 1, NULL, 2, 10),
 (14352413, 334, 1038226, 1, 37, 9, 18, 0.5000, 3, 7, 0.4286, 1, 2, 0.5000, 1, 4, 5, 7, 0, 0, NULL, 3, 22);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14352414, 490, 1038226, 1, 33, 9, 18, 0.5000, 2, 7, 0.2857, 10, 11, 0.9091, 0, 1, 1, 11, 3, 0, NULL, 3, 30),
 (14352415, 53, 1038226, 1, 27, 9, 22, 0.4091, 4, 9, 0.4444, 2, 2, 1.0000, 2, 2, 4, 2, 2, 0, NULL, 2, 24),
 (14352416, 3547297, 1038226, 1, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -23456,7 +23456,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14360599, 38017699, 1038241, 27, 31, 5, 9, 0.5556, 0, 1, 0.0000, 3, 4, 0.7500, 2, 2, 4, 2, 0, 1, NULL, 0, 13),
 (14360600, 56677822, 1038241, 27, 30, 9, 17, 0.5294, 3, 6, 0.5000, 2, 5, 0.4000, 0, 10, 10, 6, 2, 2, NULL, 3, 23),
 (14360601, 3547246, 1038241, 27, 36, 11, 17, 0.6471, 3, 6, 0.5000, 0, 0, 0.0000, 0, 4, 4, 5, 2, 0, NULL, 2, 25);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14360602, 3547274, 1038241, 27, 28, 5, 7, 0.7143, 2, 3, 0.6667, 0, 0, 0.0000, 3, 0, 3, 11, 0, 0, NULL, 3, 12),
 (14360603, 38017730, 1038241, 27, 18, 4, 5, 0.8000, 0, 0, 0.0000, 1, 2, 0.5000, 2, 2, 4, 1, 0, 1, NULL, 1, 9),
 (14360604, 38017692, 1038241, 27, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -23924,7 +23924,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14367788, 3547289, 1038254, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14367789, 666860, 1038254, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14367790, 1603383, 1038254, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14367791, 666971, 1038254, 14, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14367896, 17896067, 1038255, 15, 34, 5, 14, 0.3571, 5, 8, 0.6250, 1, 1, 1.0000, 2, 5, 7, 2, 2, 0, NULL, 2, 16),
 (14367897, 231, 1038255, 15, 32, 6, 18, 0.3333, 0, 4, 0.0000, 10, 12, 0.8333, 0, 3, 3, 2, 0, 0, NULL, 5, 22),
@@ -24392,7 +24392,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14377940, 17553994, 1038270, 26, 12, 1, 2, 0.5000, 0, 0, 0.0000, 1, 1, 1.0000, 0, 1, 1, 1, 0, 0, NULL, 1, 3),
 (14377941, 324, 1038270, 26, 14, 3, 8, 0.3750, 0, 4, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 2, 6),
 (14377942, 17895990, 1038270, 26, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14377943, 56677862, 1038270, 26, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14377944, 4197162, 1038270, 26, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14378083, 666541, 1038274, 21, 36, 3, 11, 0.2727, 1, 6, 0.1667, 0, 1, 0.0000, 0, 7, 7, 1, 1, 0, NULL, 2, 7),
@@ -24860,7 +24860,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14385679, 178, 1038282, 24, 28, 2, 5, 0.4000, 2, 5, 0.4000, 0, 0, 0.0000, 0, 3, 3, 1, 1, 0, NULL, 1, 6),
 (14385680, 666729, 1038282, 24, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14385681, 314, 1038282, 24, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14385682, 356, 1038282, 24, 15, 1, 3, 0.3333, 1, 1, 1.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 1, NULL, 0, 3),
 (14385683, 470, 1038282, 24, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14385684, 3547095, 1038282, 24, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -25328,7 +25328,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14394495, 666451, 1038297, 24, 15, 4, 7, 0.5714, 0, 2, 0.0000, 0, 0, 0.0000, 2, 5, 7, 0, 1, 0, NULL, 0, 8),
 (14394496, 147, 1038297, 24, 15, 1, 1, 1.0000, 0, 0, 0.0000, 3, 4, 0.7500, 0, 3, 3, 1, 0, 2, NULL, 2, 5),
 (14394497, 18678058, 1038297, 24, 9, 2, 3, 0.6667, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 1, 2, 1, NULL, 1, 4);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14394498, 178, 1038297, 24, 18, 3, 6, 0.5000, 1, 3, 0.3333, 0, 0, 0.0000, 0, 0, 0, 0, 1, 0, NULL, 1, 7),
 (14394499, 666729, 1038297, 24, 8, 0, 2, 0.0000, 0, 2, 0.0000, 0, 0, 0.0000, 0, 1, 1, 2, 0, 0, NULL, 0, 0),
 (14394500, 314, 1038297, 24, 8, 2, 4, 0.5000, 0, 0, 0.0000, 0, 0, 0.0000, 1, 2, 3, 1, 1, 0, NULL, 0, 4),
@@ -25796,7 +25796,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14402578, 17895966, 1038311, 11, 33, 12, 21, 0.5710, 3, 5, 0.6000, 3, 4, 0.7500, 0, 3, 3, 1, 2, 0, NULL, 1, 30),
 (14402579, 56677825, 1038311, 11, 34, 6, 12, 0.5000, 0, 2, 0.0000, 1, 4, 0.2500, 7, 6, 13, 6, 0, 3, NULL, 3, 13),
 (14402580, 75, 1038311, 11, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14402581, 188, 1038311, 11, 11, 1, 3, 0.3333, 0, 1, 0.0000, 1, 1, 1.0000, 0, 2, 2, 3, 0, 0, NULL, 2, 3),
 (14402582, 3547281, 1038311, 11, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14402583, 213, 1038311, 11, 20, 3, 3, 1.0000, 2, 2, 1.0000, 0, 0, 0.0000, 0, 2, 2, 5, 0, 0, NULL, 1, 8),
@@ -26265,7 +26265,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14410436, 38017649, 1038326, 27, 21, 2, 4, 0.5000, 1, 3, 0.3333, 3, 3, 1.0000, 1, 4, 5, 2, 0, 0, NULL, 0, 8),
 (14410437, 38017699, 1038326, 27, 28, 4, 9, 0.4444, 1, 4, 0.2500, 0, 0, 0.0000, 0, 2, 2, 1, 0, 0, NULL, 1, 9),
 (14410438, 56677822, 1038326, 27, 23, 6, 12, 0.5000, 2, 4, 0.5000, 1, 1, 1.0000, 0, 1, 1, 2, 1, 3, NULL, 1, 15);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14410439, 3547246, 1038326, 27, 35, 11, 18, 0.6111, 3, 7, 0.4286, 5, 6, 0.8333, 1, 4, 5, 4, 0, 0, NULL, 0, 30),
 (14410440, 3547274, 1038326, 27, 23, 3, 8, 0.3750, 0, 2, 0.0000, 4, 4, 1.0000, 1, 0, 1, 6, 3, 0, NULL, 1, 10),
 (14410441, 38017692, 1038326, 27, 20, 1, 5, 0.2000, 0, 3, 0.0000, 0, 0, 0.0000, 0, 3, 3, 3, 1, 0, NULL, 3, 2),
@@ -26735,7 +26735,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14417735, 18677986, 1038339, 19, 17, 2, 3, 0.6670, 1, 2, 0.5000, 0, 0, NULL, 0, 1, 1, 0, 0, 0, NULL, 1, 5),
 (14417736, 340, 1038339, 19, 19, 2, 4, 0.5000, 0, 1, 0.0000, 0, 2, 0.0000, 2, 4, 6, 6, 0, 0, NULL, 2, 4),
 (14417738, 491, 1038339, 19, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14417739, 38017663, 1038339, 19, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14417740, 3547293, 1038339, 19, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14417741, 17896017, 1038339, 19, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -27203,7 +27203,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14425967, 3547247, 1038354, 6, 23, 2, 6, 0.3333, 2, 4, 0.5000, 2, 2, 1.0000, 3, 2, 5, 1, 0, 1, NULL, 2, 8),
 (14425969, 56677847, 1038354, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14425970, 38017662, 1038354, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14425971, 56677872, 1038354, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14425972, 444, 1038354, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14425973, 666940, 1038354, 6, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -27672,7 +27672,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14433180, 3547240, 1038368, 9, 23, 8, 12, 0.6670, 0, 0, NULL, 2, 3, 0.6670, 5, 4, 9, 2, 0, 1, NULL, 4, 18),
 (14433181, 56677729, 1038368, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14433182, 17895858, 1038368, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14433183, 42097199, 1038368, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14433184, 3547267, 1038368, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14433185, 44477024, 1038368, 9, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -28141,7 +28141,7 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 (14440709, 139, 1038168, 29, 21, 2, 3, 0.6667, 2, 3, 0.6667, 2, 2, 1.0000, 1, 4, 5, 1, 2, 0, NULL, 2, 8),
 (14440710, 56677824, 1038168, 29, 16, 1, 1, 1.0000, 1, 1, 1.0000, 0, 0, 0.0000, 1, 2, 3, 0, 2, 0, NULL, 0, 3),
 (14440711, 666650, 1038168, 29, 5, 1, 2, 0.5000, 1, 1, 1.0000, 0, 0, 0.0000, 0, 0, 0, 1, 0, 0, NULL, 2, 3);
-INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
+INSERT INTO `final_stats` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga`, `fg_pct`, `fg3m`, `fg3a`, `fg3_pct`, `ftm`, `fta`, `ft_pct`, `oreb`, `dreb`, `reb`, `ast`, `stl`, `blk`, `turnover`, `pf`, `pts`) VALUES
 (14440712, 3547260, 1038168, 29, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14440713, 376, 1038168, 29, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
 (14440714, 666881, 1038168, 29, 0, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0.0000, 0, 0, 0, 0, 0, 0, NULL, 0, 0),
@@ -28202,9 +28202,9 @@ INSERT INTO `STATS` (`id`, `player_id`, `game_id`, `team_id`, `min`, `fgm`, `fga
 --
 
 --
--- Indices de la tabla `STATS`
+-- Indices de la tabla `final_stats`
 --
-ALTER TABLE `STATS`
+ALTER TABLE `final_stats`
   ADD PRIMARY KEY (`id`),
   ADD KEY `player_id` (`player_id`),
   ADD KEY `game_id` (`game_id`),
@@ -28215,12 +28215,12 @@ ALTER TABLE `STATS`
 --
 
 --
--- Filtros para la tabla `STATS`
+-- Filtros para la tabla `final_stats`
 --
-ALTER TABLE `STATS`
-  ADD CONSTRAINT `STATS_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `PLAYERS` (`id`),
-  ADD CONSTRAINT `STATS_ibfk_2` FOREIGN KEY (`game_id`) REFERENCES `GAMES` (`id`),
-  ADD CONSTRAINT `STATS_ibfk_3` FOREIGN KEY (`team_id`) REFERENCES `TEAMS` (`id`);
+ALTER TABLE `final_stats`
+  ADD CONSTRAINT `final_stats_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `PLAYERS` (`id`),
+  ADD CONSTRAINT `final_stats_ibfk_2` FOREIGN KEY (`game_id`) REFERENCES `GAMES` (`id`),
+  ADD CONSTRAINT `final_stats_ibfk_3` FOREIGN KEY (`team_id`) REFERENCES `TEAMS` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

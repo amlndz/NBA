@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PLAYERS`
+-- Estructura de tabla para la tabla `final_players`
 --
 
-CREATE TABLE `PLAYERS` (
+CREATE TABLE `final_players` (
   `id` int NOT NULL,
   `first_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `last_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -43,10 +43,10 @@ CREATE TABLE `PLAYERS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `PLAYERS`
+-- Volcado de datos para la tabla `final_players`
 --
 
-INSERT INTO `PLAYERS` (`id`, `first_name`, `last_name`, `position`, `height`, `weight`, `team_id`, `number`, `draft`, `draft_round`, `country`, `draft_number`) VALUES
+INSERT INTO `final_players` (`id`, `first_name`, `last_name`, `position`, `height`, `weight`, `team_id`, `number`, `draft`, `draft_round`, `country`, `draft_number`) VALUES
 (3, 'Steven', 'Adams', 'C', 6, 265, 11, 12, '2013', 1, 'New Zealand', 12),
 (4, 'Bam', 'Adebayo', 'C-F', 6, 255, 16, 13, '2017', 1, 'USA', 14),
 (8, 'Grayson', 'Allen', 'G', 6, 198, 24, 8, '2018', 1, 'USA', 21),
@@ -579,9 +579,9 @@ INSERT INTO `PLAYERS` (`id`, `first_name`, `last_name`, `position`, `height`, `w
 --
 
 --
--- Indices de la tabla `PLAYERS`
+-- Indices de la tabla `final_players`
 --
-ALTER TABLE `PLAYERS`
+ALTER TABLE `final_players`
   ADD PRIMARY KEY (`id`),
   ADD KEY `team_id` (`team_id`);
 
@@ -590,9 +590,9 @@ ALTER TABLE `PLAYERS`
 --
 
 --
--- AUTO_INCREMENT de la tabla `PLAYERS`
+-- AUTO_INCREMENT de la tabla `final_players`
 --
-ALTER TABLE `PLAYERS`
+ALTER TABLE `final_players`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=436846674;
 
 --
@@ -600,10 +600,10 @@ ALTER TABLE `PLAYERS`
 --
 
 --
--- Filtros para la tabla `PLAYERS`
+-- Filtros para la tabla `final_players`
 --
-ALTER TABLE `PLAYERS`
-  ADD CONSTRAINT `PLAYERS_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `TEAMS` (`id`);
+ALTER TABLE `final_players`
+  ADD CONSTRAINT `final_players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `TEAMS` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
