@@ -234,10 +234,10 @@
         <div class="section-title">
             <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Estadísticas</h4>
         </div>
-        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
-            <div id="barchart"></div>
-            <div id="linechart"></div>
-            <div id="piechart"></div>
+        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2 teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
+            <div class="graphs-teams" id="barchart"></div>
+            <div class="graphs-teams" id="linechart"></div>
+            <div class="graphs-teams" id="piechart"></div>
         </div>
     </div>
 
@@ -266,6 +266,7 @@
                 'backgroundColor': 'transparent', 
                 'colors': ['#DA9F5B', '#33211D'],
                 'pieSliceText': 'none' // No muestra texto en las rebanadas
+                
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

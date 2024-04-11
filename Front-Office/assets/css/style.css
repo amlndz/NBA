@@ -9759,3 +9759,11 @@ h6,
 .team-uniform{
   margin-right: 5rem;
 }
+
+.teams-stats-graphs-margin{
+  margin: 3rem;
+}
+
+.graphs-teams{
+  padding: 0px;
+}
