@@ -472,39 +472,55 @@
         }
     </script>
 
-    <div class="graphs-teams" id="piechart"></div>
+<div class="graphs-teams" id="piechart"></div>
+<div class="graphs-teams" id="piechartRebounds"></div>
 
-    <!-- Código JavaScript para dibujar el gráfico de tarta -->
-    <script type="text/javascript">
-        google.charts.setOnLoadCallback(drawPieChart);
+<!-- Código JavaScript para dibujar los gráficos de tarta -->
+<script type="text/javascript">
+    google.charts.setOnLoadCallback(drawPieCharts);
 
-        function drawPieChart() {
-            // Crear un array para almacenar los datos del gráfico
+    function drawPieCharts() {
+        // Gráfico de distribución de puntos
+        var dataPoints = google.visualization.arrayToDataTable([
+            ['Tipo', 'Puntos'],
+            ['Puntos de 2', <?php echo $avg_fgm * 2; ?>],
+            ['Puntos de 3', <?php echo $avg_fg3m * 3; ?>],
+            ['Tiros Libres', <?php echo $avg_ftm; ?>]
+        ]);
 
-            var data = google.visualization.arrayToDataTable([
-                ['Tipo', 'Puntos'],
-                ['Puntos de 2', <?php echo $avg_fgm * 2; ?>],
-                ['Puntos de 3', <?php echo $avg_fg3m * 3; ?>],
-                ['Tiros Libres', <?php echo $avg_ftm; ?>]
-            ]);
+        var optionsPoints = {
+            title: 'Distribución de Puntos',
+            width: 500,
+            height: 500,
+            legend: { position: 'bottom' },
+            colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B'],
+            pieSliceText: 'none' // No muestra texto en las rebanadas
+        };
 
-            // Opciones del gráfico
-            var options = {
-                title: 'Distribución de Puntos',
-                width: 500,
-                height: 500,
-                legend: { position: 'bottom' },
-                colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B'],
-                pieSliceText: 'none' // No muestra texto en las rebanadas
+        var chartPoints = new google.visualization.PieChart(document.getElementById('piechart'));
+        chartPoints.draw(dataPoints, optionsPoints);
 
-            };
+        // Gráfico de distribución de rebotes
+        var dataRebounds = google.visualization.arrayToDataTable([
+            ['Tipo', 'Rebotes'],
+            ['Ofensivos', <?php echo $avg_oreb; ?>],
+            ['Defensivos', <?php echo $avg_dreb; ?>],
+        ]);
 
-            // Crear el gráfico de tarta
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
-        }
+        var optionsRebounds = {
+            title: 'Distribución de Rebotes',
+            width: 500,
+            height: 500,
+            legend: { position: 'bottom' },
+            colors: ['#6D9B5B', '#5B9BD5', '#DA9F5B'],
+            pieSliceText: 'none' // No muestra texto en las rebanadas
+        };
 
-    </script>
+        var chartRebounds = new google.visualization.PieChart(document.getElementById('piechartRebounds'));
+        chartRebounds.draw(dataRebounds, optionsRebounds);
+    }
+</script>
+
 
     <!-- Content End -->
 
