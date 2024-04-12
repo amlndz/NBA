@@ -103,10 +103,16 @@
                     <div class="col-lg-6">
                         <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
                             <h1 class="text-white mb-4 mt-5">Log In</h1>
+                            <?php
+                                if (isset($_SESSION['error_message'])) {
+                                    echo "<h6 id='error-form-msg' class='text-uppercase teams-stats-graphs-2' style='letter-spacing: 5px;'>" . $_SESSION['error_message'] . "</h6>";
+                                    unset($_SESSION['error_message']);
+                                }
+                            ?>
                             <form class="mb-5" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <div class="form-group" >
                                     <input type="text" name="username" class="form-control  border-primary p-4" placeholder="Name"
-                                        required="required" />
+                                        required="required" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : '';?>" />
                                 </div> 
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control  border-primary p-4" placeholder="Password"

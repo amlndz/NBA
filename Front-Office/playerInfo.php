@@ -2,6 +2,8 @@
 
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
+    checkSessionTimeout();
+
     if(!$usuario_autenticado){
         $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         header("Location: login.php");

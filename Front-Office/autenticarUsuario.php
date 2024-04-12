@@ -20,6 +20,8 @@
         
         // Verificar si se ha enviado el formulario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            
             // Recoger los datos del formulario
             $nombre_completo = $_POST["full_name"];
             $nombre_usuario = $_POST["username"];
@@ -27,7 +29,10 @@
             $fecha_nacimiento = $_POST["birthday"];
             $contrasena = $_POST["password"];
             $confirmar_contrasena = $_POST["confirm_password"];
-            
+            $_SESSION['full_name'] = $nombre_completo;
+            $_SESSION['username'] = $nombre_usuario;
+            $_SESSION['email'] = $email;
+            $_SESSION['birthday'] = $fecha_nacimiento;  
             // Conectar a la base de datos
             $conn = connect();
             
@@ -101,7 +106,7 @@
             // Recoger los datos del formulario
             $nombre_usuario = $_POST["username"];
             $contrasena = $_POST["password"];
-            
+            $_SESSION['username'] = $nombre_usuario;
             // Conectar a la base de datos
             $conn = connect();
             
@@ -133,13 +138,35 @@
                         exit; // Asegúrate de que el script se detenga después de la redirección
                     }
                 } else {
-                    echo "<script type='text/javascript'>alert('Contraseña incorrecta.');</script>";
+                    mostrarMensaje("[!] - Nombre o usuario incorrecto.");
+                    return;
                 }
             } else {
-                echo "<script type='text/javascript'>alert('Nombre de usuario no encontrado.');</script>";
+                mostrarMensaje("[!] - Nombre o usuario incorrecto.");
             }
             
             // Cerrar la conexión
             $conn->close();
         }
+    }
+
+    function checkSessionTimeout() {
+        $inactive_timeout = 300; // 30 minutos
+    
+        if (isset($_SESSION['last_interaction_time'])) {
+            $elapsed_time = time() - $_SESSION['last_interaction_time'];
+            
+            if ($elapsed_time > $inactive_timeout) {
+                // Destruir la sesión y cerrarla
+                
+                session_unset();
+                session_destroy();
+                session_start(); // Iniciar una nueva sesión
+                header("Location: login.php");
+                exit; // Asegurarse de que el script se detenga después de la redirección
+            }
+        }
+    
+        // Actualizar el tiempo de última interacción en la sesión
+        $_SESSION['last_interaction_time'] = time();
     }

@@ -1,7 +1,6 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         registrar();
     }
@@ -107,28 +106,26 @@
                                     if (isset($_SESSION['error_message'])) {
                                         echo "<h6 id='error-form-msg' class='text-uppercase teams-stats-graphs-2' style='letter-spacing: 5px;'>" . $_SESSION['error_message'] . "</h6>";
                                         unset($_SESSION['error_message']);
-                                    } else {
-                                        echo "<h6 id='error-form-msg' class='text-uppercase teams-stats-graphs-2' style='letter-spacing: 5px;'></h6>";
                                     }
                                 ?>
                                 <form class="mb-5" method="POST">
 
                                     <div class="form-group">
                                         <!-- Campo de nombre completo -->
-                                        <input type="text" name="full_name" class="form-control border-primary p-4" placeholder="Full Name" required="required" value="<?php echo isset($_POST['full_name']) ? $_POST['full_name'] : ''; ?>" />
+                                        <input type="text" name="full_name" class="form-control border-primary p-4" placeholder="Full Name" required="required" value="<?php echo isset($_SESSION['full_name']) ? $_SESSION['full_name'] : ''; ?>" />
                                     </div> 
                                     <div class="form-group">
                                         <!-- Campo de nombre de usuario -->
-                                        <input type="text" name="username" class="form-control border-primary p-4" placeholder="Username" required="required" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>" />
+                                        <input type="text" name="username" class="form-control border-primary p-4" placeholder="Username" required="required" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" />
                                     </div> 
                                     <div class="form-group">
                                         <!-- Campo de correo electrónico -->
-                                        <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email" required="required" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" />
+                                        <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email" required="required" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" />
                                     </div>
                                     <div class="form-group">
                                         <!-- Campo de fecha de nacimiento -->
                                         <div class="date" id="date" data-target-input="nearest">
-                                            <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday - mm/dd/yyyy" data-target="#date" data-toggle="datetimepicker" value="<?php echo isset($_POST['birthday']) ? $_POST['birthday'] : ''; ?>" />
+                                            <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday - mm/dd/yyyy" data-target="#date" data-toggle="datetimepicker" value="<?php echo isset($_SESSION['birthday']) ? $_SESSION['birthday'] : ''; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group">

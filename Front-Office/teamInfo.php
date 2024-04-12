@@ -1,5 +1,6 @@
 <?php
     require "autenticarUsuario.php";
+    checkSessionTimeout();
     $usuario_autenticado = autenticar();
     if(!$usuario_autenticado){
         $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
