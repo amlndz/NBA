@@ -4,26 +4,7 @@
     // Iniciar sesión    
     // Verificar si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Verificar las credenciales
-        if ($_POST["username"] === "user" && $_POST["password"] === "1234") {
-            // Si las credenciales son válidas, establecer la variable de sesión
-            $_SESSION['usuario_autenticado'] = true;
-    
-            // Redirigir al usuario a la página anterior
-            if (isset($_SESSION['prev_page'])) {
-                $prevPage = $_SESSION['prev_page'];
-                unset($_SESSION['prev_page']); // Limpiar la variable de sesión
-                header("Location: $prevPage");
-                exit; // Asegúrate de que el script se detenga después de la redirección
-            } else {
-                // Si no hay una página anterior guardada, redirigir a una página predeterminada
-                header("Location: index.php");
-                exit; // Asegúrate de que el script se detenga después de la redirección
-            }
-        } else {
-            // Si las credenciales no son válidas, mostrar un mensaje de error
-            $error = "Usuario o contraseña incorrectos";
-        }
+        iniciarSesion();
     }
     
 ?>

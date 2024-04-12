@@ -1,20 +1,9 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
-    // Verificar si se ha enviado el formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Verificar las credenciales
-        if ($_POST["usuario"] === "user" && $_POST["contrasena"] === "1234") {
-            // Si las credenciales son válidas, establecer la variable de sesión
-            $_SESSION['usuario_autenticado'] = true;
 
-            // Redirigir al usuario a otra página después del inicio de sesión
-            header("Location: index.php");
-            exit; // Asegúrate de que el script se detenga después de la redirección
-        } else {
-            // Si las credenciales no son válidas, mostrar un mensaje de error
-            $error = "Usuario o contraseña incorrectos";
-        }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        registrar();
     }
 ?>
 
@@ -22,7 +11,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>NBA</title>
     <link rel="icon" href="./assets/img/nba.avif">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
@@ -51,7 +39,7 @@
             <a href="index.php" class="navbar-brand px-lg-1 m-0">
                 <img src="./assets/img/logoNBA.png" id="logo-menu-image" alt="nba" width=20% height=20%><!-- Logo -->
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-tarPOST="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
@@ -114,30 +102,34 @@
                     <div class="col-lg-6">
                         <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
                             <h1 class="text-white mb-4 mt-5">Log In</h1>
-                            <form class="mb-5">
+                            <form class="mb-5" method="POST">
+                                <div id="error-message" class="alert alert-danger" style="display: <?php echo isset($error) ? 'block' : 'none'; ?>;">
+                                    Las contraseñas no coinciden.
+                                </div>
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control border-primary p-4" placeholder="Full-Name"
+                                    <input type="text" name="full_name" class="form-control border-primary p-4" placeholder="Full-Name"
                                         required="required" />
                                 </div> 
                                 <div class="form-group">
-                                    <input type="text" class="form-control border-primary p-4" placeholder="Username"
+                                    <input type="text" name="username" class="form-control border-primary p-4" placeholder="Username"
                                         required="required" />
                                 </div> 
                                 <div class="form-group">
-                                    <input type="email" class="form-control border-primary p-4" placeholder="Email"
+                                    <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email"
                                         required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <div class="date" id="date" data-target-input="nearest">
-                                        <input type="text" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday -  mm/dd/yyyy" data-target="#date" data-toggle="datetimepicker"/>
+                                    <div class="date" id="date" data-tarPOST-input="nearest">
+                                        <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday -  mm/dd/yyyy" data-tarPOST="#date" data-toggle="datetimepicker"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control border-primary p-4" placeholder="Password"
+                                    <input type="password" name="password" class="form-control border-primary p-4" placeholder="Password"
                                         required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control border-primary p-4" placeholder="Confirm the Password"
+                                    <input type="password" name="confirm_password" class="form-control border-primary p-4" placeholder="Confirm the Password"
                                         required="required" />
                                 </div>                          
                                 <div>
