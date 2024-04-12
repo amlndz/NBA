@@ -76,28 +76,12 @@
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="assets/img/carousel-1.webp" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h1 class="text-primary font-weight-medium m-0" justify="center">Conoce a tus héroes, sigue a tus equipos <br>y vive la pasión de la NBA</h1>
-                        <h2 class="text-white m-0"><br>Temporada 2023/24</h2>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="assets/img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 class="text-primary font-weight-medium m-0" justify="center">Descubre la magia de la NBA, sumérgete en las <br> estadísticas y vive cada momento en la cancha
-                        <h3 class="text-white m-0"><br>Temporada 2023/24</h3>
-                    </div>
-                </div>
+            <img class="w-100" src="assets/img/carousel-1.webp" alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <h1 class="text-primary font-weight-medium m-0" justify="center">Conoce a tus héroes, sigue a tus equipos <br>y vive la pasión de la NBA</h1>
+                <h2 class="text-white m-0"><br>Temporada 2023/24</h2>
             </div>
-            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
+                
         </div>
     </div>
     <!-- Carousel End -->

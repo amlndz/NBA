@@ -50,7 +50,20 @@
             $numeroDraft = $player_row['draft_number'];
 
             $team_url = "teamInfo.php?id=".urlencode($team_id);
+            // Obtener los jugadores del equipo
+            $sql_players = "SELECT * FROM final_players WHERE team_id = ? and id != ?";
+            $stmt_players = $conn->prepare($sql_players);
 
+            if ($stmt_players === false) {
+                die("Error al preparar la consulta: " . $conn->error);
+            }
+
+            $stmt_players->bind_param("ii", $team_id, $id);
+            $stmt_players->execute();
+
+            // Obtener el resultado de la consulta
+            $result_players = $stmt_players->get_result();
+            $players = $result_players->fetch_all(MYSQLI_ASSOC);
             $average_sql = "SELECT a.*
                         FROM final_averages a 
                         WHERE a.player_id = ?
@@ -162,20 +175,7 @@
                 $avg_points_home = count($points_home) > 0 ? array_sum($points_home) / count($points_home) : 0;
                 $avg_points_away = count($points_away) > 0 ? array_sum($points_away) / count($points_away) : 0;
 
-                // Obtener los jugadores del equipo
-                $sql_players = "SELECT * FROM final_players WHERE team_id = ? and id != ?";
-                $stmt_players = $conn->prepare($sql_players);
-
-                if ($stmt_players === false) {
-                    die("Error al preparar la consulta: " . $conn->error);
-                }
-
-                $stmt_players->bind_param("ii", $team_id, $id);
-                $stmt_players->execute();
-
-                // Obtener el resultado de la consulta
-                $result_players = $stmt_players->get_result();
-                $players = $result_players->fetch_all(MYSQLI_ASSOC);
+                
             }
         }else {
             header("Location: players.php");
