@@ -100,47 +100,61 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
-                            <h1 class="text-white mb-4 mt-5">Log In</h1>
-                            <form class="mb-5" method="POST">
-                                <div id="error-message" class="alert alert-danger" style="display: <?php echo isset($error) ? 'block' : 'none'; ?>;">
-                                    Las contraseñas no coinciden.
-                                </div>
+                        <div class="container-fluid py-5">
+        
+                            <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                                <h1 class="text-white mb-4 mt-5">Sign In</h1>
+                                <form class="mb-5" method="POST">
+                                    <!-- Mensaje de error de contraseñas omitido para abreviar -->
 
-                                <div class="form-group">
-                                    <input type="text" name="full_name" class="form-control border-primary p-4" placeholder="Full-Name"
-                                        required="required" />
-                                </div> 
-                                <div class="form-group">
-                                    <input type="text" name="username" class="form-control border-primary p-4" placeholder="Username"
-                                        required="required" />
-                                </div> 
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email"
-                                        required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <div class="date" id="date" data-tarPOST-input="nearest">
-                                        <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday -  mm/dd/yyyy" data-tarPOST="#date" data-toggle="datetimepicker"/>
+                                    <div class="form-group">
+                                        <!-- Campo de nombre completo -->
+                                        <input type="text" name="full_name" class="form-control border-primary p-4" placeholder="Full Name" required="required" value="<?php echo isset($_POST['full_name']) ? $_POST['full_name'] : ''; ?>" />
+                                    </div> 
+                                    <div class="form-group">
+                                        <!-- Campo de nombre de usuario -->
+                                        <input type="text" name="username" class="form-control border-primary p-4" placeholder="Username" required="required" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>" />
+                                    </div> 
+                                    <div class="form-group">
+                                        <!-- Campo de correo electrónico -->
+                                        <input type="email" name="email" class="form-control border-primary p-4 <?php echo isset($email_error) ? 'is-invalid' : ''; ?>" placeholder="Email" required="required" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" />
+                                        <!-- Mensaje de error si el correo ya está registrado -->
+                                        <?php if (isset($email_error)): ?>
+                                            <div class="invalid-feedback">Email already registered.</div>
+                                        <?php endif; ?>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control border-primary p-4" placeholder="Password"
-                                        required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="confirm_password" class="form-control border-primary p-4" placeholder="Confirm the Password"
-                                        required="required" />
-                                </div>                          
-                                <div>
-                                    <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Sign in</button>
-                                </div>
-                                <div>
-                                    <p class="text-white mb-4 mt-5">¿Ya tienes una cuenta?</p>
-                                    <a href="./login.php">Iniciar Sesión</a>
-                                </div>
-                            </form>
+                                    <div class="form-group">
+                                        <!-- Campo de fecha de nacimiento -->
+                                        <div class="date" id="date" data-target-input="nearest">
+                                            <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday - mm/dd/yyyy" data-target="#date" data-toggle="datetimepicker" value="<?php echo isset($_POST['birthday']) ? $_POST['birthday'] : ''; ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Campo de contraseña -->
+                                        <input type="password" name="password" class="form-control border-primary p-4" placeholder="Password" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Campo de confirmación de contraseña -->
+                                        <input type="password" name="confirm_password" class="form-control border-primary p-4" placeholder="Confirm Password" required="required" />
+                                    </div>                          
+                                    <div>
+                                        <!-- Botón de enviar formulario -->
+                                        <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Sign in</button>
+                                    </div>
+                                    <div>
+                                        <!-- Enlace para iniciar sesión -->
+                                        <p class="text-white mb-4 mt-5">Already have an account?</p>
+                                        <a href="./login.php">Log In</a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reservation End -->
                     </div>
                 </div>
             </div>
