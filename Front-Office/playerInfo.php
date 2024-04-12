@@ -402,8 +402,10 @@
                 <div class="graphs-teams" id="linechart"></div>
             </div>
             <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
-                <div class="graphs-teams" id="piechart"></div>
                 <div class="graphs-teams" id="columnchart"></div>
+            </div>
+            <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
+                <div class="graphs-teams" id="piechart"></div>
                 <div class="graphs-teams" id="piechartRebounds"></div>
             </div>
         </div>
@@ -421,33 +423,33 @@
 
             // Función para dibujar el gráfico de línea
             function drawLineChart() {
-            var gameDates = <?php echo json_encode($game_dates); ?>;
-            var points = <?php echo json_encode($points); ?>;
-            var assists = <?php echo json_encode($assists); ?>;
-            var rebounds = <?php echo json_encode($rebounds); ?>;
+                var gameDates = <?php echo json_encode($game_dates); ?>;
+                var points = <?php echo json_encode($points); ?>;
+                var assists = <?php echo json_encode($assists); ?>;
+                var rebounds = <?php echo json_encode($rebounds); ?>;
 
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha del Partido');
-            data.addColumn('number', 'Puntos Anotados');
-            data.addColumn('number', 'Asistencias');
-            data.addColumn('number', 'Rebotes');
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Fecha del Partido');
+                data.addColumn('number', 'Puntos Anotados');
+                data.addColumn('number', 'Asistencias');
+                data.addColumn('number', 'Rebotes');
 
-            for (var i = 0; i < gameDates.length; i++) {
-                data.addRow([gameDates[i], points[i], assists[i], rebounds[i]]);
+                for (var i = 0; i < gameDates.length; i++) {
+                    data.addRow([gameDates[i], points[i], assists[i], rebounds[i]]);
+                }
+
+                var options = {
+                    title: 'Puntos, Asistencias y Rebotes por partido',
+                    width: 1200,
+                    height: 500,
+                    backgroundColor: 'transparent', 
+                    legend: { position: 'bottom' }, // Coloca la leyenda en la parte inferior
+                    colors: ['#DA9F5B', '#33211D', '#1E824C']
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+                chart.draw(data, options);
             }
-
-            var options = {
-                title: 'Puntos, Asistencias y Rebotes por partido',
-                width: 1200,
-                height: 500,
-                backgroundColor: 'transparent', 
-                legend: { position: 'bottom' }, // Coloca la leyenda en la parte inferior
-                colors: ['#DA9F5B', '#33211D', '#1E824C']
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('linechart'));
-            chart.draw(data, options);
-        }
 
 
             // Función para dibujar el gráfico de columnas
