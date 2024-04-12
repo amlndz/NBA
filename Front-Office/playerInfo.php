@@ -213,10 +213,16 @@
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Altura:</h5> <!-- Agrega clase para margen a la derecha -->
                                 <?php 
-                                    // Convertir la altura de pies a centímetros
-                                    $altura_cm = $altura * 30.48;
-                                    echo round($altura_cm, 2) . " cm"; // Redondea el resultado y muestra "cm"
-                                ?>
+                                    // Dividir la altura en pies y pulgadas
+                                    list($pies, $pulgadas) = explode('.', $altura);
+
+                                    $altura_total_pulgadas = $pies * 12 + $pulgadas;
+
+                                    $altura_cm = $altura_total_pulgadas * 2.54;
+
+                                    echo round($altura_cm, 2) . " cm"; 
+                                    ?>
+                                    
                             </div>
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Peso:</h5> <!-- Agrega clase para margen a la derecha -->
@@ -258,17 +264,16 @@
                     <div class="col-md-12">
                         <table class="styled-table">
                             <tr>
-                                <th>MINS</th>
-                                <th>GMS</th>
-                                <th>PTS</th>
-                                <th>FGM</th>
-                                <th>FGA</th>
-                                <th>FG%</th>
-                                <th>FG3M</th>
-                                <th>FG3A</th>
-                                <th>FG3%</th>
-                                <th>FTM</th>
-
+                                <th title="minutos/partido">MINS</th>
+                                <th title="partidos jugados">GMS</th>
+                                <th title="puntos/partido">PTS</th>
+                                <th title="tiros de campo anotados">FGM</th>
+                                <th title="tiros de campo intentados">FGA</th>
+                                <th title="porcentaje de tiros de campo">FG%</th>
+                                <th title="tiros de tres puntos anotados">FG3M</th>
+                                <th title="tiros de tres puntos intentados">FG3A</th>
+                                <th title="porcentaje de tiros de tres puntos">FG3%</th>
+                                <th title="tiros libres anotados">FTM</th>
                             </tr>
                             <tr>
                                 <td><?php echo $avg_min; ?></td>
@@ -291,16 +296,16 @@
                     <div class="col-md-12">
                         <table class="styled-table">
                             <tr>
-                                <th>OREB</th>
-                                <th>DREB</th>
-                                <th>REB</th>
-                                <th>AST</th>
-                                <th>STL</th>
-                                <th>BLK</th>
-                                <th>TRNOVER</th>
-                                <th>PF</th>
-                                <th>FTA</th>
-                                <th>FT%</th>
+                                <th title="rebotes ofensivos">OREB</th>
+                                <th title="rebotes defensivos">DREB</th>
+                                <th title="rebotes totales">REB</th>
+                                <th title="asistencias">AST</th>
+                                <th title="robos">STL</th>
+                                <th title="bloqueos">BLK</th>
+                                <th title="pérdidas de balón">TRNOVER</th>
+                                <th title="faltas personales">PF</th>
+                                <th title="tiros libres intentados">FTA</th>
+                                <th title="porcentaje de tiros libres">FT%</th>
                             </tr>
                             <tr>
                                 <td><?php echo $avg_oreb; ?></td>
