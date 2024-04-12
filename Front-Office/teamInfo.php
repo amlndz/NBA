@@ -230,11 +230,11 @@
     </div>
     
     <!-- Graficas con estadisticas de los equipos -->
-    <div class="container teams-stats-graphs">
+    <div class="container">
         <div class="section-title">
             <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Estadísticas</h4>
         </div>
-        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2 teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
+        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2 "> <!-- Añade flexbox para centrar -->
             <div class="graphs-teams" id="barchart"></div>
             <div class="graphs-teams" id="linechart"></div>
             <div class="graphs-teams" id="piechart"></div>

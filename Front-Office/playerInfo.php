@@ -394,7 +394,7 @@
                 </div>
             </div>
         </div>
-        <div class="container teams-stats-graphs player-spaces-diff-2">
+        <div class="container player-spaces-diff-2">
             <div class="section-title">
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Estadísticas</h4>
             </div>
