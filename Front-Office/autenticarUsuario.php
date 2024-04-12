@@ -151,7 +151,7 @@
     }
 
     function checkSessionTimeout() {
-        $inactive_timeout = 300; // 30 minutos
+        $inactive_timeout = 300; // 5minutos
     
         if (isset($_SESSION['last_interaction_time'])) {
             $elapsed_time = time() - $_SESSION['last_interaction_time'];

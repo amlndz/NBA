@@ -161,6 +161,21 @@
                 // Calcular la media de puntos anotados como local y como visitante
                 $avg_points_home = count($points_home) > 0 ? array_sum($points_home) / count($points_home) : 0;
                 $avg_points_away = count($points_away) > 0 ? array_sum($points_away) / count($points_away) : 0;
+
+                // Obtener los jugadores del equipo
+                $sql_players = "SELECT * FROM final_players WHERE team_id = ? and id != ?";
+                $stmt_players = $conn->prepare($sql_players);
+
+                if ($stmt_players === false) {
+                    die("Error al preparar la consulta: " . $conn->error);
+                }
+
+                $stmt_players->bind_param("ii", $team_id, $id);
+                $stmt_players->execute();
+
+                // Obtener el resultado de la consulta
+                $result_players = $stmt_players->get_result();
+                $players = $result_players->fetch_all(MYSQLI_ASSOC);
             }
         }else {
             header("Location: players.php");
@@ -522,7 +537,28 @@
         </script>
     <?php } ?>
 
-
+    <!-- Plantilla -->
+    <div class="container teams-stats-graphs teams-stats-graphs">
+        <div class="container-fluid py-8 d-flex justify-content-center teams-stats-graphs-2"> <!-- Añade flexbox para centrar -->
+            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo "<a href=$team_url>$equipoNombre</a>" ?></h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel teams-stats-graphs">
+            <?php foreach ($players as $player):
+                $playerId = $player['id'];
+                $url = "playerInfo.php?id=".urlencode($playerId); ?>
+                <div class=" owl-item testimonial-item">
+                    <a href="<?php echo $url ?>">
+                        <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$playerId.".avif' alt='imagen jugador'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'">
+                    </a>
+                    <div class="player-info">
+                        <a href="<?php echo $url ?>">
+                            <h4><?php echo $player['first_name'] . ' ' . $player['last_name']; ?></h4>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
     <!-- Content End -->
 
 
