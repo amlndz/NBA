@@ -90,6 +90,36 @@
                 $avg_gms = $average_row['games_played'];
                 // Cerrar la conexión
                 $average_stmt->close();
+
+
+                $stats_sql = "SELECT g.date AS game_date, s.pts 
+                            FROM final_stats s 
+                            JOIN final_games g ON s.game_id = g.id 
+                            WHERE s.player_id = ? 
+                            ORDER BY g.date";
+
+                $stats_stmt = $conn->prepare($stats_sql);
+
+                if ($stats_stmt === false) {
+                    die("Error al preparar la consulta de estadísticas de puntos: " . $conn->error);
+                }
+
+                $stats_stmt->bind_param("i", $id);
+                $stats_stmt->execute();
+                $stats_result = $stats_stmt->get_result();
+
+                // Inicializar arrays para almacenar los datos del progreso de puntos y las fechas de los partidos
+                $game_dates = array();
+                $points = array();
+
+                // Procesar los resultados de la consulta
+                while ($row = $stats_result->fetch_assoc()) {
+                    // Almacenar las fechas de los partidos y los puntos anotados en arrays separados
+                    $game_dates[] = date('Y-m-d', strtotime($row['game_date']));
+                    $points[] = $row['pts'];
+                }
+
+                $stats_stmt->close();
             }
         }else {
             header("Location: players.php");
@@ -282,10 +312,10 @@
                                 <td><?php echo $avg_pts; ?></td>
                                 <td><?php echo $avg_fgm; ?></td>
                                 <td><?php echo $avg_fga; ?></td>
-                                <td><?php echo $avg_fg_pct; ?></td>
+                                <td><?php echo $avg_fg_pct*100; ?></td>
                                 <td><?php echo $avg_fg3m; ?></td>
                                 <td><?php echo $avg_fg3a; ?></td>
-                                <td><?php echo $avg_fg3_pct; ?></td>
+                                <td><?php echo $avg_fg3_pct*100; ?></td>
                                 <td><?php echo $avg_ftm; ?></td>
                             </tr>
                         </table>
@@ -318,7 +348,7 @@
                                 <td><?php echo $avg_turnover; ?></td>
                                 <td><?php echo $avg_pf; ?></td>
                                 <td><?php echo $avg_fta; ?></td>
-                                <td><?php echo $avg_ft_pct; ?></td>
+                                <td><?php echo $avg_ft_pct*100; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -326,7 +356,43 @@
             </div>
         </div>
     <?php } ?>
+    <div class="graphs-teams" id="linechart"></div>
 
+    <!-- Código JavaScript para dibujar el gráfico lineal -->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawLineChart);
+
+        function drawLineChart() {
+            // Obtener los datos de las fechas de los partidos y los puntos anotados del PHP y convertirlos a arrays de JavaScript
+            var gameDates = <?php echo json_encode($game_dates); ?>;
+            var points = <?php echo json_encode($points); ?>;
+
+            // Crear un array para almacenar los datos del gráfico
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha del Partido');
+            data.addColumn('number', 'Puntos Anotados');
+
+            // Agregar los datos de las fechas de los partidos y los puntos al array de datos del gráfico
+            for (var i = 0; i < gameDates.length; i++) {
+                data.addRow([gameDates[i], points[i]]);
+            }
+
+            // Opciones del gráfico
+            var options = {
+                title: 'Puntos/Partido',
+                width: 800,
+                height: 400,
+                legend: { position: 'none' },
+                'backgroundColor': 'transparent', 
+                'colors': ['#DA9F5B']
+            };
+
+            // Crear el gráfico lineal
+            var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+            chart.draw(data, options);
+        }
+    </script>
 
 
 
