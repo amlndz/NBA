@@ -394,132 +394,129 @@
                 </div>
             </div>
         </div>
-    <?php } ?>
-    <div class="graphs-teams" id="linechart"></div>
+        <div class="container teams-stats-graphs player-spaces-diff-2">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Estadísticas</h4>
+            </div>
+            <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
+                <div class="graphs-teams" id="linechart"></div>
+            </div>
+            <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff teams-stats-graphs-margin"> <!-- Añade flexbox para centrar -->
+                <div class="graphs-teams" id="piechart"></div>
+                <div class="graphs-teams" id="columnchart"></div>
+                <div class="graphs-teams" id="piechartRebounds"></div>
+            </div>
+        </div>
 
-    <!-- Código JavaScript para dibujar el gráfico lineal -->
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawLineChart);
+        <!-- Código JavaScript para cargar las bibliotecas de Google Charts -->
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawCharts);
 
-        function drawLineChart() {
-            // Obtener los datos de las fechas de los partidos, los puntos anotados, las asistencias y los rebotes del PHP y convertirlos a arrays de JavaScript
+            function drawCharts() {
+                drawLineChart();
+                drawColumnChart();
+                drawPieCharts();
+            }
+
+            // Función para dibujar el gráfico de línea
+            function drawLineChart() {
             var gameDates = <?php echo json_encode($game_dates); ?>;
             var points = <?php echo json_encode($points); ?>;
             var assists = <?php echo json_encode($assists); ?>;
             var rebounds = <?php echo json_encode($rebounds); ?>;
 
-            // Crear un array para almacenar los datos del gráfico
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Fecha del Partido');
             data.addColumn('number', 'Puntos Anotados');
             data.addColumn('number', 'Asistencias');
             data.addColumn('number', 'Rebotes');
 
-            // Agregar los datos de las fechas de los partidos, los puntos anotados, las asistencias y los rebotes al array de datos del gráfico
             for (var i = 0; i < gameDates.length; i++) {
                 data.addRow([gameDates[i], points[i], assists[i], rebounds[i]]);
             }
 
-            // Opciones del gráfico
             var options = {
-                title: 'Puntos, Asistencias y Rebotes por Fecha de Partido',
-                width: 800,
-                height: 400,
-                legend: { position: 'bottom' },
-                colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B']
+                title: 'Puntos, Asistencias y Rebotes por partido',
+                width: 1200,
+                height: 500,
+                backgroundColor: 'transparent', 
+                legend: { position: 'bottom' }, // Coloca la leyenda en la parte inferior
+                colors: ['#DA9F5B', '#33211D', '#1E824C']
             };
 
-            // Crear el gráfico lineal
             var chart = new google.visualization.LineChart(document.getElementById('linechart'));
             chart.draw(data, options);
         }
-    </script>
-    <div class="graphs-teams" id="columnchart"></div>
 
-    <!-- Código JavaScript para dibujar el gráfico de columnas -->
-    <script type="text/javascript">
-        google.charts.setOnLoadCallback(drawColumnChart);
 
-        function drawColumnChart() {
-            // Crear un array para almacenar los datos del gráfico
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Tipo');
-            data.addColumn('number', 'Media de Puntos');
+            // Función para dibujar el gráfico de columnas
+            function drawColumnChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Tipo');
+                data.addColumn('number', 'Media de Puntos');
 
-            // Agregar las medias de puntos anotados como local y como visitante al array de datos del gráfico
-            data.addRow(['Local', <?php echo $avg_points_home; ?>]);
-            data.addRow(['Visitante', <?php echo $avg_points_away; ?>]);
+                data.addRow(['Local', <?php echo $avg_points_home; ?>]);
+                data.addRow(['Visitante', <?php echo $avg_points_away; ?>]);
 
-            // Opciones del gráfico
-            var options = {
-                title: 'Media de Puntos Anotados como Local y Visitante',
-                width: 400,
-                height: 400,
-                legend: { position: 'none' },
-                colors: ['#DA9F5B', '#5B9BD5'],
-                hAxis: {
-                    minValue: 0 // Establecer el valor mínimo del eje x en 0
-                },
-                vAxis: {
-                    minValue: 0 // Establecer el valor mínimo del eje y en 0
-                }
-            };
+                var options = {
+                    title: 'Media de Puntos Anotados como Local y Visitante',
+                    width: 500,
+                    height: 500,
+                    backgroundColor: 'transparent', 
+                    legend: { position: 'none' },
+                    colors: ['#DA9F5B', '#5B9BD5'],
+                    hAxis: { minValue: 0 },
+                    vAxis: { minValue: 0 }
+                };
 
-            // Crear el gráfico de columnas
-            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-            chart.draw(data, options);
-        }
-    </script>
+                var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+                chart.draw(data, options);
+            }
 
-<div class="graphs-teams" id="piechart"></div>
-<div class="graphs-teams" id="piechartRebounds"></div>
+            // Función para dibujar los gráficos de tarta
+            function drawPieCharts() {
+                var dataPoints = google.visualization.arrayToDataTable([
+                    ['Tipo', 'Puntos'],
+                    ['Puntos de 2', <?php echo $avg_fgm * 2; ?>],
+                    ['Puntos de 3', <?php echo $avg_fg3m * 3; ?>],
+                    ['Tiros Libres', <?php echo $avg_ftm; ?>]
+                ]);
 
-<!-- Código JavaScript para dibujar los gráficos de tarta -->
-<script type="text/javascript">
-    google.charts.setOnLoadCallback(drawPieCharts);
+                var optionsPoints = {
+                    title: 'Distribución de Puntos',
+                    width: 500,
+                    height: 500,
+                    backgroundColor: 'transparent', 
+                    legend: { position: 'bottom' },
+                    colors: ['#DA9F5B', '#33211D', '#1E824C'],
+                    pieSliceText: 'none'
+                };
 
-    function drawPieCharts() {
-        // Gráfico de distribución de puntos
-        var dataPoints = google.visualization.arrayToDataTable([
-            ['Tipo', 'Puntos'],
-            ['Puntos de 2', <?php echo $avg_fgm * 2; ?>],
-            ['Puntos de 3', <?php echo $avg_fg3m * 3; ?>],
-            ['Tiros Libres', <?php echo $avg_ftm; ?>]
-        ]);
+                var chartPoints = new google.visualization.PieChart(document.getElementById('piechart'));
+                chartPoints.draw(dataPoints, optionsPoints);
 
-        var optionsPoints = {
-            title: 'Distribución de Puntos',
-            width: 500,
-            height: 500,
-            legend: { position: 'bottom' },
-            colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B'],
-            pieSliceText: 'none' // No muestra texto en las rebanadas
-        };
+                var dataRebounds = google.visualization.arrayToDataTable([
+                    ['Tipo', 'Rebotes'],
+                    ['Ofensivos', <?php echo $avg_oreb; ?>],
+                    ['Defensivos', <?php echo $avg_dreb; ?>],
+                ]);
 
-        var chartPoints = new google.visualization.PieChart(document.getElementById('piechart'));
-        chartPoints.draw(dataPoints, optionsPoints);
+                var optionsRebounds = {
+                    title: 'Distribución de Rebotes',
+                    width: 500,
+                    height: 500,
+                    backgroundColor: 'transparent', 
+                    legend: { position: 'bottom' },
+                    colors: ['#33211D', '#DA9F5B'],
+                    pieSliceText: 'none'
+                };
 
-        // Gráfico de distribución de rebotes
-        var dataRebounds = google.visualization.arrayToDataTable([
-            ['Tipo', 'Rebotes'],
-            ['Ofensivos', <?php echo $avg_oreb; ?>],
-            ['Defensivos', <?php echo $avg_dreb; ?>],
-        ]);
-
-        var optionsRebounds = {
-            title: 'Distribución de Rebotes',
-            width: 500,
-            height: 500,
-            legend: { position: 'bottom' },
-            colors: ['#6D9B5B', '#5B9BD5', '#DA9F5B'],
-            pieSliceText: 'none' // No muestra texto en las rebanadas
-        };
-
-        var chartRebounds = new google.visualization.PieChart(document.getElementById('piechartRebounds'));
-        chartRebounds.draw(dataRebounds, optionsRebounds);
-    }
-</script>
+                var chartRebounds = new google.visualization.PieChart(document.getElementById('piechartRebounds'));
+                chartRebounds.draw(dataRebounds, optionsRebounds);
+            }
+        </script>
+    <?php } ?>
 
 
     <!-- Content End -->
