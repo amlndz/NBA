@@ -6,7 +6,9 @@
         $usuario_autenticado = isset($_SESSION['usuario_autenticado']) && $_SESSION['usuario_autenticado'] === true;
         return $usuario_autenticado;
     }
-
+    function mostrarMensaje($mensaje){
+        $_SESSION['error_message'] = $mensaje;
+    }    
     function registrar(){
         require "connection.php"; // Incluir el archivo de conexión
         
@@ -37,7 +39,7 @@
             $result_email = $stmt_email->get_result();
             
             if ($result_email->num_rows > 0) {
-                echo "<script type='text/javascript'>alert('El correo electrónico ya está registrado.');</script>";
+                mostrarMensaje("[!] - El correo electrónico ya está registrado.");
                 return;
             }
             
@@ -49,7 +51,7 @@
             $result_username = $stmt_username->get_result();
             
             if ($result_username->num_rows > 0) {
-                echo "<script type='text/javascript'>alert('El nombre de usuario ya está registrado.');</script>";
+                mostrarMensaje("[!] - El nombre de usuario ya está registrado.");
                 return;
             }
             
@@ -83,7 +85,7 @@
                     }
                 }
             } else {
-                echo "<script type='text/javascript'>alert('Las contraseñas no coinciden.');</script>";
+                mostrarMensaje("[!] - Las contraseñas no coinciden.");
             }
             
             // Cerrar la conexión

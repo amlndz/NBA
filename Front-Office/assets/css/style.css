@@ -9785,3 +9785,7 @@ h6,
 .player-picture{
   margin-right: 7rem;
 }
+
+#error-form-msg{
+  color: red;
+}

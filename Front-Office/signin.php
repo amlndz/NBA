@@ -101,11 +101,17 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="container-fluid py-5">
-        
                             <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
                                 <h1 class="text-white mb-4 mt-5">Sign In</h1>
+                                <?php
+                                    if (isset($_SESSION['error_message'])) {
+                                        echo "<h6 id='error-form-msg' class='text-uppercase teams-stats-graphs-2' style='letter-spacing: 5px;'>" . $_SESSION['error_message'] . "</h6>";
+                                        unset($_SESSION['error_message']);
+                                    } else {
+                                        echo "<h6 id='error-form-msg' class='text-uppercase teams-stats-graphs-2' style='letter-spacing: 5px;'></h6>";
+                                    }
+                                ?>
                                 <form class="mb-5" method="POST">
-                                    <!-- Mensaje de error de contraseñas omitido para abreviar -->
 
                                     <div class="form-group">
                                         <!-- Campo de nombre completo -->
@@ -117,11 +123,7 @@
                                     </div> 
                                     <div class="form-group">
                                         <!-- Campo de correo electrónico -->
-                                        <input type="email" name="email" class="form-control border-primary p-4 <?php echo isset($email_error) ? 'is-invalid' : ''; ?>" placeholder="Email" required="required" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" />
-                                        <!-- Mensaje de error si el correo ya está registrado -->
-                                        <?php if (isset($email_error)): ?>
-                                            <div class="invalid-feedback">Email already registered.</div>
-                                        <?php endif; ?>
+                                        <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email" required="required" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" />
                                     </div>
                                     <div class="form-group">
                                         <!-- Campo de fecha de nacimiento -->
