@@ -124,6 +124,41 @@
                 }
 
                 $stats_stmt->close();
+
+                $points_home = array();
+                $points_away = array();
+
+                // Consulta SQL para obtener los puntos anotados por partido como local y como visitante
+                $points_sql = "SELECT g.home_team_id, g.visitor_team_id, s.pts
+                                FROM final_stats s 
+                                JOIN final_games g ON s.game_id = g.id 
+                                WHERE s.player_id = ?";
+
+                $points_stmt = $conn->prepare($points_sql);
+
+                if ($points_stmt === false) {
+                    die("Error al preparar la consulta de puntos anotados por partido: " . $conn->error);
+                }
+
+                $points_stmt->bind_param("i", $id);
+                $points_stmt->execute();
+                $points_result = $points_stmt->get_result();
+
+                // Procesar los resultados de la consulta
+                while ($row = $points_result->fetch_assoc()) {
+                    // Verificar si el jugador es local o visitante en el partido y almacenar los puntos correspondientes
+                    if ($row['home_team_id'] == $team_id) {
+                        $points_home[] = $row['pts']; // Puntos anotados como local
+                    } else if ($row['visitor_team_id'] == $team_id) {
+                        $points_away[] = $row['pts']; // Puntos anotados como visitante
+                    }
+                }
+
+                $points_stmt->close();
+
+                // Calcular la media de puntos anotados como local y como visitante
+                $avg_points_home = count($points_home) > 0 ? array_sum($points_home) / count($points_home) : 0;
+                $avg_points_away = count($points_away) > 0 ? array_sum($points_away) / count($points_away) : 0;
             }
         }else {
             header("Location: players.php");
@@ -400,7 +435,42 @@
             chart.draw(data, options);
         }
     </script>
+    <div class="graphs-teams" id="columnchart"></div>
 
+    <!-- Código JavaScript para dibujar el gráfico de columnas -->
+    <script type="text/javascript">
+        google.charts.setOnLoadCallback(drawColumnChart);
+
+        function drawColumnChart() {
+            // Crear un array para almacenar los datos del gráfico
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Tipo');
+            data.addColumn('number', 'Media de Puntos');
+
+            // Agregar las medias de puntos anotados como local y como visitante al array de datos del gráfico
+            data.addRow(['Local', <?php echo $avg_points_home; ?>]);
+            data.addRow(['Visitante', <?php echo $avg_points_away; ?>]);
+
+            // Opciones del gráfico
+            var options = {
+                title: 'Media de Puntos Anotados como Local y Visitante',
+                width: 400,
+                height: 400,
+                legend: { position: 'none' },
+                colors: ['#DA9F5B', '#5B9BD5'],
+                hAxis: {
+                    minValue: 0 // Establecer el valor mínimo del eje x en 0
+                },
+                vAxis: {
+                    minValue: 0 // Establecer el valor mínimo del eje y en 0
+                }
+            };
+
+            // Crear el gráfico de columnas
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+            chart.draw(data, options);
+        }
+    </script>
 
     <!-- Content End -->
 
