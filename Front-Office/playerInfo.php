@@ -16,74 +16,87 @@
         $id = $_GET['id'];
 
         if (!empty($id)) {
+            // Consulta Jugador y equipo
+            $player_sql = "SELECT p.*, t.full_name AS team_name, t.id AS team_id
+                           FROM final_players p
+                           JOIN final_teams t ON p.team_id = t.id
+                           WHERE p.id = ?
+                           LIMIT 1";
 
-            $sql = "SELECT p.*,t.full_name AS team_name, a.min AS avg_min, a.fgm AS avg_fgm, a.fga AS avg_fga, a.fg_pct AS avg_fg_pct, a.fg3m AS avg_fg3m, a.fg3a AS avg_fg3a, a.fg3_pct AS avg_fg3_pct, a.ftm AS avg_ftm, a.fta AS avg_fta, a.ft_pct AS avg_ft_pct, a.oreb AS avg_oreb, a.dreb AS avg_dreb, a.reb AS avg_reb, a.ast AS avg_ast, a.stl AS avg_stl, a.blk AS avg_blk, a.turnover AS avg_turnover, a.pf AS avg_pf, a.pts AS avg_pts, a.games_played AS avg_gms, t.id AS team_id
-            FROM final_players p 
-            JOIN final_averages a ON p.id = a.player_id
-            JOIN final_teams t ON p.team_id = t.id
-            WHERE p.id LIKE ?
-            LIMIT 1";
-            $stmt = $conn->prepare($sql);
-
-            // Verificar si la consulta se preparó correctamente
-            if ($stmt === false) {
-                die("Error al preparar la consulta: " . $conn->error);
+            $player_stmt = $conn->prepare($player_sql);
+        
+            if ($player_stmt === false) {
+                die("Error al preparar la consulta de jugador y equipo: " . $conn->error);
             }
-
-            // Vincular parámetros y ejecutar la consulta
-            
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-
-            // Obtener el resultado de la consulta
-            $result = $stmt->get_result();
-
-            // Verificar si se encontraron resultados
-            if ($result->num_rows == 1) {
-                // Guardar los valores en variables
-                $row = $result->fetch_assoc();
-                $id = $row['id'];
-                $team_id = $row['team_id'];
-                $nombreJugador = $row['first_name'];
-                $apellidoJugador = $row['last_name'];
-                $posicion = $row['position'];
-                $altura = $row['height'];
-                $peso = $row['weight'];
-                $equipoNombre = $row['team_name'];
-                $numero = $row['number'];
-                $draft = $row['draft'];
-                $rondaDraft = $row['draft_round'];
-                $pais = $row['country'];
-                $numeroDraft = $row['draft_number'];
-
-                // Estadísticas promedio
-                $avg_min = $row['avg_min'];
-                $avg_fgm = $row['avg_fgm'];
-                $avg_fga = $row['avg_fga'];
-                $avg_fg_pct = $row['avg_fg_pct'];
-                $avg_fg3m = $row['avg_fg3m'];
-                $avg_fg3a = $row['avg_fg3a'];
-                $avg_fg3_pct = $row['avg_fg3_pct'];
-                $avg_ftm = $row['avg_ftm'];
-                $avg_fta = $row['avg_fta'];
-                $avg_ft_pct = $row['avg_ft_pct'];
-                $avg_oreb = $row['avg_oreb'];
-                $avg_dreb = $row['avg_dreb'];
-                $avg_reb = $row['avg_reb'];
-                $avg_ast = $row['avg_ast'];
-                $avg_stl = $row['avg_stl'];
-                $avg_blk = $row['avg_blk'];
-                $avg_turnover = $row['avg_turnover'];
-                $avg_pf = $row['avg_pf'];
-                $avg_pts = $row['avg_pts'];
-                $avg_gms = $row['avg_gms'];
-            } else {
-                header("Location: players.php");
-                exit;
+        
+            $player_stmt->bind_param("i", $id);
+            $player_stmt->execute();
+            $player_result = $player_stmt->get_result();
+        
+            if ($player_result->num_rows == 1) {
+                $player_row = $player_result->fetch_assoc();
+                $id = $player_row['id'];
+                $team_id = $player_row['team_id'];
+                $nombreJugador = $player_row['first_name'];
+                $apellidoJugador = $player_row['last_name'];
+                $posicion = $player_row['position'];
+                $altura = $player_row['height'];
+                $peso = $player_row['weight'];
+                $equipoNombre = $player_row['team_name'];
+                $numero = $player_row['number'];
+                $draft = $player_row['draft'];
+                $rondaDraft = $player_row['draft_round'];
+                $pais = $player_row['country'];
+                $numeroDraft = $player_row['draft_number'];
             }
-            // Cerrar la conexión
-            $stmt->close();
         }
+        if (!empty($id)) {
+            $average_sql = "SELECT a.*
+                            FROM final_averages a 
+                            WHERE a.player_id = ?
+                            LIMIT 1";
+
+            $average_stmt = $conn->prepare($average_sql);
+
+            if ($average_stmt === false) {
+                die("Error al preparar la consulta de estadísticas promedio: " . $conn->error);
+            }
+
+            $average_stmt->bind_param("i", $id);
+            $average_stmt->execute();
+            $average_result = $average_stmt->get_result();
+            if ($average_result->num_rows == 1) {
+                $average_row = $average_result->fetch_assoc();
+                // Guardar los valores en variables
+                $avg_min = $average_row['min'];
+                $avg_fgm = $average_row['fgm'];
+                $avg_fga = $average_row['fga'];
+                $avg_fg_pct = $average_row['fg_pct'];
+                $avg_fg3m = $average_row['fg3m'];
+                $avg_fg3a = $average_row['fg3a'];
+                $avg_fg3_pct = $average_row['fg3_pct'];
+                $avg_ftm = $average_row['ftm'];
+                $avg_fta = $average_row['fta'];
+                $avg_ft_pct = $average_row['ft_pct'];
+                $avg_oreb = $average_row['oreb'];
+                $avg_dreb = $average_row['dreb'];
+                $avg_reb = $average_row['reb'];
+                $avg_ast = $average_row['ast'];
+                $avg_stl = $average_row['stl'];
+                $avg_blk = $average_row['blk'];
+                $avg_turnover = $average_row['turnover'];
+                $avg_pf = $average_row['pf'];
+                $avg_pts = $average_row['pts'];
+                $avg_gms = $average_row['games_played'];
+            }
+        }else {
+            header("Location: players.php");
+            exit;
+        }
+        // Cerrar la conexión
+        $player_stmt->close();
+        $average_stmt->close();
+        
     } else {
         header("Location: players.php");
         exit;
