@@ -47,6 +47,8 @@
             $pais = $player_row['country'];
             $numeroDraft = $player_row['draft_number'];
 
+            $team_url = "teamInfo.php?id=".urlencode($team_id);
+
             $average_sql = "SELECT a.*
                         FROM final_averages a 
                         WHERE a.player_id = ?
@@ -174,7 +176,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5 player-spaces-diff" style="min-height: 400px">
-            <img src="./assets/img/teams/<?php echo $team_id; ?>.svg" alt="imagen logo equipo" width=170rem>        
+            <?php echo "<a href='$team_url'><img src='./assets/img/teams/" . $team_id . ".svg' alt='imagen logo equipo' width='170rem'></a>"; ?>
             <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase "><?php echo $nombreJugador . " " . $apellidoJugador; ?></h1>
         </div>
     </div>
@@ -190,7 +192,6 @@
                 </div>
                 <div class="col-md-8"> <!-- Columna para la información del jugador -->
                     <div class="row">
-                        <?php $url = "teamInfo.php?id=".urlencode($team_id); ?>
                         <div class="col-md-6"> <!-- Columna para el primer bloque de información -->
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Nombre:</h5> <!-- Agrega clase para margen a la derecha -->
@@ -202,7 +203,7 @@
                             </div>
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Equipo:</h5> <!-- Agrega clase para margen a la derecha -->
-                                <p><?php echo "<a href=$url>$equipoNombre</a>" ?></p>
+                                <p><?php echo "<a href=$team_url>$equipoNombre</a>" ?></p>
                             </div>
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Posición:</h5> <!-- Agrega clase para margen a la derecha -->
