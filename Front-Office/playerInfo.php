@@ -472,6 +472,40 @@
         }
     </script>
 
+    <div class="graphs-teams" id="piechart"></div>
+
+    <!-- Código JavaScript para dibujar el gráfico de tarta -->
+    <script type="text/javascript">
+        google.charts.setOnLoadCallback(drawPieChart);
+
+        function drawPieChart() {
+            // Crear un array para almacenar los datos del gráfico
+
+            var data = google.visualization.arrayToDataTable([
+                ['Tipo', 'Puntos'],
+                ['Puntos de 2', <?php echo $avg_fgm * 2; ?>],
+                ['Puntos de 3', <?php echo $avg_fg3m * 3; ?>],
+                ['Tiros Libres', <?php echo $avg_ftm; ?>]
+            ]);
+
+            // Opciones del gráfico
+            var options = {
+                title: 'Distribución de Puntos',
+                width: 500,
+                height: 500,
+                legend: { position: 'bottom' },
+                colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B'],
+                pieSliceText: 'none' // No muestra texto en las rebanadas
+
+            };
+
+            // Crear el gráfico de tarta
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+    </script>
+
     <!-- Content End -->
 
 
