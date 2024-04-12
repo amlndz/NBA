@@ -92,7 +92,7 @@
                 $average_stmt->close();
 
 
-                $stats_sql = "SELECT g.date AS game_date, s.pts 
+                $stats_sql = "SELECT g.date AS game_date, s.pts, s.ast 
                             FROM final_stats s 
                             JOIN final_games g ON s.game_id = g.id 
                             WHERE s.player_id = ? 
@@ -101,22 +101,24 @@
                 $stats_stmt = $conn->prepare($stats_sql);
 
                 if ($stats_stmt === false) {
-                    die("Error al preparar la consulta de estadísticas de puntos: " . $conn->error);
+                    die("Error al preparar la consulta de estadísticas de puntos y asistencias: " . $conn->error);
                 }
 
                 $stats_stmt->bind_param("i", $id);
                 $stats_stmt->execute();
                 $stats_result = $stats_stmt->get_result();
 
-                // Inicializar arrays para almacenar los datos del progreso de puntos y las fechas de los partidos
+                // Inicializar arrays para almacenar los datos del progreso de puntos, asistencias y las fechas de los partidos
                 $game_dates = array();
                 $points = array();
+                $assists = array();
 
                 // Procesar los resultados de la consulta
                 while ($row = $stats_result->fetch_assoc()) {
-                    // Almacenar las fechas de los partidos y los puntos anotados en arrays separados
+                    // Almacenar las fechas de los partidos, los puntos anotados y las asistencias en arrays separados
                     $game_dates[] = date('Y-m-d', strtotime($row['game_date']));
                     $points[] = $row['pts'];
+                    $assists[] = $row['ast'];
                 }
 
                 $stats_stmt->close();
@@ -364,28 +366,29 @@
         google.charts.setOnLoadCallback(drawLineChart);
 
         function drawLineChart() {
-            // Obtener los datos de las fechas de los partidos y los puntos anotados del PHP y convertirlos a arrays de JavaScript
+            // Obtener los datos de las fechas de los partidos, los puntos anotados y las asistencias del PHP y convertirlos a arrays de JavaScript
             var gameDates = <?php echo json_encode($game_dates); ?>;
             var points = <?php echo json_encode($points); ?>;
+            var assists = <?php echo json_encode($assists); ?>;
 
             // Crear un array para almacenar los datos del gráfico
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Fecha del Partido');
             data.addColumn('number', 'Puntos Anotados');
+            data.addColumn('number', 'Asistencias');
 
-            // Agregar los datos de las fechas de los partidos y los puntos al array de datos del gráfico
+            // Agregar los datos de las fechas de los partidos, los puntos anotados y las asistencias al array de datos del gráfico
             for (var i = 0; i < gameDates.length; i++) {
-                data.addRow([gameDates[i], points[i]]);
+                data.addRow([gameDates[i], points[i], assists[i]]);
             }
 
             // Opciones del gráfico
             var options = {
-                title: 'Puntos/Partido',
+                title: 'Puntos y Asistencias por Fecha de Partido',
                 width: 800,
                 height: 400,
-                legend: { position: 'none' },
-                'backgroundColor': 'transparent', 
-                'colors': ['#DA9F5B']
+                legend: { position: 'bottom' },
+                colors: ['#DA9F5B', '#5B9BD5']
             };
 
             // Crear el gráfico lineal
