@@ -14,47 +14,43 @@
     if (isset($_GET['id'])) {
         // Obtener el nombre del jugador enviado desde el formulario
         $id = $_GET['id'];
+        // Consulta Jugador y equipo
+        $player_sql = "SELECT p.*, t.full_name AS team_name, t.id AS team_id
+                    FROM final_players p
+                    JOIN final_teams t ON p.team_id = t.id
+                    WHERE p.id = ?
+                    LIMIT 1";
 
-        if (!empty($id)) {
-            // Consulta Jugador y equipo
-            $player_sql = "SELECT p.*, t.full_name AS team_name, t.id AS team_id
-                           FROM final_players p
-                           JOIN final_teams t ON p.team_id = t.id
-                           WHERE p.id = ?
-                           LIMIT 1";
-
-            $player_stmt = $conn->prepare($player_sql);
-        
-            if ($player_stmt === false) {
-                die("Error al preparar la consulta de jugador y equipo: " . $conn->error);
-            }
-        
-            $player_stmt->bind_param("i", $id);
-            $player_stmt->execute();
-            $player_result = $player_stmt->get_result();
-        
-            if ($player_result->num_rows == 1) {
-                $player_row = $player_result->fetch_assoc();
-                $id = $player_row['id'];
-                $team_id = $player_row['team_id'];
-                $nombreJugador = $player_row['first_name'];
-                $apellidoJugador = $player_row['last_name'];
-                $posicion = $player_row['position'];
-                $altura = $player_row['height'];
-                $peso = $player_row['weight'];
-                $equipoNombre = $player_row['team_name'];
-                $numero = $player_row['number'];
-                $draft = $player_row['draft'];
-                $rondaDraft = $player_row['draft_round'];
-                $pais = $player_row['country'];
-                $numeroDraft = $player_row['draft_number'];
-            }
+        $player_stmt = $conn->prepare($player_sql);
+    
+        if ($player_stmt === false) {
+            die("Error al preparar la consulta de jugador y equipo: " . $conn->error);
         }
-        if (!empty($id)) {
+    
+        $player_stmt->bind_param("i", $id);
+        $player_stmt->execute();
+        $player_result = $player_stmt->get_result();
+    
+        if ($player_result->num_rows == 1) {
+            $player_row = $player_result->fetch_assoc();
+            $id = $player_row['id'];
+            $team_id = $player_row['team_id'];
+            $nombreJugador = $player_row['first_name'];
+            $apellidoJugador = $player_row['last_name'];
+            $posicion = $player_row['position'];
+            $altura = $player_row['height'];
+            $peso = $player_row['weight'];
+            $equipoNombre = $player_row['team_name'];
+            $numero = $player_row['number'];
+            $draft = $player_row['draft'];
+            $rondaDraft = $player_row['draft_round'];
+            $pais = $player_row['country'];
+            $numeroDraft = $player_row['draft_number'];
+
             $average_sql = "SELECT a.*
-                            FROM final_averages a 
-                            WHERE a.player_id = ?
-                            LIMIT 1";
+                        FROM final_averages a 
+                        WHERE a.player_id = ?
+                        LIMIT 1";
 
             $average_stmt = $conn->prepare($average_sql);
 
@@ -88,15 +84,16 @@
                 $avg_pf = $average_row['pf'];
                 $avg_pts = $average_row['pts'];
                 $avg_gms = $average_row['games_played'];
+                // Cerrar la conexión
+                $average_stmt->close();
             }
         }else {
             header("Location: players.php");
             exit;
-        }
+        } 
         // Cerrar la conexión
         $player_stmt->close();
-        $average_stmt->close();
-        
+    
     } else {
         header("Location: players.php");
         exit;
