@@ -92,7 +92,7 @@
                 $average_stmt->close();
 
 
-                $stats_sql = "SELECT g.date AS game_date, s.pts, s.ast 
+                $stats_sql = "SELECT g.date AS game_date, s.pts, s.ast, s.reb
                             FROM final_stats s 
                             JOIN final_games g ON s.game_id = g.id 
                             WHERE s.player_id = ? 
@@ -101,24 +101,26 @@
                 $stats_stmt = $conn->prepare($stats_sql);
 
                 if ($stats_stmt === false) {
-                    die("Error al preparar la consulta de estadísticas de puntos y asistencias: " . $conn->error);
+                    die("Error al preparar la consulta de estadísticas de puntos, asistencias y rebotes: " . $conn->error);
                 }
 
                 $stats_stmt->bind_param("i", $id);
                 $stats_stmt->execute();
                 $stats_result = $stats_stmt->get_result();
 
-                // Inicializar arrays para almacenar los datos del progreso de puntos, asistencias y las fechas de los partidos
+                // Inicializar arrays para almacenar los datos del progreso de puntos, asistencias, rebotes y las fechas de los partidos
                 $game_dates = array();
                 $points = array();
                 $assists = array();
+                $rebounds = array();
 
                 // Procesar los resultados de la consulta
                 while ($row = $stats_result->fetch_assoc()) {
-                    // Almacenar las fechas de los partidos, los puntos anotados y las asistencias en arrays separados
+                    // Almacenar las fechas de los partidos, los puntos anotados, las asistencias y los rebotes en arrays separados
                     $game_dates[] = date('Y-m-d', strtotime($row['game_date']));
                     $points[] = $row['pts'];
                     $assists[] = $row['ast'];
+                    $rebounds[] = $row['reb'];
                 }
 
                 $stats_stmt->close();
@@ -366,29 +368,31 @@
         google.charts.setOnLoadCallback(drawLineChart);
 
         function drawLineChart() {
-            // Obtener los datos de las fechas de los partidos, los puntos anotados y las asistencias del PHP y convertirlos a arrays de JavaScript
+            // Obtener los datos de las fechas de los partidos, los puntos anotados, las asistencias y los rebotes del PHP y convertirlos a arrays de JavaScript
             var gameDates = <?php echo json_encode($game_dates); ?>;
             var points = <?php echo json_encode($points); ?>;
             var assists = <?php echo json_encode($assists); ?>;
+            var rebounds = <?php echo json_encode($rebounds); ?>;
 
             // Crear un array para almacenar los datos del gráfico
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Fecha del Partido');
             data.addColumn('number', 'Puntos Anotados');
             data.addColumn('number', 'Asistencias');
+            data.addColumn('number', 'Rebotes');
 
-            // Agregar los datos de las fechas de los partidos, los puntos anotados y las asistencias al array de datos del gráfico
+            // Agregar los datos de las fechas de los partidos, los puntos anotados, las asistencias y los rebotes al array de datos del gráfico
             for (var i = 0; i < gameDates.length; i++) {
-                data.addRow([gameDates[i], points[i], assists[i]]);
+                data.addRow([gameDates[i], points[i], assists[i], rebounds[i]]);
             }
 
             // Opciones del gráfico
             var options = {
-                title: 'Puntos y Asistencias por Fecha de Partido',
+                title: 'Puntos, Asistencias y Rebotes por Fecha de Partido',
                 width: 800,
                 height: 400,
                 legend: { position: 'bottom' },
-                colors: ['#DA9F5B', '#5B9BD5']
+                colors: ['#DA9F5B', '#5B9BD5', '#6D9B5B']
             };
 
             // Crear el gráfico lineal
@@ -396,7 +400,6 @@
             chart.draw(data, options);
         }
     </script>
-
 
 
     <!-- Content End -->
