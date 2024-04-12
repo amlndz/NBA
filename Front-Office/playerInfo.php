@@ -61,7 +61,9 @@
             $average_stmt->bind_param("i", $id);
             $average_stmt->execute();
             $average_result = $average_stmt->get_result();
+            $exist_averages = false;
             if ($average_result->num_rows == 1) {
+                $exist_averages = true;
                 $average_row = $average_result->fetch_assoc();
                 // Guardar los valores en variables
                 $avg_min = $average_row['min'];
@@ -246,77 +248,78 @@
             </div>
         </div>
     </div>
+    <?php if ($exist_averages){ ?>
+        <div class="container player-spaces-diff justify-content-cente">
+            <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff"> <!-- Añade flexbox para centrar -->
+                <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;">PROMEDIO</h1>
+            </div>
+            <div class="container-fluid  d-flex justify-content-center"> <!-- Añade flexbox para centrar -->            
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="styled-table">
+                            <tr>
+                                <th>MINS</th>
+                                <th>GMS</th>
+                                <th>PTS</th>
+                                <th>FGM</th>
+                                <th>FGA</th>
+                                <th>FG%</th>
+                                <th>FG3M</th>
+                                <th>FG3A</th>
+                                <th>FG3%</th>
+                                <th>FTM</th>
 
-    <div class="container player-spaces-diff justify-content-cente">
-        <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff"> <!-- Añade flexbox para centrar -->
-            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;">PROMEDIO</h1>
-        </div>
-        <div class="container-fluid  d-flex justify-content-center"> <!-- Añade flexbox para centrar -->            
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="styled-table">
-                        <tr>
-                            <th>MINS</th>
-                            <th>GMS</th>
-                            <th>PTS</th>
-                            <th>FGM</th>
-                            <th>FGA</th>
-                            <th>FG%</th>
-                            <th>FG3M</th>
-                            <th>FG3A</th>
-                            <th>FG3%</th>
-                            <th>FTM</th>
-
-                        </tr>
-                        <tr>
-                            <td><?php echo $avg_min; ?></td>
-                            <td><?php echo $avg_gms; ?></td>
-                            <td><?php echo $avg_pts; ?></td>
-                            <td><?php echo $avg_fgm; ?></td>
-                            <td><?php echo $avg_fga; ?></td>
-                            <td><?php echo $avg_fg_pct; ?></td>
-                            <td><?php echo $avg_fg3m; ?></td>
-                            <td><?php echo $avg_fg3a; ?></td>
-                            <td><?php echo $avg_fg3_pct; ?></td>
-                            <td><?php echo $avg_ftm; ?></td>
-                        </tr>
-                    </table>
+                            </tr>
+                            <tr>
+                                <td><?php echo $avg_min; ?></td>
+                                <td><?php echo $avg_gms; ?></td>
+                                <td><?php echo $avg_pts; ?></td>
+                                <td><?php echo $avg_fgm; ?></td>
+                                <td><?php echo $avg_fga; ?></td>
+                                <td><?php echo $avg_fg_pct; ?></td>
+                                <td><?php echo $avg_fg3m; ?></td>
+                                <td><?php echo $avg_fg3a; ?></td>
+                                <td><?php echo $avg_fg3_pct; ?></td>
+                                <td><?php echo $avg_ftm; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="styled-table">
+                            <tr>
+                                <th>OREB</th>
+                                <th>DREB</th>
+                                <th>REB</th>
+                                <th>AST</th>
+                                <th>STL</th>
+                                <th>BLK</th>
+                                <th>TRNOVER</th>
+                                <th>PF</th>
+                                <th>FTA</th>
+                                <th>FT%</th>
+                            </tr>
+                            <tr>
+                                <td><?php echo $avg_oreb; ?></td>
+                                <td><?php echo $avg_dreb; ?></td>
+                                <td><?php echo $avg_reb; ?></td>
+                                <td><?php echo $avg_ast; ?></td>
+                                <td><?php echo $avg_stl; ?></td>
+                                <td><?php echo $avg_blk; ?></td>
+                                <td><?php echo $avg_turnover; ?></td>
+                                <td><?php echo $avg_pf; ?></td>
+                                <td><?php echo $avg_fta; ?></td>
+                                <td><?php echo $avg_ft_pct; ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid d-flex justify-content-center"> <!-- Añade flexbox para centrar -->
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="styled-table">
-                        <tr>
-                            <th>OREB</th>
-                            <th>DREB</th>
-                            <th>REB</th>
-                            <th>AST</th>
-                            <th>STL</th>
-                            <th>BLK</th>
-                            <th>TRNOVER</th>
-                            <th>PF</th>
-                            <th>FTA</th>
-                            <th>FT%</th>
-                        </tr>
-                        <tr>
-                            <td><?php echo $avg_oreb; ?></td>
-                            <td><?php echo $avg_dreb; ?></td>
-                            <td><?php echo $avg_reb; ?></td>
-                            <td><?php echo $avg_ast; ?></td>
-                            <td><?php echo $avg_stl; ?></td>
-                            <td><?php echo $avg_blk; ?></td>
-                            <td><?php echo $avg_turnover; ?></td>
-                            <td><?php echo $avg_pf; ?></td>
-                            <td><?php echo $avg_fta; ?></td>
-                            <td><?php echo $avg_ft_pct; ?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php } ?>
 
 
 
