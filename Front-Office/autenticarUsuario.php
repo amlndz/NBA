@@ -93,6 +93,7 @@
 
     function iniciarSesion(){
         require "connection.php"; // Incluir el archivo de conexión
+
         // Verificar si se ha enviado el formulario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Recoger los datos del formulario
