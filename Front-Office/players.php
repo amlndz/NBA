@@ -1,6 +1,7 @@
 <?php
     include("playersInfoBBDD.php");
     $usuario_autenticado = autenticar();
+    checkSessionTimeout();
     $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 ?>
 

@@ -9786,6 +9786,8 @@ h6,
   margin-right: 7rem;
 }
 
-#error-form-msg{
-  color: red;
+#error-form-msg {
+  color: white; 
+  background-color: rgba(218, 159, 91, 0.8); 
+  padding: 10px; 
 }
