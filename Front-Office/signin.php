@@ -56,6 +56,7 @@
                         <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="user.php" class="dropdown-item"><?php echo $_SESSION['username'] ?></a>
                                 <a href="logout.php" class="dropdown-item">Log Out</a>
                             </div>                            
                         <?php endif; ?>
@@ -121,12 +122,6 @@
                                     <div class="form-group">
                                         <!-- Campo de correo electrónico -->
                                         <input type="email" name="email" class="form-control border-primary p-4" placeholder="Email" required="required" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" />
-                                    </div>
-                                    <div class="form-group">
-                                        <!-- Campo de fecha de nacimiento -->
-                                        <div class="date" id="date" data-target-input="nearest">
-                                            <input type="text" name="birthday" class="form-control border-primary p-4 datetimepicker-input" placeholder="Birthday - mm/dd/yyyy" data-target="#date" data-toggle="datetimepicker" value="<?php echo isset($_SESSION['birthday']) ? $_SESSION['birthday'] : ''; ?>" />
-                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <!-- Campo de contraseña -->
