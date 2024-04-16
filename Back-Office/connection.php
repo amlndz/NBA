@@ -1,6 +1,6 @@
 <?php
     function connect() {
-        require 'credentials.php';
+        include 'credentials.php';
 
         //$conn = mysqli_connect($server, $user, $password, $db);
         $conn = new mysqli($hostname, $username, $password, $database);

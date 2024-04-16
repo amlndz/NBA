@@ -1,5 +1,5 @@
 <?php  
-    require_once("conection.php");
+    require_once("connection.php");
 
     function truncate_tables() {
         $con = connect();
@@ -10,7 +10,7 @@
         $result = $con->query("truncate table final_teams");
         $result = $con->query("set foreign_key_checks = 1");
 
-        echo "<br>[+] Tablas truncadas<br>";
+        echo "[+] Tablas truncadas";
     }
     truncate_tables();
         
