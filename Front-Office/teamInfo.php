@@ -7,7 +7,9 @@
         header("Location: login.php");
         exit;
     }
+    
     include "connection.php";
+    getUserInfo();
     $conn = connect();
     // Verificar si se ha enviado información del jugador a través de GET
     if (isset($_GET['id'])) {
@@ -196,10 +198,17 @@
 
     <!-- Team Content -->
     <div class="container teams-stats-graphs">
-        <div class="container-fluid py-8 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
-            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo $full_name." (".$abbreviation.")"?></h1>
-        </div>
         <div class="container-fluid py-5 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
+            <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo $full_name." (".$abbreviation.")"?></h1>
+            <button type="submit" class="fav-btn fav-btn-team btn btn-primary text-white" data-id="<?php echo $id ?>" data-tipo="equipo">
+                <?php if ($_SESSION['fav_team'] != $id) { ?>
+                    <img src="./assets/img/nonfav.avif" alt="icono corazon">
+                <?php } else { ?>
+                    <img src="./assets/img/fav.avif" alt="icono corazon">
+                <?php } ?>
+            </button>
+        </div>
+        <div class="container-fluid d-flex justify-content-center "> <!-- Añade flexbox para centrar -->    
             <table class="styled-table">
                 <tr>
                     <th>Nombre completo</th>
@@ -226,9 +235,7 @@
                 <img class="team-uniform" src=<?php echo "./assets/img/uniform/".$id.".avif" ?> alt="" width="300px" height="300px">
                 <img src=<?php echo "./assets/img/court/".$id.".avif" ?> alt="" width="600px" height="300px">
             </div>
-        </div>
-        
-        
+        </div>       
     </div>
     
     <!-- Graficas con estadisticas de los equipos -->

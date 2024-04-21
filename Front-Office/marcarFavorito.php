@@ -5,14 +5,27 @@ include 'connection.php';
 
 $conn = connect();
 
-if(isset($_SESSION['username']) && isset($_POST['jugador_id'])) {
-    $jugador_id = $_POST['jugador_id'];
+if(isset($_SESSION['username']) && isset($_POST['id']) && isset($_POST['tipo'])) {
+    $id = $_POST['id'];
     $username = $_SESSION['username'];
+    $tipo = $_POST['tipo'];
+    $fav_id = $_POST['fav_id'];
+
+    if ($fav_id === 'null') {
+        $fav_id = null; // Convertimos 'null' a valor NULL
+    }
+
+    // Determinamos el campo a actualizar según el tipo
+    if ($tipo === 'jugador') {
+        $campo = 'fav_player';
+    } elseif ($tipo === 'equipo') {
+        $campo = 'fav_team';
+    }
 
     // Preparar la consulta SQL
-    $stmt = $conn->prepare("UPDATE final_users SET fav_player = ? WHERE username = ?");
-    $stmt->bind_param("is", $jugador_id, $username);
-    $_SESSION['fav_player'] = $jugador_id; // Actualizar la variable de sesión $_SESSION['fav_player
+    $stmt = $conn->prepare("UPDATE final_users SET $campo = ? WHERE username = ?");
+    $stmt->bind_param("is", $fav_id, $username);
+
     // Ejecutar la consulta
     if ($stmt->execute()) {
         echo "Éxito"; // Envía una respuesta al cliente si la actualización es exitosa
@@ -24,5 +37,5 @@ if(isset($_SESSION['username']) && isset($_POST['jugador_id'])) {
     $stmt->close();
     $conn->close();
 } else {
-    echo "Error: Usuario no autenticado o ID de jugador no recibido";
+    echo "Error: Usuario no autenticado o ID no recibido";
 }

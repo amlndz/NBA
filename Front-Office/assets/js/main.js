@@ -104,16 +104,17 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('.fav-btn').click(function() {
         var btn = $(this); // Captura el botón actual
-        var jugador_id = btn.data('jugador-id');
+        var id = btn.data('id');
+        var tipo = btn.data('tipo'); // Nuevo dato que indica si es jugador o equipo
         var isFavorito = btn.hasClass("favorito");
 
-        // Definimos el valor de fav_player que será enviado al servidor
-        var favPlayerValue = isFavorito ? null : jugador_id;
+        // Definimos el valor de fav_id que será enviado al servidor
+        var favIdValue = isFavorito ? null : id;
 
         $.ajax({
             url: 'marcarFavorito.php',
             type: 'post',
-            data: {jugador_id: jugador_id, fav_player: favPlayerValue},
+            data: {id: id, tipo: tipo, fav_id: favIdValue},
             success: function(response){
                 if (response.trim() === "Éxito") {
                     // Cambiamos la clase y la imagen del botón
@@ -129,6 +130,7 @@ $(document).ready(function() {
         });
     });
 });
+
 
 
 

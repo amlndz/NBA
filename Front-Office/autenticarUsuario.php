@@ -97,7 +97,12 @@
 
     function iniciarSesion(){
         require "connection.php";
-
+    
+        // Iniciar la sesión si no está iniciada
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         // Verificar si se ha enviado el formulario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Recoger los datos del formulario
@@ -123,13 +128,20 @@
                     // Si las credenciales son válidas, establecer la variable de sesión
                     $_SESSION['usuario_autenticado'] = true;
                     
+                    // Obtener información del usuario
+                    getUserInfo();
+    
                     // Redirigir al usuario a la página anterior
                     if (isset($_SESSION['prev_page'])) {
                         $prevPage = $_SESSION['prev_page'];
                         unset($_SESSION['prev_page']); // Limpiar la variable de sesión
+                        $stmt->close();
+                        $conn->close();
                         header("Location: $prevPage");
                         exit; // Asegúrate de que el script se detenga después de la redirección
                     } else {
+                        $stmt->close();
+                        $conn->close();
                         // Si no hay una página anterior guardada, redirigir a una página predeterminada
                         header("Location: index.php");
                         exit; // Asegúrate de que el script se detenga después de la redirección
@@ -141,12 +153,12 @@
             } else {
                 mostrarMensaje("[!] - Nombre o usuario incorrecto.");
             }
-            
-            // Cerrar la conexión
             $stmt->close();
             $conn->close();
+            // Cerrar la conexión   
         }
     }
+    
 
     function checkSessionTimeout() {
         $inactive_timeout = 300; // 5minutos
@@ -234,7 +246,6 @@
 
  
     function getUserInfo(){
-        require "connection.php";
 
         $conn = connect();
         $user_sql = "SELECT * FROM final_users WHERE username LIKE ?";
@@ -261,6 +272,8 @@
         $_SESSION['id'] = $user['id'];
         $_SESSION['full_name'] = $user['full_name'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['fav_player'] = $user['fav_player'];
+        $_SESSION['fav_team'] = $user['fav_team'];
         $conn->close();
     }
 

@@ -3,13 +3,13 @@
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
     checkSessionTimeout();
-
     if(!$usuario_autenticado){
         $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         header("Location: login.php");
         exit;
     }
     include "connection.php";
+    getUserInfo();
     $conn = connect();
 
     // Verificar si se ha enviado información del jugador a través de GET
@@ -173,9 +173,7 @@
 
                 // Calcular la media de puntos anotados como local y como visitante
                 $avg_points_home = count($points_home) > 0 ? array_sum($points_home) / count($points_home) : 0;
-                $avg_points_away = count($points_away) > 0 ? array_sum($points_away) / count($points_away) : 0;
-
-                
+                $avg_points_away = count($points_away) > 0 ? array_sum($points_away) / count($points_away) : 0;   
             }
         }else {
             header("Location: players.php");
@@ -334,13 +332,13 @@
                                 <p><?php echo $pais; ?></p>
                             </div>
                             <div class="mb-4 d-flex">
-                                <button type="submit" class="fav-btn btn btn-primary text-white" data-jugador-id="<?php echo $id ?>">
-                                    <?php if ($_SESSION['fav_player'] != $id) { ?>
-                                        <img src="./assets/img/nonfav.avif" alt="icono corazon">
-                                    <?php } else { ?>
-                                        <img src="./assets/img/fav.avif" alt="icono corazon">
-                                    <?php } ?>
-                                </button>
+                            <button type="submit" class="fav-btn btn btn-primary text-white" data-id="<?php echo $id ?>" data-tipo="jugador">
+                                <?php if ($_SESSION['fav_player'] != $id) { ?>
+                                    <img src="./assets/img/nonfav.avif" alt="icono corazon">
+                                <?php } else { ?>
+                                    <img src="./assets/img/fav.avif" alt="icono corazon">
+                                <?php } ?>
+                            </button>
                             </div>
                         </div>
                     </div>
