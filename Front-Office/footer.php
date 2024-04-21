@@ -1,3 +1,31 @@
+<?php
+    include_once "connection.php"; // Asegúrate de tener el archivo de conexión
+    $conn = connect(); // Realiza la conexión a la base de datos
+
+    require "credentials.php"; // Asegúrate de tener el archivo de credenciales
+
+    // Consulta para obtener la última fecha de modificación de la tabla final_averages
+    $sql = "SELECT MAX(update_time) AS last_update_time
+            FROM information_schema.TABLES 
+            WHERE TABLE_SCHEMA = '$database' 
+            AND TABLE_NAME = 'final_averages'";
+
+    $result = $conn->query($sql); // Ejecuta la consulta
+
+    if ($result) {
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $update_time = $row['last_update_time'];
+        } else {
+            echo "No se encontró la tabla final_averages o no se pudo obtener la fecha de modificación.";
+        }
+    } else {
+        echo "Error al ejecutar la consulta: " . $conn->error;
+    }
+
+    $conn->close(); // Cierra la conexión
+?>
+
 
 <!-- Footer Start -->
 <div class="container-fluid footer text-white mt-6 pt-6 px-0 position-relative overlay-top">
@@ -29,6 +57,9 @@
             </div>
         </div>
         <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <p class="m-0 text-white">Ultima actualizacion de datos: <?php echo $update_time ?></p>
+        </div>
+        <div class="container-fluid text-center text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
             <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Domain</a>. All Rights Reserved.</a></p>
             <p class="m-0 text-white">Designed by <a class="font-weight-bold" href="https://htmlcodex.com">HTML Codex</a></p>
         </div>
