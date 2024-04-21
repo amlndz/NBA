@@ -9791,3 +9791,9 @@ h6,
   background-color: rgba(218, 159, 91, 0.8); 
   padding: 10px; 
 }
+
+.fav-btn{
+  background-color: #33211D !important;
+  border-radius: 15px;
+  padding: 1rem;
+}

@@ -220,6 +220,7 @@
 
     <!-- Librerias para las graficas -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -296,6 +297,10 @@
                                 <h5 class="mr-2">Posición:</h5> <!-- Agrega clase para margen a la derecha -->
                                 <p><?php echo $posicion; ?></p>
                             </div>
+                            <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
+                                <h5 class="mr-2">Draft:</h5> <!-- Agrega clase para margen a la derecha -->
+                                <p><?php echo $draft." ronda ".$rondaDraft." número ".$numeroDraft; ?></p>
+                            </div>
                         </div>
                         <div class="col-md-6"> <!-- Columna para el segundo bloque de información -->
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
@@ -328,13 +333,14 @@
                                 <h5 class="mr-2">País:</h5> <!-- Agrega clase para margen a la derecha -->
                                 <p><?php echo $pais; ?></p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6"> <!-- Columna para el tercer bloque de información -->
-                            <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
-                                <h5 class="mr-2">Draft:</h5> <!-- Agrega clase para margen a la derecha -->
-                                <p><?php echo $draft." ronda ".$rondaDraft." número ".$numeroDraft; ?></p>
+                            <div class="mb-4 d-flex">
+                                <button type="submit" class="fav-btn btn btn-primary text-white" data-jugador-id="<?php echo $id ?>">
+                                    <?php if ($_SESSION['fav_player'] != $id) { ?>
+                                        <img src="./assets/img/nonfav.avif" alt="icono corazon">
+                                    <?php } else { ?>
+                                        <img src="./assets/img/fav.avif" alt="icono corazon">
+                                    <?php } ?>
+                                </button>
                             </div>
                         </div>
                     </div>

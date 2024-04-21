@@ -100,3 +100,37 @@ $(document).ready(function() {
     });
     
 })(jQuery);
+
+$(document).ready(function() {
+    $('.fav-btn').click(function() {
+        var btn = $(this); // Captura el botón actual
+        var jugador_id = btn.data('jugador-id');
+        var isFavorito = btn.hasClass("favorito");
+
+        // Definimos el valor de fav_player que será enviado al servidor
+        var favPlayerValue = isFavorito ? null : jugador_id;
+
+        $.ajax({
+            url: 'marcarFavorito.php',
+            type: 'post',
+            data: {jugador_id: jugador_id, fav_player: favPlayerValue},
+            success: function(response){
+                if (response.trim() === "Éxito") {
+                    // Cambiamos la clase y la imagen del botón
+                    btn.toggleClass("favorito");
+                    var imgSrc = isFavorito ? "./assets/img/nonfav.avif" : "./assets/img/fav.avif";
+                    var imgAlt = isFavorito ? "icono corazon no favorito" : "icono corazon favorito";
+                    btn.find("img").attr("src", imgSrc).attr("alt", imgAlt);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+
+
+
+
+
