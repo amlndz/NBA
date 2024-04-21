@@ -3,7 +3,11 @@
     $usuario_autenticado = autenticar();
     checkSessionTimeout();
     $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
-
+    
+    if ($usuario_autenticado){
+        include 'connection.php';
+        getUserInfo();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -92,50 +96,26 @@
         <!-- Testimonial Start -->
     <div class="container-fluid py-5">
         <div class="container">
-            <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h4>
-                <h1 class="display-4">Our Clients Say</h1>
+            <div class="section-title player-spaces-diff">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;"><?php echo $_SESSION['username'] ?></h4>
+                <h1 class="display-4">Tus Favoritos</h1>
             </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="assets/img/testimonial-1.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
-                        </div>
+            <div class="row justify-content-center player-spaces-diff">
+                <div class="col-md-6">
+                    <div class="testimonial-item text-center">
+                        <?php $player_url = "playerInfo.php?id=" . urlencode($_SESSION['fav_player']); ?>
+                        <a href="<?php echo $player_url ?>">
+                            <img class="img-fluid mb-3" src="<?php echo "assets/img/players/" . $_SESSION['fav_player'] . ".avif" ?>" alt="Imagen del jugador" width=60%>
+                        </a>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
                 </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="assets/img/testimonial-2.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
-                        </div>
+                <div class="col-md-6">
+                    <div class="testimonial-item text-center">
+                        <?php $team_url = "teamInfo.php?id=" . urlencode($_SESSION['fav_team']); ?>
+                        <a href="<?php echo $team_url ?>">
+                            <img class="img-fluid mb-3" src="<?php echo "assets/img/teams/" . $_SESSION['fav_team'] . ".svg" ?>" alt="Imagen del equipo" width=43%>
+                        </a>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="assets/img/testimonial-3.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="assets/img/testimonial-4.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
                 </div>
             </div>
         </div>
@@ -143,9 +123,6 @@
     <!-- Testimonial End -->
 
     <?php endif; ?>
-
-
-
 <?php
     include 'footer.php';
 ?>

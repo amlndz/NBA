@@ -2,11 +2,29 @@
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
     checkSessionTimeout();
+    include 'connection.php';
     getUserInfo();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         actualizarUsuario();
     }
-    
+
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM final_players WHERE id = ?");
+    $stmt->bind_param("i", $_SESSION['fav_player']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $player = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();    
+
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM final_teams WHERE id = ?");
+    $stmt->bind_param("i", $_SESSION['fav_team']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $team = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +103,34 @@
     </div>
     <!-- Page Header End -->
     <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff-2"> <!-- Añade flexbox para centrar -->
-            <h1 class="text-primary" style="letter-spacing: 5px;">¿Desea ctualizar los datos del usuario?</h1>
+        <div class="testimonial-item">
+            <? $url = "playerInfo.php?id=".urlencode($_SESSION['fav_player']); ?>
+            <a href="<?php echo $url ?>">
+                <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/players/".$_SESSION['fav_player'].".avif' alt='imagen jugador'";?> onerror="this.onerror=null;this.src='./assets/img/players/default.avif'" width=30%>
+            </a>
+            <div class="player-info">
+                <a href="<?php echo $url ?>">
+                    <h4><?php echo $player['first_name'] . ' ' . $player['last_name']; ?></h4>
+                </a>
+            </div>
+        </div>           
+    </div>
+    <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff-2 " > <!-- Añade flexbox para centrar -->
+        <div class="testimonial-item">
+
+            <? $url_team = "teamInfo.php?id=".urlencode($_SESSION['fav_team']); ?>
+            <a href="<?php echo $url_team ?>">
+                <img class="img-fluid mb-3 mb-sm-0" <?php echo "src='./assets/img/teams/".$_SESSION['fav_team'].".svg' alt='imagen equipo'";?> onerror="this.onerror=null;this.src='./assets/img/nba.avif'" width=90%>
+            </a>
+            <div class="player-info">
+                <a href="<?php echo $url ?>">
+                    <h4><?php echo $team['full_name'] . ' ' . $team['abbreviation']; ?></h4>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-8 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
+            <h1 class="text-primary" style="letter-spacing: 5px;">¿Desea actualizar los datos del usuario?</h1>
     </div>
     <div class="container player-spaces-diff-2 col-lg-6">                        
         <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
