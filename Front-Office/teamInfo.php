@@ -207,9 +207,13 @@
                     <img src="./assets/img/fav.avif" alt="icono corazon">
                 <?php } ?>
             </button>
-            <button class="pdf-button fav-btn btn btn-primary text-white">
-                <img src="./assets/img/pdf.avif" alt="icono pdf">
-            </button>
+            <form method="post" action="teamPdf.php">
+                <!-- Aquí va el contenido del formulario -->
+                <button type="submit" name="generate_pdf" class="pdf-button fav-btn btn btn-primary text-white">
+                    <img src="./assets/img/pdf.avif" alt="icono pdf"> Descargar PDF
+                </button>
+            </form>
+
         </div>
         <div class="container-fluid d-flex justify-content-center "> <!-- Añade flexbox para centrar -->    
             <table class="styled-table">
