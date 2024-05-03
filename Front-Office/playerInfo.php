@@ -332,13 +332,16 @@
                                 <p><?php echo $pais; ?></p>
                             </div>
                             <div class="mb-4 d-flex">
-                            <button type="submit" class="fav-btn btn btn-primary text-white" data-id="<?php echo $id ?>" data-tipo="jugador">
-                                <?php if ($_SESSION['fav_player'] != $id) { ?>
-                                    <img src="./assets/img/nonfav.avif" alt="icono corazon">
-                                <?php } else { ?>
-                                    <img src="./assets/img/fav.avif" alt="icono corazon">
-                                <?php } ?>
-                            </button>
+                                <button type="submit" class="fav-btn btn btn-primary text-white" data-id="<?php echo $id ?>" data-tipo="jugador">
+                                    <?php if ($_SESSION['fav_player'] != $id) { ?>
+                                        <img src="./assets/img/nonfav.avif" alt="icono corazon">
+                                    <?php } else { ?>
+                                        <img src="./assets/img/fav.avif" alt="icono corazon">
+                                    <?php } ?>
+                                </button>
+                                <button class="pdf-button fav-btn btn btn-primary text-white">
+                                    <img src="./assets/img/pdf.avif" alt="icono pdf">
+                                </button>
                             </div>
                         </div>
                     </div>
