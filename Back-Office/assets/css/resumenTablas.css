@@ -1,0 +1,108 @@
+/* Estilo para el contenedor principal */
+#panel_central_resumen {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Estilo para el contenido del resumen de la página */
+  #resumen_contenido_pagina {
+    text-align: center; /* Alinear el texto al centro */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
+    background-color: #f2f2f2; /* Color de fondo gris suave */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    color: #333; /* Color del texto */
+  }
+  
+  /* Estilo para el contenedor de todas las tablas */
+  #todas_tablas {
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* Estilo para el contenedor de cada tabla */
+.contenido_tabla {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 100px;
+  position: relative; /* Permitir que el título se posicione de forma absoluta relativa a este contenedor */
+  margin-top: 30px; /* Espacio adicional entre el título y las tablas */
+}
+
+/* Estilo para el título de cada tabla */
+.titulo_contenido_tabla {
+  position: absolute;
+  top: -20px; /* Desplazamiento hacia arriba para que sobresalga un poco */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 0 140px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #3498db; /* Color de fondo azul */
+  color: #ffffff; /* Color del texto blanco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.titulo_contenido_tabla h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-align: center;
+}
+  
+  /* Estilo para la tabla */
+  .tablas table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Estilo para las celdas de la tabla */
+  .tablas th,
+  .tablas td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Estilo para las celdas de la tabla en la última fila */
+  .tablas tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Estilo para la expansión de 8 columnas */
+  .tablas tbody tr.expansion td {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+  }
+
+  .tablas tbody tr:last-child {
+    text-align: center;
+  }
+
+  thead th {
+    background-color: #3498db; /* Color de fondo azul más fuerte */
+    color: #ffffff; /* Color del texto blanco */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  /* Estilo para las filas impares de la tabla */
+  tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Color de fondo gris suave para filas impares */
+  }
+  
+  /* Estilo para las filas pares de la tabla */
+  tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Color de fondo blanco para filas pares */
+  }
+  
+  /* Estilo para la última fila (expansión de 8 columnas) */
+  .ultima_fila {
+    background-color: #3498db; /* Color de fondo azul más fuerte */
+    font-weight: bold; /* Texto en negrita */
+  }
+  

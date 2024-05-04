@@ -15,11 +15,11 @@ function reload_tables()
     truncate_tables();
 
     reload_teams_table();
-    // reload_players_table();
-    // reload_games_table();
-    // reload_stats_table();
-    // eliminar_jugadores_sin_stats();
-    // reload_average_table();
+    reload_players_table();
+    reload_games_table();
+    reload_stats_table();
+    eliminar_jugadores_sin_stats();
+    reload_average_table();
 
     echo "[+] Tablas recargadas correctamente [+]\n";
 }

@@ -4,15 +4,17 @@ require_once ("connection.php");
 function truncate_tables()
 {
     $con = connect();
-    $result = $con->query("set foreign_key_checks = 0");
-    $result = $con->query("truncate table final_games");
-    $result = $con->query("truncate table final_players");
-    $result = $con->query("truncate table final_stats");
-    $result = $con->query("truncate table final_teams");
-    $result = $con->query("truncate table final_averages");
-    $result = $con->query("set foreign_key_checks = 1");
+    $con->query("set foreign_key_checks = 0");
+    $con->query("truncate table final_games");
+    $con->query("truncate table final_players");
+    $con->query("truncate table final_stats");
+    $con->query("truncate table final_teams");
+    $con->query("truncate table final_averages");
+    $con->query("set foreign_key_checks = 1");
 
-    echo "Tablas truncadas correctamente";
+    echo "[+] Tablas truncadas correctamente [+]\n";
+
+    $con->close();
 }
 truncate_tables();
 

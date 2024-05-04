@@ -25,6 +25,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -59,19 +60,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="listadoUsuarios.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="listadoUsuarios.php?page=1">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_list_numbered</i>
             </div>
             <span class="nav-link-text ms-1">Listado de usuarios</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="buscarEliminarUsuario.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">delete</i>
-            </div>
-            <span class="nav-link-text ms-1">Eliminar un usuario</span>
           </a>
         </li>
         <li class="nav-item">
@@ -88,6 +81,14 @@
               <i class="material-icons opacity-10">priority_high</i>
             </div>
             <span class="nav-link-text ms-1">Truncar tablas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="meterUsuarios.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">add</i>
+            </div>
+            <span class="nav-link-text ms-1">Meter usuarios</span>
           </a>
         </li>
       </ul>
@@ -122,59 +123,101 @@
       <div class="titulo">-=-=-=- Listado de usuarios -=-=-=-</div>
     </div>
 
-    <div class="card my-4 mx-4">
-      <div class="card-body px-0 pb-2">
-        <div class="table-responsive p-0">
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th class="text-uppercase text-secondary font-weight-bolder opacity-7">ID</th>
-                <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Nombre</th>
-                <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Usuario y contraseña</th>
-                <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Equipo y jugador
-                  favorito</th>
-                <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Administrador</th>
-              </tr>
-            </thead>
+    <script>
+      $(document).ready(function () {
+        // Captura el evento 'keyup' en el campo de entrada
+        $('#searchInput').on('keyup', function () {
+          // Obtén el valor actual del campo de entrada
+          var searchTerm = $(this).val();
 
-            ##fila##
-            <tbody>
-              <tr>
-                <td>
-                  <div class="d-flex px-3 py-1">
-                    ##id_user##
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex flex-column justify-content-center px-4">
-                    <h6 class="mb-0 text-sm">##nombre## ##apellido1## ##apellido2##</h6>
-                    <p class="text-xs text-secondary mb-0">##mail##</p>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">##username##</p>
-                  <p class="text-xs font-weight-bold mb-0">##password##</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <p class="text-xs text-secondary mb-0">##favplayer##</p>
-                  <p class="text-xs text-secondary mb-0">##favteam##</p>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">##Administrador##</span>
-                </td>
-                <td class="align-middle">
-                  <a href="modificarUsuario.php?iduser=##id_user##" class="text-secondary font-weight-bold text-xs"
-                    data-toggle="tooltip" data-original-title="Edit user">
-                    Editar
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-            ##fila##
-          </table>
+          // Realiza la solicitud AJAX solo si el término de búsqueda no está vacío
+          // Realiza la llamada AJAX usando jQuery
+          $.ajax({
+            url: 'listadoUsuarios.php?page=1',  // URL del script PHP que manejará la solicitud
+            method: 'POST',  // Método HTTP para la solicitud (puedes usar 'GET' o 'POST')
+            data: { term: searchTerm },  // Datos a enviar al servidor (puedes incluir más parámetros aquí)
+            dataType: 'html',  // Tipo de datos esperados en la respuesta (por ejemplo, 'html', 'json', etc.)
+            success: function (response) {
+              var $responseHtml = $(response);
+
+              // Ahora puedes buscar un elemento específico dentro de la respuesta utilizando su id
+              var elementoDeseado = $responseHtml.find('#panel_central');
+
+              $("#panel_central").html("");
+              $('#panel_central').html(elementoDeseado);
+              // Busca la sección de filas en la respuesta
+              console.log(response);
+            },
+            error: function (xhr, status, error) {
+              // Maneja errores de la solicitud AJAX
+              console.error('Error en la solicitud AJAX:', error);
+            }
+          });
+        });
+      });
+    </script>
+
+
+    <div id="busqueda_de_usuario">
+      <input type="text" id="searchInput" placeholder="Buscar un usuario">
+    </div>
+
+    <div id="panel_central">
+      <div class="card my-4 mx-4 m-10">
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary font-weight-bolder opacity-7">ID</th>
+                  <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Nombre</th>
+                  <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Usuario y contraseña</th>
+                  <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Equipo y jugador
+                    favorito</th>
+                  <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Administrador</th>
+                </tr>
+              </thead>
+
+              ##fila##
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex px-3 py-1">
+                      ##id_user##
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex flex-column justify-content-center px-4">
+                      <h6 class="mb-0 text-sm">##nombre## </h6>
+                      <p class="text-xs text-secondary mb-0">##mail##</p>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">##username##</p>
+                    <p class="text-xs font-weight-bold mb-0">##password##</p>
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <p class="text-xs text-secondary mb-0">##favplayer##</p>
+                    <p class="text-xs text-secondary mb-0">##favteam##</p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">##Administrador##</span>
+                  </td>
+                  <td class="align-middle">
+                    <a href="modificarUsuario.php?iduser=##id_user##&page=##page##"
+                      class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                      data-original-title="Edit user">
+                      Editar
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              ##fila##
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+      <ul class="ul_paginacion"></ul>
 
   </main>
 </body>
