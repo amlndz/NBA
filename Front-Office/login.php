@@ -1,8 +1,6 @@
 <?php
     require "autenticarUsuario.php";
     $usuario_autenticado = autenticar();
-    // Iniciar sesión    
-    // Verificar si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         iniciarSesion();
     }

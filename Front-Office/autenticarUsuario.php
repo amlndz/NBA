@@ -1,6 +1,9 @@
 <?php
     session_start();
     // Verificar si el usuario está autenticado
+    ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
     function autenticar(){
         $usuario_autenticado = isset($_SESSION['usuario_autenticado']) && $_SESSION['usuario_autenticado'] === true;
         return $usuario_autenticado;
@@ -11,6 +14,10 @@
     function registrar(){
         require "connection.php";
 
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         // Inicializar las variables para mantener los datos del formulario
         $nombre_completo = "";
         $nombre_usuario = "";
@@ -62,9 +69,9 @@
                 $contrasena_encriptada = password_hash($contrasena, PASSWORD_DEFAULT);
                 
                 // Preparar una declaración SQL para insertar los datos en la tabla final_users
-                $sql_insert = "INSERT INTO final_users (full_name, username, email, password) VALUES (?, ?, ?, ?, ?)";
+                $sql_insert = "INSERT INTO final_users (full_name, username, email, password) VALUES (?, ?, ?, ?)";
                 $stmt = $conn->prepare($sql_insert);
-                $stmt->bind_param("sssss", $nombre_completo, $nombre_usuario, $email, $contrasena_encriptada);
+                $stmt->bind_param("ssss", $nombre_completo, $nombre_usuario, $email, $contrasena_encriptada);
                 
                 // Ejecutar la consulta
                 if (!$stmt->execute()) {
