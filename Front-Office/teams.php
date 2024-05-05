@@ -89,14 +89,15 @@
         
         <!--Menu botones filtrado por conferencia -->
             <div class="d-inline-flex">
-                <div class="row mb-5">
-                    <div class="col col-cnfrnc">
-                        <button class="cnfrnc-btn btn <?php echo ($_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
-                    </div>
-                    <div class="col col-cnfrnc">
-                        <button class="cnfrnc-btn  btn <?php echo ($_GET['conference'] == 'east') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'east') ? 'teams.php' : '?conference=east' ?>'">East</button>
-                    </div>
+            <div class="row mb-5">
+                <div class="col col-cnfrnc">
+                    <button class="cnfrnc-btn btn <?php echo (isset($_GET['conference']) && $_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo (isset($_GET['conference']) && $_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
                 </div>
+                <div class="col col-cnfrnc">
+                    <button class="cnfrnc-btn btn <?php echo (isset($_GET['conference']) && $_GET['conference'] == 'east') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo (isset($_GET['conference']) && $_GET['conference'] == 'east') ? 'teams.php' : '?conference=east' ?>'">East</button>
+                </div>
+            </div>
+
             </div>  
             <?php if ($usuario_autenticado) {?>
                 <form method="post" action="teamPdf.php" class=" mb-lg-5">
