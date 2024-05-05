@@ -85,7 +85,7 @@
         </form>
         
         <!--Menu botones filtrado por conferencia -->
-            <div class="d-inline-flex mb-lg-5">
+            <div class="d-inline-flex">
                 <div class="row mb-5">
                     <div class="col col-cnfrnc">
                         <button class="cnfrnc-btn btn <?php echo ($_GET['conference'] == 'west') ? 'btn-primary active' : 'btn-primary' ?>" onclick="window.location.href='<?php echo ($_GET['conference'] == 'west') ? 'teams.php' : '?conference=west' ?>'">West</button>
@@ -95,6 +95,11 @@
                     </div>
                 </div>
             </div>  
+            <form method="post" action="teamPdf.php" class=" mb-lg-5">
+                <button type="submit" name="generate_pdf" class="pdf-button fav-btn btn btn-primary text-white">
+                    <img src="./assets/img/pdf.avif" alt="icono pdf"> Descargar PDF
+                </button>
+            </form>
         </div>  
     </div>
     <!-- Page Header End -->

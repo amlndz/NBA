@@ -25,7 +25,7 @@
             $sql = "SELECT * FROM final_teams WHERE full_name LIKE '%$team%' OR abbreviation LIKE '%$team%'";
 
             $result = $conn->query($sql);
-        
+            
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                 echo "<div id='teams-container' class='container-fluid pt-5'><div class='container'><div class='row'>";
                 for ($i = 0; $i < $result->num_rows; $i += 1) {
@@ -91,7 +91,7 @@
 
     // Obtener el resultado de la consulta
     $result = $stmt->get_result();
-
+    
     // Cerrar la declaración
     $stmt->close();
 
