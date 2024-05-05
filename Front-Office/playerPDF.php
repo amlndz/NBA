@@ -52,6 +52,6 @@ if (isset($_POST['generate_pdf'])) {
     $pdf->writeHTML($htmlContent, true, false, true, false, '');
 
     // Salida del PDF
-    $pdf->Output('EquiposNBA.pdf', 'D'); // 'D' para descargar el PDF directamente
+    $pdf->Output('JugadoresNBA.pdf', 'D'); // 'D' para descargar el PDF directamente
     exit;
 }
