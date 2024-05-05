@@ -85,7 +85,7 @@
             </div>
         </form>
         <!-- Menú desplegable para búsqueda -->
-        <div class="d-inline-flex mb-lg-5">
+        <div class="d-inline-flex">
             <div class="row mb-4">
                 <div class="col">
                     <div class="dropdown">
@@ -118,6 +118,13 @@
                 </div>
             </div>
         </div>
+        <?php if ($usuario_autenticado) {?>
+                <form method="post" action="playerPDF.php" class=" mb-lg-5">
+                    <button type="submit" name="generate_pdf" class="pdf-button fav-btn btn btn-primary text-white">
+                        <img src="./assets/img/pdf.avif" alt="icono pdf"> Descargar PDF
+                    </button>
+                </form>
+            <?php } ?>
     </div>
 </div>
 

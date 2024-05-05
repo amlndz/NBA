@@ -59,6 +59,12 @@ if (!empty($params)) {
 $stmt->execute();
 $result = $stmt->get_result();
 
+$_SESSION['players'] = [];
+while ($row = $result->fetch_assoc()) {
+    $_SESSION['players'][] = $row;
+}
+$result->data_seek(0);
+
 $totalRecords = $result->num_rows;
 
 $offset = ($page - 1) * $pageSize;
@@ -71,6 +77,8 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param(str_repeat('s', count($params)), ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
+
+
 
 $stmt->close();
 $conn->close();

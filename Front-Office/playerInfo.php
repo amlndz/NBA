@@ -339,9 +339,6 @@
                                         <img src="./assets/img/fav.avif" alt="icono corazon">
                                     <?php } ?>
                                 </button>
-                                <button class="pdf-button fav-btn btn btn-primary text-white">
-                                    <img src="./assets/img/pdf.avif" alt="icono pdf">
-                                </button>
                             </div>
                         </div>
                     </div>
