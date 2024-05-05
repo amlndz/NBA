@@ -274,6 +274,7 @@
         $_SESSION['email'] = $user['email'];
         $_SESSION['fav_player'] = $user['fav_player'];
         $_SESSION['fav_team'] = $user['fav_team'];
+        $_SESSION['administrador'] = $user['administrador'];
         $conn->close();
     }
 

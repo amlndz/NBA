@@ -55,9 +55,13 @@
                                 <a href="login.php" class="dropdown-item">Log in</a>
                                 <a href="signin.php" class="dropdown-item">Sign in</a>
                             </div>
-                        <?php else: ?>
+                            <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="user.php" class="dropdown-item"><?php echo $_SESSION['username'] ?></a>
+                                <?php if ($_SESSION['administrador'] == 1){ ?>
+                                    <a href="../Back-Office/perfil.php" class="dropdown-item">admin</a>
+                                <?php } ?>
                                 <a href="logout.php" class="dropdown-item">Log Out</a>
                             </div>                            
                         <?php endif; ?>
