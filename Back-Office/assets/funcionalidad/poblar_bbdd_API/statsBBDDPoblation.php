@@ -8,12 +8,12 @@ function reload_stats_table()
     set_time_limit(1000000);
 
     // Consulta SQL para obtener los IDs de los jugadores
-    $sql_players = "SELECT id FROM FINAL_PLAYERS";
+    $sql_players = "SELECT id FROM final_players";
     $result_players = $con->query($sql_players);
 
     // Verificar si la consulta se ejecutó correctamente
     if (!$result_players) {
-        die("Error al ejecutar la consulta: " . $con->error);
+        die("Error al ejecutar la consulta sobre la tabla de jugadores en el programa de recarga de las estadisticas: " . $con->error);
     }
     // Inicializar array para almacenar los IDs de los jugadores
     $player_ids = array();
@@ -58,11 +58,6 @@ function reload_stats_table()
                 exit;
             }
 
-            // Mostrar la respuesta por pantalla
-            // echo "Respuesta de la API para el jugador ID $player_id:\n";
-            // print_r($response);
-            // echo "\n";
-
             // Decodificar la respuesta JSON
             $data = json_decode($response, true);
 
@@ -105,7 +100,7 @@ function reload_stats_table()
     // Cerrar la conexión y liberar recursos
     $stmt->close();
     $con->close();
-    echo "<br>[+] Los datos de las ESTADISITICAS se insertaron correctamente.<br>";
+    echo "[+] Los datos de las ESTADISITICAS se insertaron correctamente [+]\n";
 
 }
 ?>

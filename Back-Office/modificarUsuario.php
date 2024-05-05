@@ -4,7 +4,8 @@ include "./assets/funcionalidad/connection.php";
 $con = connect();
 
 $id_usuario = $_GET['iduser'];
-$stmt = $con->prepare("select * from final_users where id_user=$id_usuario");
+$pagina = $_GET['page'];
+$stmt = $con->prepare("select * from final_users where id=$id_usuario");
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -15,17 +16,17 @@ $body = "";
 while ($row = $result->fetch_assoc()) {
 
     $aux = $split_contents[1];
-    $aux = str_replace("##id_user##", $row["id_user"], $aux);
+    $aux = str_replace("##id_user##", $row["id"], $aux);
     $aux = str_replace("##username##", $row["username"], $aux);
     $aux = str_replace("##password##", $row["password"], $aux);
-    $aux = str_replace("##nombre##", $row["nombre"], $aux);
-    $aux = str_replace("##apellido1##", $row["apellido1"], $aux);
-    $aux = str_replace("##apellido2##", $row["apellido2"], $aux);
-    $aux = str_replace("##mail##", $row["mail"], $aux);
-    $aux = str_replace("##favplayer##", $row["FAVPLAYER"], $aux);
-    $aux = str_replace("##favteam##", $row["FAVTEAM"], $aux);
+    $aux = str_replace("##nombre##", $row["full_name"], $aux);
+    $aux = str_replace("##mail##", $row["email"], $aux);
+    $aux = str_replace("##favplayer##", $row["fav_player"], $aux);
+    $aux = str_replace("##favteam##", $row["fav_team"], $aux);
+    $aux = str_replace("##Administrador##", $row["administrador"], $aux);
+    $aux = str_replace('##page##', $pagina, $aux);
 
-    if ($row["Administrador"] == 1) {
+    if ($row["administrador"] == 1) {
         $aux .= "<script>document.getElementById('isAdmin').checked = true;</script>";
     } else {
         $aux .= "<script>document.getElementById('isAdmin').checked = false;</script>";
@@ -34,3 +35,5 @@ while ($row = $result->fetch_assoc()) {
     $body .= $aux;
 }
 echo $split_contents[0] . $body;
+$stmt->close();
+$con->close();

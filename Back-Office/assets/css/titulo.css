@@ -1,47 +1,128 @@
 .contenedor-titulo {
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-    color: #ffffff; 
-    font-size: 18px; 
-    font-weight: 400; 
-    text-align: center; 
-    background: #870303; 
-    margin: 0 20px 25px; 
-    overflow: hidden; 
-    padding: 20px; 
-    border-radius: 35px 0px 35px 0px; 
-    -moz-border-radius: 35px 0px 35px 0px; 
-    -webkit-border-radius: 35px 0px 35px 0px; 
-    border: 2px solid #5878ca;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  background: #870303;
+  margin: 0 20px 25px;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 35px 0px 35px 0px;
+  -moz-border-radius: 35px 0px 35px 0px;
+  -webkit-border-radius: 35px 0px 35px 0px;
+  border: 2px solid #5878ca;
+}
+
+
+#busqueda_de_usuario {
+  margin: 20px auto; /* Margen externo para centrar el div horizontalmente */
+  max-width: 400px; /* Ancho máximo del div */
+  padding: 10px; /* Relleno interno */
+  background-color: #f8f9fa; /* Color de fondo */
+  border: 1px solid #ced4da; /* Borde */
+  border-radius: 8px; /* Radio de borde para esquinas redondeadas */
+}
+
+#searchInput {
+  width: 100%; /* Ancho del campo de entrada */
+  padding: 10px; /* Relleno interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border: 1px solid #ced4da; /* Borde */
+  border-radius: 5px; /* Radio de borde para esquinas redondeadas */
+  outline: none; /* Eliminar el contorno de enfoque */
+}
+
+#searchInput::placeholder {
+  color: #adb5bd; /* Color del texto de marcador de posición */
+}
+
+#searchInput:focus {
+  border-color: #495057; /* Color del borde al enfocar */
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
 }
 
 .titulo {
-    display: inline-block;
-    color: #fff; /* Blanco para el texto */
-    font-size: 36px;
-    padding: 20px; /* Espacio interior */
-    border-radius: 10px; /* Bordes redondeados */
-    font-family: Arial, sans-serif; /* Fuente del texto */
+  display: inline-block;
+  color: #fff; /* Blanco para el texto */
+  font-size: 36px;
+  padding: 20px; /* Espacio interior */
+  border-radius: 10px; /* Bordes redondeados */
+  font-family: Arial, sans-serif; /* Fuente del texto */
 
-    text-align: left; 
-    font-family: Comic Sans MS; 
-    font-weight:bold; 
-    font-size: 30px; 
-    color: white; 
-    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68;
+  text-align: left;
+  font-family: Comic Sans MS;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  text-shadow: -1px 0 #414d68, 0 1px #414d68, 1px 0 #414d68, 0 -1px #414d68,
+    -2px 2px 0 #414d68, 2px 2px 0 #414d68, 1px 1px #414d68, 2px 2px #414d68,
+    3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68;
 }
 
 .text-lg {
-    font-size: 120px;
+  font-size: 120px;
 }
 
 #confirmationMessage {
-    display: none;
-    padding: 15px;
-    background-color: #4caf50; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    border-radius: 5px; /* Borde redondeado */
-    margin-top: 20px; /* Espacio superior */
-    font-size: 16px; /* Tamaño de fuente */
-    text-align: center; /* Centrar el texto */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  display: none;
+  padding: 15px;
+  background-color: #4caf50; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border-radius: 5px; /* Borde redondeado */
+  margin-top: 20px; /* Espacio superior */
+  font-size: 16px; /* Tamaño de fuente */
+  text-align: center; /* Centrar el texto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
 }
+
+#botonera {
+  display: grid;
+  justify-content: center;
+}
+
+.enlaces-container {
+  display: flex; /* Mostrar como flexbox */
+  justify-self: center;
+  justify-content: center; /* Centrar elementos horizontalmente */
+  align-items: center; /* Centrar elementos verticalmente */
+  margin-top: 20px; /* Margen superior opcional */
+  height: 100px; /* Altura fija opcional para centrar verticalmente */
+}
+
+/* Estilos para la lista <ul> de paginación */
+.ul_paginacion {
+  list-style: none; /* Quitar viñetas de la lista */
+  padding: 0;
+  display: flex; /* Mostrar como flexbox */
+  justify-content: center;
+}
+
+/* Estilos para cada elemento <li> de la paginación */
+.li_paginacion {
+  margin: 0 5px; /* Margen entre cada elemento de la lista */
+}
+
+/* Estilos para el enlace <a> dentro de cada elemento <li> */
+.li_paginacion a {
+  display: block; /* Mostrar como bloque */
+  padding: 10px 15px; /* Espaciado interno */
+  background-color: #007bff; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  text-decoration: none; /* Quitar subrayado del texto */
+  border-radius: 5px; /* Borde redondeado */
+  transition: background-color 0.3s ease; /* Transición suave de color de fondo al pasar el mouse */
+}
+
+/* Estilos de hover para el enlace <a> */
+.li_paginacion a:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+.li_paginacion.active a {
+  background-color: white; /* Color de fondo */
+  color: black;
+  border: solid 1px;
+  border-color: #007bff;
+}
+

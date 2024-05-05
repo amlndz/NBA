@@ -7,6 +7,7 @@ function recarga_de_tablas() {
         .then(response => response.text())
         .then(data => {
             // Mostrar el mensaje de confirmación
+            console.log("He terminado de recargar las tablas")
             document.getElementById("confirmationMessage").innerText = data;
             document.getElementById("confirmationMessage").style.display = "block";
         })

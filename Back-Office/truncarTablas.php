@@ -60,19 +60,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="listadoUsuarios.php">
+          <a class="nav-link text-white " href="listadoUsuarios.php?page=1">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_list_numbered</i>
             </div>
             <span class="nav-link-text ms-1">Listado de usuarios</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="buscarEliminarUsuario.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">delete</i>
-            </div>
-            <span class="nav-link-text ms-1">Eliminar un usuario</span>
           </a>
         </li>
         <li class="nav-item">
@@ -132,7 +124,9 @@
               funcionalidad de la base de datos. Antes de proceder, asegúrate de entender completamente el impacto de
               esta operación y de haber realizado una copia de seguridad de los datos relevantes. Solo debe truncar una
               tabla si estás absolutamente seguro de que es necesario y si tienes el permiso adecuado para hacerlo. Si
-              tienes alguna duda, consulta con un administrador de bases de datos o un experto en el tema.</span>
+              tienes alguna duda, consulta con un administrador de bases de datos o un experto en el tema.<br><br>La
+              tabla de usuarios de no se truncará
+            </span>
           </div>
         </div>
       </div>

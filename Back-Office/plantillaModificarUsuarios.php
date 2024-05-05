@@ -26,7 +26,6 @@
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-    <script src="./assets/js/botonPerfil.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -61,19 +60,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="listadoUsuarios.php">
+                    <a class="nav-link text-white" href="listadoUsuarios.php?page=1">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">format_list_numbered</i>
                         </div>
                         <span class="nav-link-text ms-1">Listado de usuarios</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="buscarEliminarUsuario.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">delete</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Eliminar un usuario</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -143,16 +134,8 @@
                             <input type="text" name="password" id="password" value="##password##">
                         </div>
                         <div class="form-group">
-                            <label for="name">Nombre:</label>
+                            <label for="name">Nombre y apellidos:</label>
                             <input type="text" name="name" id="name" value="##nombre##">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName1">Primer apellido:</label>
-                            <input type="text" name="lastName1" id="lastName1" value="##apellido1##">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName2">Segundo apellido:</label>
-                            <input type="text" name="lastName2" id="lastName2" value="##apellido2##">
                         </div>
                         <div class="form-group">
                             <label for="email">Correo Electrónico:</label>
@@ -175,6 +158,7 @@
 
                         <div class="btn-container">
                             <!-- Botón para eliminar -->
+                            <input type="hidden" id="page" name="page" value="##page##">
                             <button type="submit" class="btn-delete" id="btn-delete">Eliminar Usuario</button>
 
                             <script>
@@ -185,6 +169,7 @@
 
                                     // Obtener el ID del usuario a eliminar
                                     var id_usuario = document.getElementById("id_usuario").value;
+                                    var page = document.getElementById("page").value;
 
                                     // Crear un formulario dinámicamente
                                     var form = document.createElement("form");
@@ -197,8 +182,15 @@
                                     input.setAttribute("name", "iduser");
                                     input.setAttribute("value", id_usuario);
 
+                                    var input2 = document.createElement("input");
+                                    input2.setAttribute("type", "hidden");
+                                    input2.setAttribute("name", "page");
+                                    input2.setAttribute("value", page);
+
+
                                     // Agregar el campo de entrada al formulario
                                     form.appendChild(input);
+                                    form.appendChild(input2);
 
                                     // Agregar el formulario al cuerpo del documento
                                     document.body.appendChild(form);
@@ -209,40 +201,10 @@
                             </script>
 
                             <!-- Botón para volver -->
-                            <a href="listadoUsuarios.php" class="btn-menu">Volver a la lista</a>
+                            <a href="listadoUsuarios.php?page=##page##" class="btn-menu">Volver a la lista</a>
 
                             <!-- Botón para guardar -->
                             <button type="submit" class="btn-save" id="btn-save">Guardar datos</button>
-
-                            <script>
-                                document.getElementById("btn-delete").addEventListener("click", function (event) {
-                                    // Prevenir el comportamiento predeterminado del botón
-                                    event.preventDefault();
-
-                                    // Obtener el ID del usuario a eliminar
-                                    var id_usuario = document.getElementById("id_usuario").value;
-
-                                    // Crear un formulario dinámicamente
-                                    var form = document.createElement("form");
-                                    form.setAttribute("method", "post");
-                                    form.setAttribute("action", "assets/funcionalidad/eliminarUsuario.php");
-
-                                    // Crear un campo de entrada oculto para enviar el ID del usuario
-                                    var input = document.createElement("input");
-                                    input.setAttribute("type", "hidden");
-                                    input.setAttribute("name", "iduser");
-                                    input.setAttribute("value", id_usuario);
-
-                                    // Agregar el campo de entrada al formulario
-                                    form.appendChild(input);
-
-                                    // Agregar el formulario al cuerpo del documento
-                                    document.body.appendChild(form);
-
-                                    // Enviar el formulario
-                                    form.submit();
-                                });
-                            </script>
 
                         </div>
                     </form>

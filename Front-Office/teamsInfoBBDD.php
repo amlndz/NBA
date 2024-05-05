@@ -92,6 +92,14 @@
     // Obtener el resultado de la consulta
     $result = $stmt->get_result();
     
+    $_SESSION['teams'] = [];
+    while ($row = $result->fetch_assoc()) {
+        $_SESSION['teams'][] = $row;
+    }
+
+    $result->data_seek(0);
+
+
     // Cerrar la declaración
     $stmt->close();
 
