@@ -2,8 +2,8 @@
     session_start();
     // Verificar si el usuario está autenticado
     ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     function autenticar(){
         $usuario_autenticado = isset($_SESSION['usuario_autenticado']) && $_SESSION['usuario_autenticado'] === true;
         return $usuario_autenticado;

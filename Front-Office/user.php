@@ -14,23 +14,28 @@
         actualizarUsuario();
     }
 
-    $conn = connect();
-    $stmt = $conn->prepare("SELECT * FROM final_players WHERE id = ?");
-    $stmt->bind_param("i", $_SESSION['fav_player']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $player = $result->fetch_assoc();
-    $stmt->close();
-    $conn->close();    
+    if ($_SESSION['fav_player'] != null){
+        $conn = connect();
+        $stmt = $conn->prepare("SELECT * FROM final_players WHERE id = ?");
+        $stmt->bind_param("i", $_SESSION['fav_player']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $player = $result->fetch_assoc();
+        $stmt->close();
+        $conn->close();    
 
-    $conn = connect();
-    $stmt = $conn->prepare("SELECT * FROM final_teams WHERE id = ?");
-    $stmt->bind_param("i", $_SESSION['fav_team']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $team = $result->fetch_assoc();
-    $stmt->close();
-    $conn->close();
+    }
+    if ($_SESSION['fav_team'] != null){
+        $conn = connect();
+        $stmt = $conn->prepare("SELECT * FROM final_teams WHERE id = ?");
+        $stmt->bind_param("i", $_SESSION['fav_team']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $team = $result->fetch_assoc();
+        $stmt->close();
+        $conn->close();
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +82,7 @@
                 <a href="index.php" class="nav-item nav-link">Inicio</a>
                     <a href="players.php" class="nav-item nav-link">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
-                    <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
-                    <a href="about.php" class="nav-item nav-link">About</a> -->
+                    <a href="games.php" class="nav-item nav-link">Partidos</a>
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
@@ -111,6 +115,7 @@
         </div>
     </div>
     <!-- Page Header End -->
+    <?php if ($_SESSION['fav_player'] != null){?>
     <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff-2"> <!-- Añade flexbox para centrar -->
         <div class="testimonial-item">
             <? $url = "playerInfo.php?id=".urlencode($_SESSION['fav_player']); ?>
@@ -124,6 +129,7 @@
             </div>
         </div>           
     </div>
+    <?php } if ($_SESSION['fav_team'] != null){?>
     <div class="container-fluid py-8 d-flex justify-content-center player-spaces-diff-2 " > <!-- Añade flexbox para centrar -->
         <div class="testimonial-item">
 
@@ -138,6 +144,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <div class="container-fluid py-8 d-flex justify-content-center "> <!-- Añade flexbox para centrar -->
             <h1 class="text-primary" style="letter-spacing: 5px;">¿Desea actualizar los datos del usuario?</h1>
     </div>

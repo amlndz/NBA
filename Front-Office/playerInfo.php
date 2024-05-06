@@ -236,8 +236,7 @@
                 <a href="index.php" class="nav-item nav-link">Inicio</a>
                     <a href="players.php" class="nav-item nav-link active">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
-                    <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
-                    <a href="about.php" class="nav-item nav-link">About</a> -->
+                    <a href="games.php" class="nav-item nav-link">Partidos</a>
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
@@ -307,14 +306,18 @@
                             <div class="mb-4 d-flex "> <!-- Espacio entre bloques y flexbox -->
                                 <h5 class="mr-2">Altura:</h5> <!-- Agrega clase para margen a la derecha -->
                                 <?php 
-                                    // Dividir la altura en pies y pulgadas
-                                    list($pies, $pulgadas) = explode('.', $altura);
-
+                                    if (strpos($altura, '.') !== false) {
+                                        list($pies, $pulgadas) = explode('.', $altura);
+                                    } else {
+                                        $pies = $altura;
+                                        $pulgadas = 0;
+                                    }
+                                    
                                     $altura_total_pulgadas = $pies * 12 + $pulgadas;
-
+                                    
                                     $altura_cm = $altura_total_pulgadas * 2.54;
-
-                                    echo round($altura_cm, 2) . " cm"; 
+                                    
+                                    echo round($altura_cm, 2) . " cm";
                                     ?>
                                     
                             </div>

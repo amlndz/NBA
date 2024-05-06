@@ -1,9 +1,30 @@
 <?php
-    include("playersInfoBBDD.php");
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once "autenticarUsuario.php"; 
+
     $usuario_autenticado = autenticar();
-    checkSessionTimeout();
-    $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+checkSessionTimeout();
+$_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+include "connection.php";
+$conn = connect();
+// Consulta SQL
+$query = "SELECT * FROM final_games";
+$result = mysqli_query($conn, $query);
+
+// Iterar sobre los resultados
+
+// Función para obtener los detalles del equipo
+function getTeamDetails($team_id) {
+    global $conn;
+    $query = "SELECT * FROM final_teams WHERE id = $team_id";
+    $result = mysqli_query($conn, $query);
+    return mysqli_fetch_assoc($result);
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +68,9 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                     <a href="index.php" class="nav-item nav-link">Inicio</a>
-                    <a href="players.php" class="nav-item nav-link active">Jugadores</a>
+                    <a href="players.php" class="nav-item nav-link">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
-                    <a href="partidos.php" class="nav-item nav-link">Partidos</a>
+                    <a href="games.php" class="nav-item nav-link active">Partidos</a>
 
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
@@ -75,20 +96,55 @@
     </div>
     <!-- Navbar End -->
 
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">PARTIDOS 2023/24</h1>
+        </div>
+    </div>
 
+    <div id="players-container" class="container-fluid pt-5">
+        <div class="container">
+            <?php
+                // Conexión a la base de datos
+                include("playersInfoBBDD.php");
 
+                // Consulta SQL
+                $query = "SELECT * FROM final_games";
+                $result = mysqli_query($conn, $query);
 
-<!-- Page Header Start     <div class="d-inline-flex mb-lg-5">
- -->
-<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">JUGADORES 2023/24</h1>
+                // Iterar sobre los resultados
+                while($row = mysqli_fetch_assoc($result)) {
+                    // Obtener detalles del equipo local y visitante
+                    $home_team = getTeamDetails($row['home_team_id']);
+                    $visitor_team = getTeamDetails($row['visitor_team_id']);
+            
+                    // Mostrar los datos
+                    echo '<div class="game">';
+                    echo '<div class="team">';
+                    echo '<img src="./assets/img/teams/' . $home_team['id'] . '.svg" alt="team-logo">';
+                    echo '<p>' . $home_team['name'] . '</p>';
+                    echo '<p>' . $row['home_team_score'] . '</p>';
+                    echo '</div>';
+                    echo '<div class="details">';
+                    echo '<p>' . $row['date'] . '</p>';
+                    echo '<p>' . $row['period'] . '</p>';
+                    echo '<p>' . $row['status'] . '</p>';
+                    echo '</div>';
+                    echo '<div class="team">';
+                    echo '<p>' . $row['visitor_team_score'] . '</p>';
+                    echo '<p>' . $visitor_team['name'] . '</p>';
+                    echo '<img src="./assets/img/teams/' .$visitor_team['id'] . '.svg" alt="team-logo">';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            ?>
+        </div>
+    </div>
 
+    <!-- Footer Start -->
+    <?php include 'footer.php'; ?>
+    <!-- Footer End -->
 
-
-        
-
-
-<!-- Footer Start -->
-<?php include 'footer.php'; ?>
-<!-- Footer End -->
+</body>
+</html>

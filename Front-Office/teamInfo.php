@@ -63,8 +63,7 @@
                 <a href="index.php" class="nav-item nav-link">Inicio</a>
                     <a href="players.php" class="nav-item nav-link">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link active">Equipos</a>
-                    <!-- <a href="contact.php" class="nav-item nav-link">Contact</a>
-                    <a href="about.php" class="nav-item nav-link">About</a> -->
+                    <a href="games.php" class="nav-item nav-link">Partidos</a>
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
