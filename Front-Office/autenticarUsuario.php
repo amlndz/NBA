@@ -48,9 +48,10 @@
             
             if ($result_email->num_rows > 0) {
                 mostrarMensaje("[!] - El correo electrónico ya está registrado.");
+                $stmt_email->close();
                 return;
             }
-            
+            $stmt_email->close();
             // Comprobar si el nombre de usuario ya existe en la base de datos
             $sql_username = "SELECT id FROM final_users WHERE username = ?";
             $stmt_username = $conn->prepare($sql_username);
@@ -60,9 +61,10 @@
             
             if ($result_username->num_rows > 0) {
                 mostrarMensaje("[!] - El nombre de usuario ya está registrado.");
+                $stmt_username->close();
                 return;
             }
-            
+            $stmt_username->close();
             // Comprobar si las contraseñas coinciden
             if ($contrasena === $confirmar_contrasena) {
                 // Encriptar la contraseña
@@ -76,6 +78,8 @@
                 // Ejecutar la consulta
                 if (!$stmt->execute()) {
                     echo "Error al ejecutar la consulta: " . $stmt->error;
+                    $stmt->close();
+                    $conn->close();
                 } else {
                     // Si las credenciales son válidas, establecer la variable de sesión
                     $_SESSION['usuario_autenticado'] = true;
@@ -85,22 +89,25 @@
                         $prevPage = $_SESSION['prev_page'];
                         unset($_SESSION['prev_page']); // Limpiar la variable de sesión
                         header("Location: $prevPage");
+                        $stmt->close();
+                        $conn->close();
                         exit; // Asegúrate de que el script se detenga después de la redirección
                     } else {
                         // Si no hay una página anterior guardada, redirigir a una página predeterminada
+                        $stmt->close();
+                        $conn->close();
                         header("Location: index.php");
                         exit; // Asegúrate de que el script se detenga después de la redirección
                     }
                 }
             } else {
+                $conn->close();
                 mostrarMensaje("[!] - Las contraseñas no coinciden.");
             }
             
             // Cerrar la conexión
-            $stmt->close();
-            $conn->close();
         }
-    }
+    }   
 
     function iniciarSesion(){
         require "connection.php";
@@ -135,9 +142,6 @@
                     // Si las credenciales son válidas, establecer la variable de sesión
                     $_SESSION['usuario_autenticado'] = true;
                     
-                    // Obtener información del usuario
-                    getUserInfo();
-    
                     // Redirigir al usuario a la página anterior
                     if (isset($_SESSION['prev_page'])) {
                         $prevPage = $_SESSION['prev_page'];
@@ -154,17 +158,19 @@
                         exit; // Asegúrate de que el script se detenga después de la redirección
                     }
                 } else {
-                    mostrarMensaje("[!] - Nombre o usuario incorrecto.");
+                    mostrarMensaje("[!] - Nombre o contraseña incorrectos.");
+                    $stmt->close(); // Cerrar la consulta
+                    $conn->close(); // Cerrar la conexión
                     return;
                 }
             } else {
-                mostrarMensaje("[!] - Nombre o usuario incorrecto.");
+                mostrarMensaje("[!] - Nombre de usuario incorrecto.");
+                $conn->close(); // Cerrar la conexión
+                return;
             }
-            $stmt->close();
-            $conn->close();
-            // Cerrar la conexión   
         }
     }
+    
     
 
     function checkSessionTimeout() {

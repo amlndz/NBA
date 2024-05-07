@@ -97,9 +97,9 @@
                             </div>
                             <p class="text-white">¡Dunk into the action! Tu acceso directo al mundo emocionante de la NBA</p>
                             <ul class="list-inline text-white m-0">
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Más entretenimiento</li>
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Más emoción</li>
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Más pasión</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Accede a las estadisticas de tus jugadores y queipos</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Descarga la información</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Y vive la pasión de la nba al maximo</li>
                             </ul>
                         </div>
                     </div>
