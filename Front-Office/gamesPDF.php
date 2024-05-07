@@ -2,9 +2,21 @@
 if (isset($_POST['generate_pdf'])) {
     session_start();
     require_once './tcpdf/tcpdf.php';
-    $games = $_SESSION['games'];
+    require_once "autenticarUsuario.php";
+    include "connection.php";
+    $conn = connect();
+    $query = "SELECT * FROM final_games";
+    $result = mysqli_query($conn, $query);
 
-    // Crear una nueva instancia de TCPDF
+    // Función para obtener los detalles completos del equipo
+    function getTeamDetails($team_id) {
+        global $conn;
+        $query = "SELECT * FROM final_teams WHERE id = $team_id";
+        $result = mysqli_query($conn, $query);
+        return mysqli_fetch_assoc($result);
+    }
+
+    // Crear instancia de TCPDF
     $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 
     // Establecer el título del documento
@@ -14,7 +26,7 @@ if (isset($_POST['generate_pdf'])) {
     $pdf->AddPage();
 
     // Agregar logotipo y cabecera
-    $pdf->Image('./assets/img/logoNBA2.png', 10, 10, 20, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false); // Reducir el tamaño del logotipo
+    $pdf->Image('./assets/img/logoNBA2.png', 10, 10, 20, '', 'PNG', '', 'T', false, round(300), '', false, false, 0, false, false, false);
     $pdf->SetFont('helvetica', 'B', 20);
     $pdf->Cell(0, 25, 'Partidos NBA', 0, true, 'C');
 
@@ -35,15 +47,30 @@ if (isset($_POST['generate_pdf'])) {
                         <tbody>';
 
     // Iterar sobre los partidos
-    foreach ($games as $row) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Obtener detalles del equipo local y visitante
+        $home_team = getTeamDetails($row['home_team_id']);
+        $visitor_team = getTeamDetails($row['visitor_team_id']);
+        
+        // Convertir fecha de formato completo a solo fecha
+        $date = date_create($row['date']);
+        $formatted_date = date_format($date, 'Y-m-d');
+
+        // Cambiar estado según el valor
+        $status = ($row['status'] == 'Final') ? 'Terminado' : $row['status'];
+
+        // Cambiar periodo
+        $period = ($row['period'] == 'final') ? 'Cuartos' : $row['period'];
+
+        // Agregar fila de la tabla
         $htmlContent .= '<tr>
-                            <td>'.$row['home_team'].'</td>
+                            <td>'.$home_team['name'].'</td>
                             <td>'.$row['home_team_score'].'</td>
-                            <td>'.$row['date'].'</td>
-                            <td>'.$row['status'].'</td>
-                            <td>'.$row['period'].'</td>
+                            <td>'.$formatted_date.'</td>
+                            <td>'.$status.'</td>
+                            <td>'.$period.'</td>
                             <td>'.$row['visitor_team_score'].'</td>
-                            <td>'.$row['visitor_team'].'</td>
+                            <td>'.$visitor_team['name'].'</td>
                         </tr>';
     }
 
@@ -56,5 +83,4 @@ if (isset($_POST['generate_pdf'])) {
     // Salida del PDF
     $pdf->Output('PartidosNBA.pdf', 'D'); // 'D' para descargar el PDF directamente
     exit;
-}
-?>
+}?>
