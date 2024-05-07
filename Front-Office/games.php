@@ -3,26 +3,11 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once "autenticarUsuario.php"; 
 
-    $usuario_autenticado = autenticar();
+include("gamesInfoBBDD.php");
+$usuario_autenticado = autenticar();
 checkSessionTimeout();
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
-include "connection.php";
-$conn = connect();
-// Consulta SQL
-$query = "SELECT * FROM final_games";
-$result = mysqli_query($conn, $query);
-
-// Iterar sobre los resultados
-
-// Función para obtener los detalles del equipo
-function getTeamDetails($team_id) {
-    global $conn;
-    $query = "SELECT * FROM final_teams WHERE id = $team_id";
-    $result = mysqli_query($conn, $query);
-    return mysqli_fetch_assoc($result);
-}
 ?>
 
 
@@ -103,12 +88,52 @@ function getTeamDetails($team_id) {
         </div>
     </div>
 
+    <!-- Custom CSS -->
+    <style>
+        .game {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem;
+            padding: 1rem;
+            border: 2px solid #33211D;
+            border-radius: 10px;
+        }
+
+        .team {
+            flex: 1;
+            text-align: center;
+        }
+
+        .team img {
+            max-width: 60px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .details {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar">
+        <!-- Navbar code -->
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <!-- Page header code -->
+    </div>
+
     <div id="players-container" class="container-fluid pt-5">
         <div class="container">
             <?php
-                // Conexión a la base de datos
-                include("playersInfoBBDD.php");
-
                 // Consulta SQL
                 $query = "SELECT * FROM final_games";
                 $result = mysqli_query($conn, $query);
@@ -127,17 +152,29 @@ function getTeamDetails($team_id) {
                     echo '<p>' . $row['home_team_score'] . '</p>';
                     echo '</div>';
                     echo '<div class="details">';
-                    echo '<p>' . $row['date'] . '</p>';
-                    echo '<p>' . $row['period'] . '</p>';
-                    echo '<p>' . $row['status'] . '</p>';
+                    // Convertir fecha de formato completo a solo fecha
+                    $date = date_create($row['date']);
+                    echo '<p>' . date_format($date, 'Y-m-d') . '</p>';
+                    // Cambiar estado según el valor
+                    if ($row['status'] == 'Final') {
+                        echo '<p>Finalizado</p>';
+                    } else {
+                        echo '<p>' . $row['status'] . '</p>';
+                    }
+                    // Cambiar periodo
+                    if ($row['period'] == 'final') {
+                        echo '<p>Cuartos</p>';
+                    } else {
+                        echo '<p>' . $row['period'] . '</p>';
+                    }
                     echo '</div>';
                     echo '<div class="team">';
-                    echo '<p>' . $row['visitor_team_score'] . '</p>';
-                    echo '<p>' . $visitor_team['name'] . '</p>';
                     echo '<img src="./assets/img/teams/' .$visitor_team['id'] . '.svg" alt="team-logo">';
+                    echo '<p>' . $visitor_team['name'] . '</p>';
+                    echo '<p>' . $row['visitor_team_score'] . '</p>';
                     echo '</div>';
                     echo '</div>';
-                }
+                    }
             ?>
         </div>
     </div>
@@ -145,6 +182,7 @@ function getTeamDetails($team_id) {
     <!-- Footer Start -->
     <?php include 'footer.php'; ?>
     <!-- Footer End -->
+
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require "autenticarUsuario.php";
+require_once "autenticarUsuario.php";
 
 include "connection.php";
 $conn = connect();
