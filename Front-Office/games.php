@@ -84,7 +84,14 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">PARTIDOS 2023/24</h1>
+            <h1 class="display-4 mb-5 mt-2 mt-lg-5 text-white text-uppercase">PARTIDOS 2023/24</h1>
+            <?php if ($usuario_autenticado) {?>
+                <form method="post" action="gamesPDF.php" class=" mb-lg-5">
+                    <button type="submit" name="generate_pdf" class="pdf-button fav-btn btn btn-primary text-white">
+                        <img src="./assets/img/pdf.avif" alt="icono pdf"> Descargar PDF
+                    </button>
+                </form>
+                <?php } ?>
         </div>
     </div>
 

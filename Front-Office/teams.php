@@ -99,7 +99,7 @@
 
             </div>  
             <?php if ($usuario_autenticado) {?>
-                <form method="post" action="teamPdf.php" class=" mb-lg-5">
+                <form method="post" action="teamPDF.php" class=" mb-lg-5">
                     <button type="submit" name="generate_pdf" class="pdf-button fav-btn btn btn-primary text-white">
                         <img src="./assets/img/pdf.avif" alt="icono pdf"> Descargar PDF
                     </button>
