@@ -17,7 +17,6 @@ $_SESSION['games'] = [];
 while ($row = $result->fetch_assoc()) {
     $home_team = getTeamDetails((int)$row['home_team_id']);
     $visitor_team = getTeamDetails((int)$row['visitor_team_id']);
-    echo $home_team['name']."-----------".$visitor_team['name'];
     $row['home_team_id'] = $home_team['name'];
     $row['visitor_team_id'] = $visitor_team['name'];
 
