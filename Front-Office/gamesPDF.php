@@ -2,11 +2,24 @@
 session_start();
 require_once './tcpdf/tcpdf.php';
 
+class MYPDF extends TCPDF {
+    //Pie de página
+    public function Footer() {
+        // Posición a 15 mm del final
+        $this->SetY(-15);
+        // Set font
+        $this->SetFont('helvetica', 'I', 8);
+        // Número de página
+        $this->Cell(0, 10, 'Información tomada de API balldontlie', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    }
+}
+
 if (isset($_POST['generate_pdf'])) {
     $games = isset($_SESSION['games']) ? $_SESSION['games'] : [];
 
-    $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+    $pdf = new MYPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $pdf->SetTitle('Partidos NBA');
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
     $pdf->AddPage();
     $pdf->Image('./assets/img/logoNBA2.png', 10, 10, 20, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
     $pdf->SetFont('helvetica', 'B', 20);
