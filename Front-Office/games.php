@@ -12,15 +12,14 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <title>NBA</title>
     <link rel="icon" href="./assets/img/nba.avif">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free Website Template" name="keywords">
-    <meta content="Free Website Template" name="description">
+    <meta content="Plantilla de sitio web gratuita" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -32,16 +31,16 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
+    <!-- Hoja de estilos personalizada -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Hoja de estilos de Bootstrap personalizada -->
     <link href="assets/css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar Start -->
+    <!-- Barra de navegación -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.php" class="navbar-brand px-lg-1 m-0">
@@ -61,17 +60,17 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a href="login.php" class="dropdown-item">Log in</a>
-                                <a href="signin.php" class="dropdown-item">Sign in</a>
+                                <a href="login.php" class="dropdown-item">Iniciar sesión</a>
+                                <a href="signin.php" class="dropdown-item">Registrarse</a>
                             </div>
                         <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a href="user.php" class="dropdown-item"><?php echo $_SESSION['username'] ?></a>
-                                <?php if ($_SESSION['administrador'] == 1){ ?>
+                                <?php if ($_SESSION['administrador'] == 1): ?>
                                     <a href="../Back-Office/perfil.php" class="dropdown-item">admin</a>
-                                <?php } ?>
-                                <a href="logout.php" class="dropdown-item">Log Out</a> 
+                                <?php endif; ?>
+                                <a href="logout.php" class="dropdown-item">Cerrar sesión</a> 
                             </div>                            
                         <?php endif; ?>
                     </div>
@@ -79,9 +78,9 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
             </div>
         </nav>
     </div>
-    <!-- Navbar End -->
+    <!-- Fin de la barra de navegación -->
 
-    <!-- Page Header Start -->
+    <!-- Encabezado de la página -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
             <h1 class="display-4 mb-5 mt-2 mt-lg-5 text-white text-uppercase">PARTIDOS 2023/24</h1>
@@ -95,7 +94,7 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         </div>
     </div>
 
-    <!-- Custom CSS -->
+    <!-- Estilos personalizados -->
     <style>
         .game {
             display: flex;
@@ -127,15 +126,15 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 </head>
 
 <body>
-    <!-- Navbar Start -->
+    <!-- Barra de navegación -->
     <div class="container-fluid p-0 nav-bar">
-        <!-- Navbar code -->
+        <!-- Código de la barra de navegación -->
     </div>
-    <!-- Navbar End -->
+    <!-- Fin de la barra de navegación -->
 
-    <!-- Page Header Start -->
+    <!-- Encabezado de la página -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-        <!-- Page header code -->
+        <!-- Código del encabezado de la página -->
     </div>
 
     <div id="players-container" class="container-fluid pt-5">
@@ -148,8 +147,8 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                 // Iterar sobre los resultados
                 while($row = mysqli_fetch_assoc($result)) {
                     // Obtener detalles del equipo local y visitante
-                    $home_team = getTeamDetails($row['home_team_id']);
-                    $visitor_team = getTeamDetails($row['visitor_team_id']);
+                    $home_team = getTeamDetails((int)$row['home_team_id']);
+                    $visitor_team = getTeamDetails((int)$row['visitor_team_id']);
             
                     // Mostrar los datos
                     echo '<div class="game">';
@@ -181,14 +180,16 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                     echo '<p>' . $row['visitor_team_score'] . '</p>';
                     echo '</div>';
                     echo '</div>';
-                    }
+                }
+                $result->data_seek(0);
+                $conn->close();
             ?>
         </div>
     </div>
 
-    <!-- Footer Start -->
+    <!-- Pie de página -->
     <?php include 'footer.php'; ?>
-    <!-- Footer End -->
+    <!-- Fin del pie de página -->
 
 
 </body>
