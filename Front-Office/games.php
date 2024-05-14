@@ -4,10 +4,24 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include("gamesInfoBBDD.php");
+include_once("gamesInfoBBDD.php");
 $usuario_autenticado = autenticar();
 checkSessionTimeout();
 $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+$_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
+
+$partidos_por_jornada = 15;
+$jornada_actual = isset($_GET['jornada']) ? $_GET['jornada'] : 1;
+$inicio = ($jornada_actual - 1) * $partidos_por_jornada;
+
+$query = "SELECT * FROM final_games LIMIT $inicio, $partidos_por_jornada";
+$result = mysqli_query($conn, $query);
+
+$query_total = "SELECT COUNT(*) as total FROM final_games";
+$result_total = mysqli_query($conn, $query_total);
+$row_total = mysqli_fetch_assoc($result_total);
+$total_partidos = $row_total['total'];
+$total_jornadas = ceil($total_partidos / $partidos_por_jornada);
 ?>
 
 
@@ -55,22 +69,21 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                     <a href="players.php" class="nav-item nav-link">Jugadores</a>
                     <a href="teams.php" class="nav-item nav-link">Equipos</a>
                     <a href="games.php" class="nav-item nav-link active">Partidos</a>
-
                     <div class="nav-item dropdown">
                         <?php if (!$usuario_autenticado): ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt="user"></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a href="login.php" class="dropdown-item">Iniciar sesión</a>
-                                <a href="signin.php" class="dropdown-item">Registrarse</a>
+                                <a href="login.php" class="dropdown-item">Log in</a>
+                                <a href="signin.php" class="dropdown-item">Sign in</a>
                             </div>
                         <?php else: ?>
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" alt=""></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a href="user.php" class="dropdown-item"><?php echo $_SESSION['username'] ?></a>
-                                <?php if ($_SESSION['administrador'] == 1): ?>
+                                <?php if ($_SESSION['administrador'] == 1){ ?>
                                     <a href="../Back-Office/perfil.php" class="dropdown-item">admin</a>
-                                <?php endif; ?>
-                                <a href="logout.php" class="dropdown-item">Cerrar sesión</a> 
+                                <?php } ?>
+                                <a href="logout.php" class="dropdown-item">Log Out</a> 
                             </div>                            
                         <?php endif; ?>
                     </div>
@@ -140,10 +153,6 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
     <div id="players-container" class="container-fluid pt-5">
         <div class="container">
             <?php
-                // Consulta SQL
-                $query = "SELECT * FROM final_games";
-                $result = mysqli_query($conn, $query);
-
                 // Iterar sobre los resultados
                 while($row = mysqli_fetch_assoc($result)) {
                     // Obtener detalles del equipo local y visitante
@@ -187,6 +196,31 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
         </div>
     </div>
 
+    <div class="pagination-container" id="pagination-container">
+        <div class="pagination">
+            <?php
+            for ($i = 1; $i <= $total_jornadas; $i++) {
+                if ($i == $jornada_actual) {
+                    echo "<a class='active' href=\"?jornada=$i\">$i</a> ";
+                } else {
+                    if ($i == 1 || $i == $total_jornadas || ($i >= $jornada_actual - 3 && $i <= $jornada_actual + 3)) {
+                        echo "<a href=\"?jornada=$i\">$i</a> ";
+                    } else if ($i < $jornada_actual) {
+                        if ($i > 1) {
+                            echo "<a class='disabled'>...</a> ";
+                        }
+                        $i = $jornada_actual - 4; // Saltar a las jornadas cercanas a la actual
+                    } else if ($i > $jornada_actual) {
+                        if ($i < $total_jornadas) {
+                            echo "<a class='disabled'>...</a> ";
+                        }
+                        $i = $total_jornadas - 1; // Saltar a la última jornada
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
     <!-- Pie de página -->
     <?php include 'footer.php'; ?>
     <!-- Fin del pie de página -->
@@ -194,3 +228,4 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
 
 </body>
 </html>
+
