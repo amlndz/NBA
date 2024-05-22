@@ -1,6 +1,7 @@
 <?php
 function reload_stats_table()
 {
+    sleep(4);
     require ("credentials.php");
     $con = connect();
     $urlAPIstats = "https://api.balldontlie.io/v1/stats";
@@ -58,48 +59,32 @@ function reload_stats_table()
                 exit;
             }
 
-            // Decodificar la respuesta JSON
             $data = json_decode($response, true);
 
-
-
             if (isset($data['data']) && is_array($data['data'])) {
-                // Insertar los datos de las estadísticas en la base de datos
                 foreach ($data['data'] as $stat) {
-                    // Verificar si existen las claves necesarias en el elemento de datos actual
+
                     $team_id = isset($stat['team']['id']) ? $stat['team']['id'] : null;
                     $game_id = isset($stat['game']['id']) ? $stat['game']['id'] : null;
 
-                    // Asignar valores a los parámetros de la consulta
-                    $stmt->bind_param("iiiidiidiiddiiiiiiiiii", $stat['id'], $player_id, $team_id, $game_id, $stat['min'], $stat['fgm'], $stat['fga'], $stat['fg_pct'], $stat['fg3m'], $stat['fg3a'], $stat['fg3_pct'], $stat['ft_pct'], $stat['ftm'], $stat['fta'], $stat['oreb'], $stat['dreb'], $stat['reb'], $stat['ast'], $stat['stl'], $stat['blk'], $stat['pf'], $stat['pts']);
-
-                    // Ejecutar la consulta
-                    $stmt->execute();
-
-                    // Verificar si ocurrió algún error al ejecutar la consulta
-                    if ($stmt->errno) {
-                        echo "Error al insertar datos: " . $stmt->error;
+                    try {
+                        $stmt->bind_param("iiiidiidiiddiiiiiiiiii", $stat['id'], $player_id, $team_id, $game_id, $stat['min'], $stat['fgm'], $stat['fga'], $stat['fg_pct'], $stat['fg3m'], $stat['fg3a'], $stat['fg3_pct'], $stat['ft_pct'], $stat['ftm'], $stat['fta'], $stat['oreb'], $stat['dreb'], $stat['reb'], $stat['ast'], $stat['stl'], $stat['blk'], $stat['pf'], $stat['pts']);
+                        $stmt->execute();
+                    } catch (Exception $e) {
                     }
                 }
-            } else {
-                // Si no hay datos válidos en la respuesta JSON, mostrar un mensaje de advertencia
-                echo "No se encontraron datos válidos en la respuesta JSON.";
             }
 
-            // Actualizar el cursor
             $cursor = isset($data['meta']['next_cursor']) ? $data['meta']['next_cursor'] : null;
-
-            sleep(2.5); // Esto limita el número de solicitudes a 30 por minuto
+            sleep(2.5);
 
         } while ($cursor !== null);
     }
 
-    // Cerrar la sesión cURL
     curl_close($ch);
-
-    // Cerrar la conexión y liberar recursos
     $stmt->close();
     $con->close();
+
     echo "[+] Los datos de las ESTADISITICAS se insertaron correctamente [+]\n";
 
 }

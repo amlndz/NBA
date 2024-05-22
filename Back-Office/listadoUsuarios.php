@@ -1,13 +1,17 @@
 <?php
+session_start();
+
+if ($_SESSION['administrador'] != 1) {
+    header("Location: ../Front-Office/index.php");
+    exit();
+}
+
+?>
+
+<?php
 include "./assets/funcionalidad/connection.php";
 
 $con = connect();
-
-if (isset($_SESSION['username'])) {
-    echo "Si esta seteada " + $_SESSION['username'];
-} else {
-    echo "NO ESTA SETEADA";
-}
 
 $pagina = $_GET['page'];
 $tamano_pagina = 25;

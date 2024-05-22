@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if ($_SESSION['administrador'] != 1) {
+  header("Location: ../Front-Office/index.php");
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +97,7 @@
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-gradient-primary w-100" href="cerrar_sesion.php" type="button">
+        <a class="btn bg-gradient-primary w-100" href="../Front-Office/logout.php" type="button">
           <i class="material-icons opacity-10">logout</i> Cerrar sesion
         </a>
       </div>
@@ -98,16 +108,26 @@
 
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       data-scroll="true">
-      <div class="d-flex justify-content-end align-items-center w-100" id="navbar">
-        <a href="perfil.php">
-          <h2 class="mb-0 me-3">
-            <?php
-            include_once './assets/funcionalidad/obtener_nombre_usuario.php';
-            echo obtenerNombreUsuario();
-            ?>
-            <i class="fa fa-user me-sm-1"></i>
-          </h2>
-        </a>
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="../Front-Office/index.php"> <!-- Enlace como título -->
+            <h3>
+              <img src="../Front-Office/assets/img/logoNBA.png" class="transparente" id="logo-menu-image" alt="nba"
+                width="10%" height="10%">
+            </h3>
+          </a>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+          <a href="perfil.php" class="me-3"> <!-- Enlace a la derecha -->
+            <h2>
+              <?php
+              include_once './assets/funcionalidad/obtener_nombre_usuario.php';
+              echo obtenerNombreUsuario();
+              ?>
+              <i class="fa fa-user me-sm-1"></i>
+            </h2>
+          </a>
+        </div>
       </div>
     </nav>
 
@@ -144,7 +164,7 @@
           'final_users' => ['id', 'full_name', 'username', 'email', 'password', 'fav_player', 'fav_team', 'administrador'],
           'final_teams' => ['id', 'abbreviation', 'city', 'conference', 'full_name', 'name'],
           'final_players' => ['id', 'first_name', 'last_name', 'position', 'height', 'weight', 'team_id', 'number', 'draft', 'draft_round', 'country', 'draft_number'],
-          'final_games' => ['id', 'date', 'season', 'period', 'time', 'postseason', 'home_team_score', 'visitior_team_score', 'home_team_id', 'visitor_team_id'],
+          'final_games' => ['id', 'date', 'season', 'period', 'time', 'postseason', 'home_team_score', 'visitor_team_score', 'home_team_id', 'visitor_team_id'],
           'final_stats' => ['id', 'player_id', 'team_id', 'game_id', 'min', 'fgm', 'fga', 'fg_pct', 'fg3m', 'fg3a', 'fg3_pct', 'ft_pct', 'ftm', 'fta', 'oreb', 'dreb', 'reb', 'ast', 'stl', 'blk', 'pf', 'pts'],
           'final_averages' => ['player_id', 'season', 'pts', 'ast', 'turnover', 'pf', 'fga', 'fgm', 'fta', 'ftm', 'fg3a', 'fg3m', 'reb', 'oreb', 'dreb', 'stl', 'blk', 'fg_pct', 'fg3_pct', 'ft_pct', 'min', 'games_played'],
         ];
@@ -166,13 +186,15 @@
           }
           echo '</tr></thead><tbody>';
 
-          // Mostrar las primeras 3 filas de la tabla
-          while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
-            foreach ($columnas as $columna) {
-              echo '<td>' . $row[$columna] . '</td>';
+          try {
+            while ($row = $result->fetch_assoc()) {
+              echo '<tr>';
+              foreach ($columnas as $columna) {
+                echo '<td>' . $row[$columna] . '</td>';
+              }
+              echo '</tr>';
             }
-            echo '</tr>';
+          } catch (Exception $e) {
           }
 
           $stmt = $con->prepare("SELECT COUNT(*) as total_filas FROM $nombreTabla"); // Obtener el recuento total de filas
@@ -183,8 +205,10 @@
             $row = $result->fetch_assoc();
             $total_filas = $row['total_filas'];
 
-            if ($total_filas > 0) {
-              echo '<tr class="ultima_fila"><td colspan="' . count($columnas) . '">y ' . $total_filas . ' filas más...</td></tr>';
+            if ($total_filas - 3 > 0) {
+              echo '<tr class="ultima_fila"><td colspan="' . count($columnas) . '">y ' . ($total_filas - 3) . ' filas más...</td></tr>';
+            } else if ($total_filas - 3 > -3) {
+              echo '<tr class="ultima_fila"><td colspan="' . count($columnas) . '">No tiene ninguna fila más esta tabla</td></tr>';
             } else {
               echo '<tr class="ultima_fila"><td colspan="' . count($columnas) . '">No tiene ninguna fila esta tabla</td></tr>';
             }

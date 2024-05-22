@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if ($_SESSION['administrador'] != 1) {
+    header("Location: ../Front-Office/index.php");
+    exit();
+}
+
 include "./connection.php";
 
 $con = connect();

@@ -1,6 +1,7 @@
 <?php
 function reload_average_table()
 {
+    sleep(4);
     require ("credentials.php");
     error_reporting(E_ALL);
     set_time_limit(600);
@@ -53,23 +54,54 @@ function reload_average_table()
 
         if (isset($data['data'][0]) && is_array($data['data'][0])) {
             $average = $data['data'][0];
-            print_r($average);
-            $sql = "INSERT INTO final_averages (player_id, season, pts, ast, turnover, pf, fga, fgm, fta, ftm, fg3a, fg3m, reb, oreb, dreb, stl, blk, fg_pct, fg3_pct, ft_pct, min, games_played) VALUES (" . $average['player_id'] . ", " . $average['season'] . ", " . $average['pts'] . ", " . $average['ast'] . ", " . $average['turnover'] . ", " . $average['pf'] . ", " . $average['fga'] . ", " . $average['fgm'] . ", " . $average['fta'] . ", " . $average['ftm'] . ", " . $average['fg3a'] . ", " . $average['fg3m'] . ", " . $average['reb'] . ", " . $average['oreb'] . ", " . $average['dreb'] . ", " . $average['stl'] . ", " . $average['blk'] . ", " . $average['fg_pct'] . ", " . $average['fg3_pct'] . ", " . $average['ft_pct'] . ", '" . $average['min'] . "', " . $average['games_played'] . ")";
-            echo $sql;
-            // Ejecutar la consulta SQL
-            if ($con->query($sql) === TRUE) {
-                echo "<br>[+] Los datos de las estadísticas se insertaron correctamente.<br>";
-            } else {
-                echo "Error al insertar datos: " . $con->error;
+
+            try {
+                $sql = "INSERT INTO final_averages 
+                        (player_id, season, pts, ast, turnover, pf, fga, fgm, fta, ftm, fg3a, fg3m, reb, oreb, dreb, stl, blk, fg_pct, fg3_pct, ft_pct, min, games_played) 
+                        VALUES 
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                $stmt = $con->prepare($sql);
+
+                $stmt->bind_param(
+                    "isiiiiiiiiiiiiiiidddss",
+                    $average['player_id'],
+                    $average['season'],
+                    $average['pts'],
+                    $average['ast'],
+                    $average['turnover'],
+                    $average['pf'],
+                    $average['fga'],
+                    $average['fgm'],
+                    $average['fta'],
+                    $average['ftm'],
+                    $average['fg3a'],
+                    $average['fg3m'],
+                    $average['reb'],
+                    $average['oreb'],
+                    $average['dreb'],
+                    $average['stl'],
+                    $average['blk'],
+                    $average['fg_pct'],
+                    $average['fg3_pct'],
+                    $average['ft_pct'],
+                    $average['min'],
+                    $average['games_played']
+                );
+
+                $stmt->execute();
+
+            } catch (Exception $e) {
             }
-        } else {
-            echo "No se encontraron datos válidos en la respuesta JSON.";
         }
 
-        sleep(2.5); // Limitar el número de solicitudes
+        sleep(2.5);
     }
+
     curl_close($ch);
+    $stmt->close();
     $con->close();
+
     echo "[+] Los datos de los AVERAGES se insertaron correctamente [+]\n";
 }
 ?>

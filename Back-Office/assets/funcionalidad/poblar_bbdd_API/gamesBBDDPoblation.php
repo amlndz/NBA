@@ -2,6 +2,7 @@
 
 function reload_games_table()
 {
+    sleep(4);
     require ("credentials.php");
     $con = connect();
     $urlAPIgames = "https://api.balldontlie.io/v1/games";
@@ -43,42 +44,32 @@ function reload_games_table()
         // Decodificar la respuesta JSON
         $data = json_decode($response, true);
 
-        // Verificar si hay datos y si es un array
-        if (is_array($data['data'])) {
+        if (is_array($data['data']) && !is_null($data)) {
             // Insertar los datos de los partidos en la base de datos
             foreach ($data['data'] as $game) {
-                // Extraer la información del partido
+
                 $home_team_id = $game['home_team']['id'];
                 $visitor_team_id = $game['visitor_team']['id'];
 
-                // Asignar valores a los parámetros de la consulta
-                $stmt->bind_param("isssisiiiii", $game['id'], $game['date'], $game['season'], $game['status'], $game['period'], $game['time'], $game['postseason'], $game['home_team_score'], $game['visitor_team_score'], $home_team_id, $visitor_team_id);
+                try {
+                    $stmt->bind_param("isssisiiiii", $game['id'], $game['date'], $game['season'], $game['status'], $game['period'], $game['time'], $game['postseason'], $game['home_team_score'], $game['visitor_team_score'], $home_team_id, $visitor_team_id);
 
-                // Ejecutar la consulta
-                $stmt->execute();
-
-                // Verificar si ocurrió algún error al ejecutar la consulta
-                if ($stmt->errno) {
-                    echo "Error al insertar datos: " . $stmt->error;
+                    // Ejecutar la consulta
+                    $stmt->execute();
+                } catch (Exception $e) {
                 }
             }
-        } else {
-            // Si no hay datos o no es un array, muestra un mensaje de advertencia
-            echo "No se encontraron datos válidos en la respuesta JSON.";
         }
 
-        // Actualizar el cursor
         $cursor = isset($data['meta']['next_cursor']) ? $data['meta']['next_cursor'] : null;
-        sleep(2.5); // Esto limita el número de solicitudes a 30 por minuto
+        sleep(2.5);
 
     } while ($cursor !== null);
 
-    // Cerrar la sesión cURL
     curl_close($ch);
-
-    // Cerrar la conexión y liberar recursos
     $stmt->close();
     $con->close();
+
     echo "[+] Los datos de los PARTIDOS se insertaron correctamente [+]\n";
 }
 

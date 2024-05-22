@@ -1,0 +1,58 @@
+/* Estilos para el contenedor principal body_perfil */
+#body_perfil {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el contenedor de la parte superior (body_perfil_arriba) */
+#body_perfil_arriba {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la imagen del perfil */
+#body_perfil_arriba_img {
+  flex: 0 0 200px; /* Tamaño fijo de la imagen */
+}
+
+/* Estilos para el contenedor del contenido a la derecha */
+#body_perfil_arriba_contenido {
+  flex: 1; /* El contenido ocupa el espacio restante */
+  padding-left: 20px;
+}
+
+/* Estilos para el título */
+#body_perfil_arriba_contenido_titulo h2 {
+  color: #333;
+}
+
+/* Estilos para los bloques de información (nombre, correo, jugador favorito, equipo favorito) */
+#body_perfil_arriba_contenido div {
+  margin-bottom: 10px;
+}
+
+/* Estilos para el botón fuera del contenedor superior (body_perfil_abajo) */
+#body_perfil_abajo {
+  text-align: right; /* Alinear el botón a la derecha */
+}
+
+/* Estilos para el botón dentro de body_perfil_abajo */
+#body_perfil_abajo button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos cuando se pasa el cursor sobre el botón */
+#body_perfil_abajo button:hover {
+  background-color: #0056b3;
+}

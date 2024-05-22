@@ -1,4 +1,13 @@
 <?php
+try {
+    session_start();
+} catch (Exception $e) {
+}
+
+if ($_SESSION['administrador'] != 1) {
+    header("Location: ../Front-Office/index.php");
+    exit();
+}
 require_once ("connection.php");
 
 function truncate_tables()

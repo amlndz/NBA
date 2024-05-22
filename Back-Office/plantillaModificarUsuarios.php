@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION['administrador'] != 1) {
+    header("Location: ../Front-Office/index.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +96,7 @@
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-gradient-primary w-100" href="cerrar_sesion.php" type="button">
+                <a class="btn bg-gradient-primary w-100" href="../Front-Office/logout.php" type="button">
                     <i class="material-icons opacity-10">logout</i> Cerrar sesion
                 </a>
             </div>
@@ -98,16 +107,26 @@
 
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
             data-scroll="true">
-            <div class="d-flex justify-content-end align-items-center w-100" id="navbar">
-                <a href="perfil.php">
-                    <h2 class="mb-0 me-3">
-                        <?php
-                        include_once './assets/funcionalidad/obtener_nombre_usuario.php';
-                        echo obtenerNombreUsuario();
-                        ?>
-                        <i class="fa fa-user me-sm-1"></i>
-                    </h2>
-                </a>
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="../Front-Office/index.php"> <!-- Enlace como título -->
+                        <h3>
+                            <img src="../Front-Office/assets/img/logoNBA.png" class="transparente" id="logo-menu-image"
+                                alt="nba" width="10%" height="10%">
+                        </h3>
+                    </a>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <a href="perfil.php" class="me-3"> <!-- Enlace a la derecha -->
+                        <h2>
+                            <?php
+                            include_once './assets/funcionalidad/obtener_nombre_usuario.php';
+                            echo obtenerNombreUsuario();
+                            ?>
+                            <i class="fa fa-user me-sm-1"></i>
+                        </h2>
+                    </a>
+                </div>
             </div>
         </nav>
 
@@ -130,8 +149,8 @@
                             <input type="text" name="username" id="username" value="##username##">
                         </div>
                         <div class="form-group">
-                            <label for="password">Contraseña:</label>
-                            <input type="text" name="password" id="password" value="##password##">
+                            <label for="password">Nueva contraseña:</label>
+                            <input type="text" name="password" id="password">
                         </div>
                         <div class="form-group">
                             <label for="name">Nombre y apellidos:</label>
